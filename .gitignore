@@ -1,0 +1,5 @@
+# Caché local con el contenido completo de Apple (HIG, transcripciones, HTML).
+# NO se publica: es material con copyright de Apple.
+_fuentes/
+__pycache__/
+*.pyc

@@ -1,0 +1,358 @@
+# Apple Design Awards e historias de desarrolladores
+
+Fuentes: https://developer.apple.com/design/awards/ (2026) y las páginas de años anteriores; historias
+*Behind the Design*, *ADA Q&A* y artículos enlazados desde las páginas de diseño. Útil para buscar
+**ejemplos reales** de buenas prácticas (cita la categoría y el año). Descripciones: primera frase, literal.
+
+
+## 2026 — https://developer.apple.com/design/awards/
+
+- **Delight and Fun**
+  - 🏆 grug (Apps) — Ocho, Netherlands · iOS — «This playful app delivers daily wisdom in Neolithic grunts, and looks good doing it.»
+  - Blippo+ (Apps) — Panic, Inc., United States · macOS — «Aimed at a very specific demographic of channel-surfers, DIY-aesthetic aficionados, and anyone seeking an alternative to modern streamers, Blippo+ is a retro-futurist TV with multiple channels of…»
+  - Metaballs (Apps) — Apposite, United States · iOS, visionOS — «This bubbly visionOS experience lets people create spatial blobs, bubbles, and shapes out of a variety of colors and materials, all of which can be pushed, poked, prodded, and pulled apart.»
+  - 🏆 Is This Seat Taken? (Games) — Poti Poti Studio, Spain · iOS, iPadOS, macOS — «A tricky puzzler dressed up as a Saturday morning cartoon, this delightful logic game hides its puzzles in a fun narrative about the perils of sitting near others in buses, restaurants, and other…»
+  - Ball x Pit (Games) — Kenny Sun Studios, United States · Devolver Digital · iOS, iPadOS
+  - PowerWash Simulator (Games) — FuturLab Limited, United Kingdom · Square Enix Collective, Apple Arcade · iOS, iPadOS, macOS, tvOS, visionOS
+- **Inclusivity**
+  - 🏆 Guitar Wiz (Apps) — Bijoy Thangaraj, India · iOS, iPadOS, macOS, watchOS — «This all-in-one toolkit for guitarists — built with SwiftUI by solo developer Bijoy Thangaraj — offers an impressive array of inclusivity features.»
+  - Hearing Buddy (Apps) — Lilly Seay, United States · iOS, iPadOS, watchOS — «Created by a solo developer with hearing loss, Hearing Buddy is shaped by experience.»
+  - Structured (Apps) — unorderly GmbH, Germany · iOS, iPadOS, macOS, watchOS — «Visually sharp and easy to scan, this SwiftUI-built daily planner prioritizes downtime as much as productivity.»
+  - 🏆 Pine Hearts (Games) — Hyper Luminal Games Limited, United Kingdom · Secret Mode · iOS, iPadOS
+  - Sago Mini Jinja’s Garden (Games) — Sago Mini, Canada · Apple Arcade · iOS, iPadOS, macOS, tvOS
+  - Civilization VII (Games) — Firaxis Games, United States · 2K, Apple Arcade · iOS, iPadOS, macOS
+- **Innovation**
+  - 🏆 NBA: Live Games & Scores (Apps) — National Basketball Association, United States · visionOS — «Watching five games at once in the NBA app — or pairing your marquee game with player and team stats the size of a wall — is a revolution for sports fans on Apple Vision Pro.»
+  - D-Day: The Camera Soldier (Apps) — TARGO, France · visionOS — «An ingenious approach to history, and a testament to the power of visionOS storytelling.»
+  - Detail: AI Video Editor (Apps) — Detail Technologies B.V., Netherlands · iOS, iPadOS, watchOS — «Detail combines the simplicity of a camera app with the power of a professional AI video editor.»
+  - 🏆 Blue Prince (Games) — Dogubomb, United States · Raw Fury · macOS
+  - Pickle Pro (Games) — Resolution Games AB, Sweden · visionOS — «Built in RealityKit, Pickle Pro is one of the most impressive native gaming experiences for visionOS — it also happens to be a very fun pickleball game.»
+  - TR-49 (Games) — inkle, UK · iOS, iPadOS — «This gripping war-era alternate-history puzzler asks the question: What if the code-cracking computers built during World War II had been left running?»
+- **Interaction**
+  - 🏆 Moonlitt: Moon Phase Tracker (Apps) — Flipping Hues Srls, Italy · iOS, iPadOS, macOS, visionOS, watchOS — «It’s been a big couple of months for the moon, and if this spring’s Artemis mission piqued your interest in all things lunar, this brilliantly conceived app can keep it going.»
+  - The Outsiders: Athlete Tracker (Apps) — Gentler Stories, LLC, Slovenia · iOS, watchOS — «From the developers of Gentler Streak comes this equally thoughtful fitness app, which strikes a smart balance between intensity and recovery.»
+  - Tide Guide: Charts & Tables (Apps) — Condor Digital, United States · iOS, iPadOS, macOS, tvOS, visionOS, watchOS — «The top-tier tide tracker integrates the new design and Liquid Glass, adding extra polish to data presentation and custom animations — and tying nicely into the aquatic theme.»
+  - 🏆 Sago Mini Jinja’s Garden (Games) — Sago Mini, Canada · Apple Arcade · iOS, iPadOS, macOS, tvOS
+  - Grand Mountain Adventure 2 (Games) — Toppluva AB, Sweden · iOS, iPadOS — «A slick wintry game with a novel control scheme — its left, right, and jump inputs map naturally to skiing.»
+  - TR-49 (Games) — inkle, UK · iOS, iPadOS — «A gripping war-era alternate-history puzzler that asks the question: What if the code-cracking computers built during World War II had been left running?»
+- **Social Impact**
+  - 🏆 Primary: News in Depth (Apps) — Wood Metal Rocks LLC, United States · visionOS — «This spatial news app has a strong pedigree: Primary was founded by a former Associated Press journalist and is powered by a team of experienced editors and contributors all over the globe.»
+  - Katha Room (Apps) — Parjanya Creative Solutions, India · iOS, iPadOS — «A bedtime stories app from India with rich, colorful art and a commitment to cultural representation.»
+  - Harvee (Apps) — Peak Labs Ltd., United Kingdom · iOS, watchOS — «Harvee translates Apple Watch data — heart rate variability, resting heart rate, sleep data, and activity levels — into actionable guidance for recovery.»
+  - 🏆 Consume Me (Games) — Jenny Jiao Hsia, AP Thomson, United States · Hexecutable · macOS
+  - Despelote (Games) — Julián Cordero, Sebastian Valbuena, Ecuador · Panic, Inc. · macOS
+  - Spilled! (Games) — Lente Cuenen, Netherlands · Sound Games · iOS, iPadOS
+- **Visuals and Graphics**
+  - 🏆 Tide Guide: Charts & Tables (Apps) — Condor Digital, United States · iOS, iPadOS, macOS, tvOS, visionOS, watchOS — «The top-tier tide tracker integrates the new design and Liquid Glass, adding extra polish to data presentation and custom animations — and tying nicely into the aquatic theme.»
+  - Caradise (Apps) — PSQV AB, Sweden · visionOS — «An astonishingly immersive auto museum with levels of detail rarely seen in visionOS.»
+  - (Not Boring) Camera (Apps) — Not Boring Software LLC, United States · iOS, iPadOS — «Once again, the (Not Boring) team has mastered the secret behind its big, bold designs: Ensure the products excel in all other areas too.»
+  - 🏆 Cyberpunk 2077 Ultimate Edition (Games) — CD PROJEKT RED, Poland · CD PROJEKT S.A. · macOS
+  - Arknights: Endfield (Games) — Hypergryph, China, Singapore · Gryph Frontier PTE. LTD. · iOS, iPadOS
+  - SILT (Games) — Spiral Circus, United Kingdom · Snapbreak Games · iOS, iPadOS
+
+## 2025 — https://developer.apple.com/design/awards/2025/
+
+- **Delight and Fun**
+  - 🏆 CapWords (Apps) — HappyPlan Tech, China · iPhone, iPad — «The delightful language-learning app CapWords offers an idea that’s as simple as it is revolutionary: Learn the name of a thing by taking a picture of it.»
+  - Lumy (Apps) — Raja V, India · iPhone, iPad, Apple Watch — «If you’re a photographer looking to follow the sun, or an aspiring astronomer who wants to know what a little moonlight can do, this thoughtfully crafted sun and moon tracker can help.»
+  - Denim - Playlist Cover Maker (Apps) — Feel Good Tech, India · iPhone — «Denim creates brilliant new cover art for your playlists, but the app isn’t just about aesthetics: This is a seamless SwiftUI-built experience, with smooth scroll transitions and elegant text and…»
+  - 🏆 Balatro (Games) — LocalThunk, Canada · iPhone, iPad, Mac, Apple TV, Apple Vision Pro — «No game captured the community this past year quite like Balatro, a precisely calibrated mix of poker, solitaire, deck-building, and chaos.»
+  - Thank Goodness You’re Here! (Games) — Panic, USA · Mac — «It’s safe to say Thank Goodness You’re Here! is the best wildly unhinged slap-happy pie-obsessed flower-punching cartoon musical comedy game you’ll play all year.»
+  - Prince of Persia: The Lost Crown (Games) — Ubisoft Montpellier, France · iPhone, iPad, Mac — «This masterful franchise revival delivers a stylish, time-bending adventure with deep roots in mythological legend.»
+- **Inclusivity**
+  - 🏆 Speechify (Apps) — Speechify, USA · iPhone, iPad — «With hundreds of voices and more than 50 available languages, Speechify turns any written text into audio — everything from websites, documents, scans, PDFs, and more.»
+  - Evolve: Daily Self-Care Coach (Apps) — GTA Solutions, India · iPhone, iPad — «A beautifully designed health and fitness app that’s uniquely focused on the LGBTQ+ community.»
+  - Train Fitness (Apps) — Train Fitness, Canada · iPhone, iPad — «Train Fitness logs workouts by using CoreMotion and CoreML to track the motion of a user’s Apple Watch and AirPods, eliminating the need for interaction with a screen or UI.»
+  - 🏆 Art of Fauna (Games) — Klemens Strasser, Austria · iPhone, iPad — «A uniquely drawn puzzle game that prioritizes inclusivity and ecology in equal measure.»
+  - puffies. (Games) — Lykke Studios, Thailand and Cyprus · iPhone, iPad, Mac, Apple TV, Apple Vision Pro — «Lykke Studios returns to the Apple Design Awards with a nostalgic puzzler built for everyone.»
+  - Land of Livia (Games) — Split Atom Labs, Australia · iPhone, iPad, Mac, Apple Vision Pro — «A low-key fantasy adventure you can play at your own speed.»
+- **Innovation**
+  - 🏆 Play (Apps) — Rabbit 3 Times, USA · iPhone, Mac — «For such a sophisticated tool, Play offers incredibly approachable prototyping capabilities that make design and development easier for everyone.»
+  - Moises (Apps) — Music.AI, Brazil · iPhone, iPad — «This musical marvel isolates the instruments in a recorded song, using machine learning models to separate out the vocals, guitar, bass, drums, and more into individual tracks.»
+  - Capybara AI Meeting Translator (Apps) — Digital Workroom Ltd., United Kingdom · iPhone, iPad — «An impressive transcription, translation, and summarization tool that offers an astonishing level of accuracy — and an adorable aesthetic.»
+  - 🏆 PBJ — The Musical (Games) — Philipp Stollenmayer, Germany · iPhone, iPad — «A charming story game with polished execution and impressive production values — and did we mention it’s a snack-based musical reboot of “Romeo and Juliet”?»
+  - Pawz (Games) — Bootloader Studio Holdings, Singapore · Apple Vision Pro — «A clever example of ambient gaming on Vision Pro, Pawz leverages passthrough technology to integrate virtual pets into real-world environments — or, put another way, to let you play with (or…»
+  - Gears & Goo (Games) — Resolution Games AB, Sweden · Apple Vision Pro — «A fresh take on tower defense, Gears & Goo on Apple Vision Pro is a polished experience that makes expert use of spatial audio, hand tracking, and eye tracking.»
+- **Interaction**
+  - 🏆 Taobao (Apps) — Zhejiang Taobao Network, China · Apple Vision Pro — «An exceptional example of how to render, interact with, and design for 3D elements on Apple Vision Pro.»
+  - iA Writer (Apps) — Information Architects AG, Switzerland · iPhone, iPad, Mac — «A smart solution for distraction-free writing.»
+  - Mela - Recipe Manager (Apps) — Silvio Rizzi, Switzerland · iPhone, iPad, Mac — «Like a perfectly prepared dish, this recipe app is all about getting the details right.»
+  - 🏆 DREDGE (Games) — Black Salt Games, New Zealand · iPhone, iPad, Mac — «A two-word idea — “Lovecraftian fishing” — inspired this appealingly creepy debut from Black Salt Games, whose creative team all admits to spending more time fishing in video games than in real life.»
+  - Gears & Goo (Games) — Resolution Games AB, Sweden · Apple Vision Pro — «What’s more fun than defending your tower by throwing around blobs of goo?»
+  - Skate City: New York (Games) — Snowman, Canada · iPhone, iPad, Mac, Apple TV — «Packed with cool combos to perform and obstacles to navigate, Skate City: New York plays equally well with touch and controller.»
+- **Social Impact**
+  - 🏆 Watch Duty: Wildfire Maps (Apps) — Sherwood Forestry Service, USA · iPhone, iPad — «When wildfires tore through southern California in January, Watch Duty served as a primary source for essential, ever-changing, and sometimes life-saving information.»
+  - Ground News (Apps) — Snapwise, Canada · iPhone, iPad — «A news aggregator that helps people view how media outlets across the political spectrum are covering or downplaying a topic.»
+  - Opal (Apps) — Opal OS, USA · iPhone, iPad — «Opal helps people establish a more intentional relationship with technology by encouraging less time on devices.»
+  - 🏆 Neva (Games) — Devolver Digital, USA · Mac — «A powerful, sometimes somber, and richly illustrated story about the emotional effects of environmental decline.»
+  - Ahoy! From Picardy (Games) — Daniel Jones, USA · Apple Vision Pro — «A whimsical experience that’s part redemption arc and part environmental warning.»
+  - Art of Fauna (Games) — Klemens Strausser, Austria · iPhone, iPad — «A uniquely drawn puzzle game that prioritizes inclusivity and ecology in equal measure.»
+- **Visuals and Graphics**
+  - 🏆 Feather: Draw in 3D (Apps) — Sketchsoft, South Korea · iPad — «An incredible modeling tool that allows artists to easily transform their 2D designs into fully immersive 3D creations.»
+  - Vocabulary - Learn words daily (Apps) — Monkey Taps, USA · iPhone, iPad, Apple Watch — «A subtle example of excellence.»
+  - CellWalk (Apps) — Timothy Davison, Canada · Apple Vision Pro — «CellWalk is a biology class like none other.»
+  - 🏆 Infinity Nikki (Games) — Infold Games, Singapore · iPhone, iPad — «A wonderland of texture, light, and animation, Infinity Nikki is one of the best-looking games of the year.»
+  - Control Ultimate Edition (Games) — Remedy Entertainment PLC, Finland · Mac — «Twisting hallways, looming cityscapes, creepy stone-white heads — they’re all part of the visual masterpiece that is Control.»
+  - Neva (Games) — Devolver Digital, USA · Mac — «Created by the team behind the gorgeous adventure Gris, Neva is a masterful connection of visual language and emotion.»
+
+## 2024 — https://developer.apple.com/design/awards/2024/
+
+- **Delight and Fun**
+  - 🏆 Bears Gratitude — Isuru Wanasinghe, Australia · App | iPhone, iPad, Mac — «Journaling apps just don’t get much cuter than Bears Gratitude, a warm and welcoming way to establish — and, just as crucially, maintain — a daily gratitude practice.»
+  - 🏆 NYT Games — The New York Times Company, USA · Game | iPhone, iPad — «An all-time great with a compelling mix of games and the source of the fierce debate, “What’s the best Wordle starting word?” In the past year, NYT Games evolved well past its classic crosswords and…»
+  - Rooms — Things, Inc., USA · iPhone, iPad
+  - Dudel Draw — Silly Little Apps LLC, USA · iPhone, iPad
+  - WHAT THE CAR? — Triband ApS, Denmark · iPhone, iPad, Mac, Apple TV, Apple Vision Pro
+  - Hello Kitty Island Adventure — Sunblink Entertainment LLC, USA · iPhone, iPad, Mac, Apple TV, Apple Vision Pro
+- **Inclusivity**
+  - 🏆 oko — AYES, Belgium · App | iPhone — «oko alerts pedestrians to the state of lighted signals through haptic and audio feedback, an immediately impactful approach for those with low to no vision.»
+  - 🏆 Crayola Adventures — RED GAMES CO, LLC, USA · Game | iPhone, iPad, Mac, Apple TV, Apple Vision Pro — «A colorful adventure that sets a new standard for inclusive and gender-neutral character-creation options, which include different skin tones, abilities, body types, pronouns, and more.»
+  - Complete Anatomy 2024 — Elsevier, Ireland · iPad, Mac
+  - Tiimo — tiimo ApS, Denmark · iPhone, iPad, Apple Watch
+  - Unpacking — Humble Bundle, Inc, USA · iPhone, iPad
+  - quadline — Kovalov Ivan, Ukraine · iPhone, iPad, Mac, Apple TV, Apple Vision Pro
+- **Innovation**
+  - 🏆 Procreate Dreams — Savage Interactive Pty Ltd, Australia · App | iPad — «The new standard in creating 2D animations on iPad.»
+  - 🏆 Lost in Play — Happy Juice Games, Israel · Game | iPhone, iPad, Apple Vision Pro — «Lost in Play feels like a graphic novel come to life.»
+  - Copilot Money — Copilot Money, Inc., USA · iPhone, Mac
+  - SmartGym — Mateus Abras, Brazil · iPhone, iPad, Apple Watch, Mac, Apple Vision Pro
+  - Wavelength — Palm Court LLC, USA · iPhone, iPad, Apple Vision Pro
+  - Call of Duty: Warzone Mobile — Activision Publishing, Inc., USA · iPhone, iPad
+- **Interaction**
+  - 🏆 Crouton — Devin Davies, New Zealand · App | iPhone, iPad, Mac, Apple Watch, Apple Vision Pro — «Recipe apps rise and fall on their organization and information hierarchy, and Crouton serves up a clean, tasty interface for stashing away recipes, creating grocery lists, and presenting…»
+  - 🏆 Rytmos — Floppy Club ApS, Denmark · Game | iPhone, iPad — «A world music-inspired rhythm game that looks as good as it sounds.»
+  - Procreate Dreams — Savage Interactive Pty Ltd, Australia · iPad
+  - Arc Search — The Browser Company of New York Inc., USA · iPhone
+  - Little Nightmares — Playdigious, France · iPhone, iPad
+  - finity. — Seabaa, Inc., USA · iPhone, iPad, Mac, Apple TV
+- **Social Impact**
+  - 🏆 Gentler Streak Fitness Tracker — Gentler Stories d.o.o., Slovenia · App | iPhone, iPad, Apple Watch — «With its thoughtful focus on both physical and mental health, Gentler Streak is chasing the elusive goal of improving everyone’s lifestyles, no matter who or where they are.»
+  - 🏆 The Wreck — The Pixel Hunt, France · Game | iPhone, iPad — «A lush visual novel about sisterhood, motherhood, grief, and survival.»
+  - How We Feel — The How We Feel Project, Inc., USA · iPhone
+  - Ahead: Emotions Coach — ahead solutions GmbH, Germany · iPhone
+  - Cityscapes: Sim Builder — MagicFuel Games, USA · iPhone, iPad, Mac, Apple TV, Apple Vision Pro
+  - The Bear — Mucks Games UG (haftungsbeschrnkt), Germany · iPhone, iPad
+- **Visuals and Graphics**
+  - 🏆 Rooms — Things Inc., USA · App | iPhone, iPad — «An incredible canvas for creativity, set in a nostalgic 8-bit world.»
+  - 🏆 Lies of P — NEOWIZ Corporation, South Korea · Game | Mac — «A technical showpiece for Mac — and a dark, fascinating twist on a familiar tale.»
+  - Sunlitt — Nicolas Mariniello, Italy · iPhone, iPad, Apple Watch
+  - Meditate — RhythmicWorks Software LLP, India · iPhone, Apple Watch
+  - DEATH STRANDING DIRECTOR'S CUT — 505 Games, Inc., USA · iPhone, iPad, Mac
+  - Honkai: Star Rail — COGNOSPHERE PTE. LTD., Singapore · iPhone, iPad
+- **Spatial Computing**
+  - 🏆 djay — Algoriddim GmbH, Germany · App | Apple Vision Pro, iPhone, iPad, Mac, Apple Watch — «djay pro isn’t just a groundbreaking app; it’s an entirely new way to interact with music.»
+  - 🏆 Blackbox — Shapes and Stories, USA · Game | Apple Vision Pro — «Blackbox on iOS challenged players to think outside the screen; Blackbox on visionOS challenges them to think about every (metaphorical) corner of the spatial canvas from its very first moments.»
+  - Sky Guide — Fifth Star Labs LLC, USA · Apple Vision Pro, iPhone, iPad
+  - NBA — NBA MEDIA VENTURES, LLC, USA · Apple Vision Pro, iPhone, iPad, Apple Watch
+  - Synth Riders — Kluge Strategic Inc., USA · Apple Vision Pro, iPhone, iPad
+  - Loóna: Cozy Puzzle Games — Loona Inc., USA · Apple Vision Pro
+
+## 2023 — https://developer.apple.com/design/awards/2023/
+
+- **Inclusivity**
+  - 🏆 Universe — Website Builder — Available on iPhone, iPad, and Mac — «Universe - Website Builder champions the idea of making website building accessible to everyone.»
+  - 🏆 stitch. — Available on iPhone, iPad, Mac, and Apple TV — «The warm and approachable stitch. is more than a casual game — it’s a relaxing exercise with cross-generational appeal.»
+  - Anne — Alessandro Di Maio
+  - Passenger Assistance — TRANSREPORT · Available only in the UK
+  - Ancient Board Game Collection — Klemens Strasser
+  - Finding Hannah — Fein Games GmbH — «[With Ancient Board Game Collection, Klemens Strasser goes back in time]»
+- **Delight and Fun**
+  - 🏆 Duolingo — Available on iPhone and iPad — «As anyone who’s crossed paths with Duolingo’s endearingly tenacious mascot can attest, delight and fun have always been central to the app’s success.»
+  - 🏆 Afterplace — Available on iPhone and iPad — «A vintage pixel adventure with a contemporary twist, Evan Kice’s Afterplace is a warm and welcoming RPG set in a fabulously expansive open world.»
+  - CREME — The CREME Group Inc.
+  - Chantlings — IORAMA
+  - Pocket Card Jockey: Ride On! — GAME FREAK Inc.
+  - Knotwords — Zach Gage and Jack Schlesinger — «Winners in this category deliver intuitive interfaces and effortless controls that are perfectly tailored to their platform.»
+- **Interaction**
+  - 🏆 Flighty — Available on iPhone, iPad, and Mac — «Flighty is a beautifully designed flight tracker, travel planner, airport navigator, and concierge.»
+  - 🏆 Railbound — Available on iPhone and iPad — «Railbound may feel drawn and designed for kids, but this puzzler — in which you work to arrange train cars in their proper order — is for conductors of all ages.»
+  - Shuffles by Pinterest — Pinterest, Inc.
+  - Tide Guide: Charts & Tables — Condor Digital LLC
+  - Automatoys — Idle Friday LTD
+  - Kimono Cats — HumaNature Studios Inc. · [The gorgeous gadgets of Automatoys] · [The “sweet, creative” world of Kimono Cats]
+- **Social Impact**
+  - 🏆 Headspace — Available on iPhone, iPad, and Apple Watch — «Few apps have brought mindfulness to the masses more successfully than Headspace.»
+  - 🏆 Endling — Available on iPhone and iPad — «In the gorgeous side-scroller Endling, you play as a fox fighting to navigate a land charred by environmental disaster and human impact.»
+  - Duolingo — Duolingo, Inc.
+  - Sago Mini First Words — Sago Mini
+  - Hindsight — Team Hindsight
+  - Beecarbonize — Charles Games s.r.o. — «Winners in this category feature stunning imagery, skillfully drawn interfaces, and high-quality animations that lend to a distinctive and cohesive theme.»
+- **Visuals and Graphics**
+  - 🏆 Any Distance — Available on iPhone and Apple Watch — «Any Distance is a design-forward fitness tracker that delivers workout stats in a variety of eye-popping and easily shareable formats: dynamic charts and graphs, rotating 3D maps complete with…»
+  - 🏆 Resident Evil Village — Available on Mac — «Resident Evil Village is an absolute powerhouse and the new standard of Mac gaming.»
+  - Gentler Streak Health Fitness — Gentler Stories LLC
+  - Riveo — Forge and Form GmbH
+  - Diablo Immortal — Blizzard/NetEase
+  - Endling — HandyGames — «Winners in this category provide a state-of-the-art experience through novel use of Apple technologies that set them apart in their genre.»
+- **Innovation**
+  - 🏆 SwingVision: A.I. Tennis App — Available on iPhone, iPad, Mac, and Apple Watch — «By using the combined powers of AI and Neural Engine, SwingVision serves as a tennis coach that can help with every aspect of your game.»
+  - 🏆 MARVEL SNAP — Available on iPhone and iPad — «MARVEL SNAP has it all: brisk gameplay, unbelievable artwork, and an incredible stickiness that keeps you coming back — and rewards you for doing so.»
+  - Camo Studio — Reincubate Ltd.
+  - Rise: Energy & Sleep Tracker — Rise Science Inc.
+  - Resident Evil Village — CAPCOM Co., Ltd.
+  - stitch. — Lykke Studios
+
+## 2022 — https://developer.apple.com/design/awards/2022/
+
+- **Inclusivity**
+  - 🏆 Procreate — Available on iPad — «This year, the world-class tool for artists and designers brought its creative power to more people than ever.»
+  - 🏆 Wylde Flowers — Available on iPhone, iPad, Mac, and Apple TV — «Powered by a refreshingly diverse storyline and cast of LGBTQIA+ representative characters, Wylde Flowers is all about identity, accepting others, and supporting your community.»
+  - Letter Rooms — Klemens Strasser
+  - Navi — Good Snooze
+  - Noted. — Digital Workroom Ltd
+  - tint. — Lykkegaard Europe Limited — «Winners in this category provide memorable, engaging, and satisfying experiences that are enhanced by Apple technologies.»
+- **Delight and Fun**
+  - 🏆 (Not Boring) Habits — Available on iPhone and iPad — «As its (grammatically inventive) name suggests, (Not Boring) Habits adds a little flair to the mild-mannered habit tracker.»
+  - 🏆 Overboard! — Available on iPhone and iPad — «Overboard! is a whodunit with a twist: You done it.»
+  - Chineasy — Chineasy
+  - Moncage — Optillusion
+  - Please, Touch The Artwork — Studio Waterzooi
+  - Waterllama — Vitalii Mogylevets — «Winners in this category deliver intuitive interfaces and effortless controls that are perfectly tailored to their platform.»
+- **Interaction**
+  - 🏆 A Musical Story — Available on iPhone and iPad — «A harmonious mix of song, story, and artistic creation, A Musical Story remixes the idea of what a mobile game can be.»
+  - 🏆 Slopes — Available on iPhone, iPad, and Apple Watch — «Slopes proves how seamlessly an app can integrate with an activity.»
+  - Gibbon: Beyond the Trees — Broken Rules
+  - Transit — Transit, Inc.
+  - Vectornator: Vector Design — Linearity GmbH
+  - What Remains of Edith Finch — Giant Sparrow — «Winners in this category improve lives in a meaningful way and shine a light on crucial issues.»
+- **Social Impact**
+  - 🏆 Gibbon: Beyond the Trees — Available on iPhone, iPad, Mac, and Apple TV — «Gibbon is an ecological adventure in which you swing, fling, and slide your way through gorgeous hand-drawn landscapes in search of your family.»
+  - 🏆 Rebel Girls — Available on iPhone and iPad — «Rebel Girls shares the stories of history’s most influential women—Ruth Bader Ginsburg, Simone Biles, and Frida Kahlo, to name just a few—through rich audio and gorgeous original art.»
+  - Active Arcade — Nex
+  - Empathy — The Empathy Project
+  - Headspace — Headspace Health
+  - Wylde Flowers — Studio Drydock Pty Ltd — «Winners in this category feature stunning imagery, skillfully drawn interfaces, and high-quality animations that lend to a distinctive and cohesive theme.»
+- **Visuals and Graphics**
+  - 🏆 Halide Mark II — Available on iPhone, iPad, and Apple Watch — «The brilliant camera app Halide Mark II focuses on the essentials.»
+  - 🏆 LEGO® Star Wars™: Castaways — Available on iPhone, iPad, Mac, and Apple TV — «With its cinematic feel, sizzling visual effects, and tactile gameplay (look at those blocks fly!), Castaways is a force to be reckoned with.»
+  - Alien: Isolation — Feral Interactive
+  - Behind the Frame — Silver Lining Studio under Akatsuki Taiwan
+  - MD Clock — Hangzhou Midi Technology Co., Ltd.
+  - (Not Boring) Habits — Andy Works LLC — «Winners in this category provide a state-of-the-art experience through novel use of Apple technologies that set them apart in their genre.»
+- **Innovation**
+  - 🏆 MARVEL Future Revolution — Available on iPhone and iPad — «Marvel Future Revolution is a technological feat worthy of Stark Industries.»
+  - 🏆 Odio — Available on iPhone and iPad — «The audio app Odio delivers incredibly lifelike ambient sounds—waterfalls, rushing rivers, lush electronic washes—made even more realistic with Spatial Audio and head tracking.»
+  - Active Arcade — Nex
+  - Focus Noodles — ideaTiny Co., Ltd.
+  - Procreate — Savage Interactive Pty Ltd
+  - Townscaper — Oskar Stålberg — «Go behind the screens with the developers and designers of these award-winning apps and games to discover how they brought their remarkable creations to life.»
+
+## 2021 — https://developer.apple.com/design/awards/2021/
+
+- **Apple Design Awards 2021**
+  - 🏆 HoloVista — Available on iPhone and iPad — «HoloVista supports a wide variety of accessibility features, including options for motion control, text sizes, text contrast, sound, and visual effect intensity.»
+  - 🏆 Voice Dream Reader — Available on iPhone, iPad, and Apple Watch — «Voice Dream Reader is a best-in-class text-to-speech app that reads text aloud from just about any digital source, whether it’s a web page or PDF, in more than two dozen languages.»
+  - 1Password — AgileBits Inc.
+  - A Monster's Expedition — Draknek Limited
+  - Alba — ustwo games
+  - Me: A Kid’s Diary by Tinybop — Tinybop Inc. — «Winners in this category provide memorable, engaging, and satisfying experiences that are enhanced by Apple technologies.»
+  - 🏆 Little Orpheus — Available on iPhone, iPad, and Apple TV — «Little Orpheus is an enjoyable platformer that brings easy controls, excellent storytelling, and a console-like experience to a casual game.»
+  - 🏆 Pok Pok Playroom — Available on iPhone and iPad — «Pok Pok Playroom is a playful, and beautifully animated app that captivates users with its thoughtful design and mesmerizing interactions.»
+  - Poolsuite FM — Poolsuite
+  - RakugakiAR — Whatever Inc.
+  - Wonderbox — AQUIRIS GAME STUDIO LLC
+  - South of the Circle — State of Play Games — «Winners in this category deliver intuitive interfaces and effortless controls that are perfectly tailored to their platform.»
+  - 🏆 Bird Alone — Available on iPhone and iPad — «Bird Alone’s explorative interactions combine gestures, haptics, parallax, and dynamic sound effects that imbues richness into its world.»
+  - 🏆 CARROT Weather — Available on iPhone, iPad, and Apple Watch — «CARROT Weather is known for its humorous forecasts and unique visuals.»
+  - Craft — Luki Labs Limited
+  - Nova — Panic
+  - Sp!ng — SMG Studio
+  - Wonderbox — AQUIRIS GAME STUDIO LLC — «Winners in this category improve lives in a meaningful way and shine a light on crucial issues.»
+  - 🏆 Alba: A Wildlife Adventure — Available on iPhone, iPad, Mac, and Apple TV — «With a natural reserve being bulldozed by the city to make a hotel, Alba saves local wildlife, repairs the bridge in the reserve, and cleans up trash around town.»
+  - 🏆 Be My Eyes — Available on iPhone and iPad — «Be My Eyes enables people who are blind and low-vision to identify objects by pairing them with volunteers from around the world using their camera.»
+  - Brief — Broadsheet
+  - If Found... — Annapurna Interactive
+  - Klima — Climate Labs GmbH
+  - Attentat 1942 — Charles Games s.r.o. — «Winners in this category feature stunning imagery, skillfully drawn interfaces, and high-quality animations that lend to a distinctive and cohesive theme.»
+  - 🏆 Genshin Impact — Available on iPhone and iPad — «Genshin Impact's heart-pounding battle scenes and far-reaching landscapes push the visual frontier for mobile gaming.»
+  - 🏆 Loóna — Available on iPhone and iPad — «Loóna offers gracefully animated sleepscape sessions that combine relaxing activities, storytelling, and atmospheric sounds.»
+  - Beyond a Steel Sky — Revolution
+  - Mission to Mars AR — SN Digital LLC
+  - (Not Boring) Weather — Andy Works LLC
+  - Little Orpheus — The Chinese Room — «Winners in this category provide a state-of-the-art experience through novel use of Apple technologies that set them apart in their genre.»
+  - 🏆 League of Legends: Wild Rift — Available on iPhone and iPad — «League of Legends: Wild Rift takes a complex PC game and delivers its full experience on mobile.»
+  - 🏆 NaadSadhana — Available on iPhone and iPad — «NaadSadhana is an all-in-one, studio-quality music app that helps musicians of all genres and any expertise perform and publish their music without boundaries.»
+  - Bird Alone — George Batchelor
+  - Blind Drive — Lo-Fi People
+  - Museum Alive — Alchemy Immersive Ltd
+  - Universe — Universe Exploration Company
+
+## 2020 — https://developer.apple.com/design/awards/2020/
+
+- **Apple Design Awards 2020**
+  - 🏆 Shapr 3D — Available on iPad — «Running CAD software has generally required a desktop computer with considerable processing power.»
+  - 🏆 Looom — Available on iPad — «Looom brings hand-drawn animation into the iPad age, making the process quicker and accessible to all.»
+  - 🏆 StaffPad — Available on iPad — «The way StaffPad transforms hand-drawn music notation into professionally formatted sheet music on the fly feels almost magical.»
+  - 🏆 Darkroom — Available on iPhone and iPad — «This comprehensive and surprisingly powerful photo editor comes loaded with all the granular controls and moody filters you’ve come to expect — with an elegant interface that truly lights the way.»
+  - 🏆 Sayonara Wild Hearts — Available on iPhone, iPad, Mac, and Apple TV — «Part ’80s music video, part classic arcade game, Sayonara Wild Hearts is pure interactive poetry — the kind that gets your adrenaline pumping and makes your spirit soar.»
+  - 🏆 Song of Bloom — Available on iPhone and iPad — «Stollenmayer is best known for his quirky, physics-based games, including the lovably weird food-flinging trilogy Bacon, Pancake, and Burger.»
+  - 🏆 Where Cards Fall — Available on iPhone, iPad, Mac, and Apple TV — «Where Cards Fall proves as moving as it is inventive.»
+  - 🏆 Sky: Children of the Light — Available on iPhone and iPad — «Some games reward quick reflexes, others cunning ambition.»
+
+## Historias de desarrolladores y artículos
+
+- [ADA Q&A: Consume Me](https://developer.apple.com/news/?id=y46hd2sn)
+- [ADA Q&A: Inside the world of Cyberpunk 2077](https://developer.apple.com/news/?id=eb0rfgn9)
+- [ADA Q&A: Is This Seat Taken?](https://developer.apple.com/news/?id=z12xq8fa)
+- [ADA Q&A: Loss and love in the world of Pine Hearts](https://developer.apple.com/news/?id=p9gxlwd0)
+- [ADA Q&A: Off to see the Guitar Wiz](https://developer.apple.com/news/?id=5zi5a25j)
+- [ADA Q&A: Primary sources](https://developer.apple.com/news/?id=n7uhd8gz)
+- [ADA Q&A: Seeding imagination in Sago Mini Jinja’s Garden](https://developer.apple.com/news/?id=3t6o5jec)
+- [ADA Q&A: What a little Moonlitt can do](https://developer.apple.com/news/?id=v1nphz91)
+- [ADA Q&A: grug team make app good](https://developer.apple.com/news/?id=ux44ymcr)
+- [Behind the Design: (Not Boring) Habits](https://developer.apple.com/news/?id=9ab1g4r3)
+- [Behind the Design: 2022 Apple Design Awards](https://developer.apple.com/news/?id=b4kk777r)
+- [Behind the Design: A Musical Story](https://developer.apple.com/news/?id=k4gkh1dx)
+- [Behind the Design: Afterplace](https://developer.apple.com/news/?id=3exkgv43)
+- [Behind the Design: Any Distance](https://developer.apple.com/news/?id=uiiopcl8)
+- [Behind the Design: Creating the make-believe magic of Lost in Play](https://developer.apple.com/news/?id=n4w6zydm)
+- [Behind the Design: Darkroom](https://developer.apple.com/news/?id=nxnjx66e)
+- [Behind the Design: Duolingo](https://developer.apple.com/news/?id=jhkvppla)
+- [Behind the Design: Endling](https://developer.apple.com/news/?id=c8l2zi89)
+- [Behind the Design: Flighty](https://developer.apple.com/news/?id=970ncww4)
+- [Behind the Design: Gibbon: Beyond the Trees](https://developer.apple.com/news/?id=0yia4yw7)
+- [Behind the Design: Halide Mark II](https://developer.apple.com/news/?id=x6bv1a36)
+- [Behind the Design: Headspace](https://developer.apple.com/news/?id=fkfnhq8u)
+- [Behind the Design: How Gentler Streak approaches fitness with “humanity“](https://developer.apple.com/news/?id=3m0ht22s)
+- [Behind the Design: Lego Star Wars: Castaways](https://developer.apple.com/news/?id=fmu9m6xp)
+- [Behind the Design: Looom](https://developer.apple.com/news/?id=s26ze13m)
+- [Behind the Design: MARVEL SNAP](https://developer.apple.com/news/?id=sosm2p7q)
+- [Behind the Design: Marvel Future Revolution](https://developer.apple.com/news/?id=oytkda24)
+- [Behind the Design: Odio](https://developer.apple.com/news/?id=xkezgxfu)
+- [Behind the Design: Overboard!](https://developer.apple.com/news/?id=fkelkwzq)
+- [Behind the Design: Procreate](https://developer.apple.com/news/?id=e409h6ja)
+- [Behind the Design: Railbound](https://developer.apple.com/news/?id=0x08hncy)
+- [Behind the Design: Rebel Girls](https://developer.apple.com/news/?id=56pb0goq)
+- [Behind the Design: Resident Evil Village](https://developer.apple.com/news/?id=ngi52ptu)
+- [Behind the Design: Sayonara Wild Hearts](https://developer.apple.com/news/?id=33kvkagk)
+- [Behind the Design: Shapr 3D](https://developer.apple.com/news/?id=i6qdbzn9)
+- [Behind the Design: Sky: Children of the Light](https://developer.apple.com/news/?id=zm47it7t)
+- [Behind the Design: Slopes](https://developer.apple.com/news/?id=wq48r7mj)
+- [Behind the Design: Song of Bloom](https://developer.apple.com/news/?id=q9fq8jkq)
+- [Behind the Design: StaffPad](https://developer.apple.com/news/?id=5z97xxqw)
+- [Behind the Design: SwingVision](https://developer.apple.com/news/?id=0pg4dthn)
+- [Behind the Design: The rhythms of Rytmos](https://developer.apple.com/news/?id=34m9vbvv)
+- [Behind the Design: Universe](https://developer.apple.com/news/?id=nzd48pl9)
+- [Behind the Design: Where Cards Fall](https://developer.apple.com/news/?id=fy6rx06s)
+- [Behind the Design: Wylde Flowers](https://developer.apple.com/news/?id=din5adp5)
+- [Behind the Design: stitch.](https://developer.apple.com/news/?id=mc4d1ufa)
+- [Behind the appealing design of CapWords](https://developer.apple.com/articles/capwords/)
+- [Coding in the kitchen: How Devin Davies whipped up the tasty recipe app Crouton](https://developer.apple.com/news/?id=9x75y43e)
+- [How Klemens Strasser prioritized inclusivity with Art of Fauna](https://developer.apple.com/news/?id=dgmr27r7)
+- [Knotwords: Gage and Schlesinger at the crossroads](https://developer.apple.com/news/?id=ti9czxni)
+- [Masters of puppets: How ROUND8 Studio carved out a niche for Lies of P](https://developer.apple.com/news/?id=jimo1g6z)
+- [Meet the prototypers](https://developer.apple.com/news/?id=97dgimaa)
+- [Q&A: 10 Questions with Design Evangelism](https://developer.apple.com/news/?id=s8sl4tpa)
+- [Q&A: Building apps for visionOS](https://developer.apple.com/news/?id=prl6dp5r)
+- [Q&A: Spatial design for visionOS](https://developer.apple.com/news/?id=fi8ne6ji)
+- [Random access memories: Inside the time-shifting narrative of The Wreck](https://developer.apple.com/news/?id=wt9blabn)
+- [Realizing their vision: How djay designed for visionOS](https://developer.apple.com/news/?id=q0cq9dv9)
+- [Rooms at the top: How this ADA-winning team built a title that defies description](https://developer.apple.com/news/?id=sqd5xv4n)
+- [The good news bears: Inside the adorably unorthodox design of Bears Gratitude](https://developer.apple.com/news/?id=i74v3f4r)
+- [The gorgeous gadgets of Automatoys](https://developer.apple.com/news/?id=goqmr9xs)
+- [The “sweet, creative” world of Kimono Cats](https://developer.apple.com/news/?id=g0x5mvvz)
+- [Uncovering the hidden joys of Finding Hannah](https://developer.apple.com/news/?id=p09o9fxd)
+- [Walk this way: How Oko leverages AI to make street crossings more accessible](https://developer.apple.com/news/?id=58c4urmu)
+- [With Ancient Board Game Collection, Klemens Strasser goes back in time](https://developer.apple.com/news/?id=20mviasl)
+- [‘I taught myself’: Tucker MacDonald and the rise of Tide Guide](https://developer.apple.com/news/?id=4r9b23wx)
+- [“The best version we’ve ever made”: Fantastical comes to Apple Vision Pro ](https://developer.apple.com/news/?id=you1yc2h)

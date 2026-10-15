@@ -1,0 +1,736 @@
+{
+ "tech-talks/111427": {
+  "resumen": "Qué son las Apple Design Resources (kits de UI para Figma y Sketch, marcos de dispositivos, Icon Composer, SF Symbols) y cómo obtenerlas: developer.apple.com/design/resources, panel de recursos de Figma o su página de Community, y panel de bibliotecas de Sketch. Recomienda usarlas junto a las HIG, explorar los ejemplos y las guías de color, materiales y estilos de texto incluidas, y aceptar las actualizaciones de las bibliotecas.",
+  "reglas": [
+   {
+    "texto": "**Haz:** usa las HIG junto con los kits: los kits muestran cómo se ve un componente, las HIG cuándo y por qué usarlo",
+    "ancla": "Looking at the Apple Human Interface Guidelines in tandem"
+   },
+   {
+    "texto": "**Truco Figma:** cambia el modo de color del marco a «dark» para ver todos los componentes en modo oscuro",
+    "ancla": "I just select the frame that all of these components are presented in"
+   },
+   {
+    "texto": "**Haz:** acepta las actualizaciones de las bibliotecas para reflejar el aspecto actual del sistema",
+    "ancla": "A great thing about using the Apple Design Resources is that you’ll be notified"
+   }
+  ]
+ },
+ "tech-talks/111462": {
+  "resumen": "Barras verticales en iPhone Duo. En la pantalla exterior y en la interior en horizontal, navegación, toolbar y tab bar comparten una región vertical lateral; solo la pantalla interior en vertical vuelve a las barras horizontales. Para activarlo: compilar con el SDK más reciente y usar las barras de los contenedores de navegación (TabView/NavigationStack, UINavigationController/UITabBarController), no barras propias.",
+  "reglas": [
+   {
+    "texto": "**Haz:** usa las barras de los contenedores del sistema; las barras propias construidas con UIToolbar/UINavigationBar/UITabBar no se consideran",
+    "ancla": "Next, make sure you're using the bars provided by navigation containers"
+   },
+   {
+    "texto": "**Orden vertical:** arriba la navegación principal (Atrás/Cerrar), después la acción prominente (Done); el resto conserva su agrupación",
+    "ancla": "Reserve the top for primary navigation controls"
+   },
+   {
+    "texto": "**RTL:** la barra vertical sigue en el mismo lado del dispositivo en idiomas de derecha a izquierda; el contenido se adapta a su alrededor",
+    "ancla": "And because the bar is aligned with the hardware"
+   },
+   {
+    "texto": "**Haz:** da siempre título e icono a cada elemento; los que solo tienen icono pasan a vertical, los de solo texto se quedan en horizontal",
+    "ancla": "This means that even if your content is an image, it's still important to provide a title"
+   },
+   {
+    "texto": "**Haz:** prefiere elementos solo con símbolo (p. ej. badge en vez de contador en línea); mantén en horizontal los que tienen texto con información propia (p. ej. importe del carrito)",
+    "ancla": "For example, rather than keeping the count inline"
+   },
+   {
+    "texto": "**Desbordamiento:** la elipsis es el símbolo estándar de overflow en iPhone; no la uses para otros menús. Prioriza la visibilidad: acciones frecuentes (Compose, New Note) y elementos con badge deben ser los últimos en ocultarse",
+    "ancla": "The ellipsis is the standard overflow symbol on iPhone"
+   },
+   {
+    "texto": "**Excepciones:** apps de una sola página con disposición cargada abajo (Calculadora) o sheets con un solo botón pueden desactivar la barra vertical",
+    "ancla": "If your app is a single-page app with a bottom-heavy layout"
+   }
+  ]
+ },
+ "tech-talks/111463": {
+  "resumen": "Layouts adaptativos en iPhone Duo. Regiones reservadas (reserved regions): la cámara exterior (siempre presente), la bisagra (región de división, activa solo al plegar) y la cámara FaceTime interior (región de oclusión, activa con la cámara). Patrón de desplazamiento (displacement): mover, redimensionar o reorganizar lo que ya existe para mantenerlo visible y alcanzable. Nuevas Arrangements (iOS 27.1, ArrangementView / UIArrangementViewController) con estilos split y overlay.",
+  "reglas": [
+   {
+    "texto": "**No hagas:** dejar contenido o controles cruzando el pliegue",
+    "ancla": "Content and controls that span the fold behave very similarly"
+   },
+   {
+    "texto": "**Desplazamiento:** mueve cada elemento solo si es independiente; si trabajan juntos, muévelos juntos; no los alejes demasiado de su origen",
+    "ancla": "If an element can adapt independently, move it on its own"
+   },
+   {
+    "texto": "**No desplaces** el contenido continuo con scroll (artículos, feeds, documentos, listas)",
+    "ancla": "Continuous scrolling content like articles"
+   },
+   {
+    "texto": "**Dónde mover:** en postura libro, alertas al lado final (más cerca de donde aparecerán al cerrar); en postura sobre la mesa, lo que se mira arriba y lo táctil abajo",
+    "ancla": "When it's partially folded, like a book, elements like alerts move"
+   },
+   {
+    "texto": "**Haz:** mantén disponibles contenido, funciones y layouts en todas las posturas",
+    "ancla": "Keep content, functionality, and layouts available"
+   },
+   {
+    "texto": "**Rejillas:** con región de división presente, prefiere un número par de columnas",
+    "ancla": "you could prefer even numbers of columns"
+   },
+   {
+    "texto": "**Arrangements:** split para relación principal–detalle (ninguna vista debe quedar tapada); overlay para relación primer plano–fondo",
+    "ancla": "consider an overlay arrangement when there's a clear foreground/background relationship"
+   },
+   {
+    "texto": "**No hagas:** meter NavigationSplitView dentro de un ArrangementView ni ArrangementViews dentro de List o ScrollView",
+    "ancla": "So avoid putting navigation containers like NavigationSplitViews"
+   }
+  ]
+ },
+ "tech-talks/111466": {
+  "resumen": "iPhone Duo (septiembre de 2026) es el primer iPhone plegable. Cerrado, la pantalla es más ancha y baja: tab bar, toolbars, botón Atrás, la nueva barra de estado y la Dynamic Island pasan a una franja vertical en el lado derecho. Abierto, ofrece la pantalla más grande de un iPhone. Posturas: libro (parcialmente plegado), portátil, de pie. Nueva vista dividida 50/50 entre dos apps. Diseña para dos size classes (compact en la pantalla exterior, regular en la interior), no por postura; evita que lo interactivo quede en el pliegue.",
+  "reglas": [
+   {
+    "texto": "**Haz:** diseña para compact width (exterior) y regular width (interior); evita anchos fijos, breakpoints o métricas de una pantalla concreta",
+    "ancla": "Instead, focus on two size classes"
+   },
+   {
+    "texto": "**Haz:** usa layout margins y horizontal safe area insets; diseña la app como si fuera libremente redimensionable",
+    "ancla": "Build your layouts with layout margins"
+   },
+   {
+    "texto": "**No hagas:** ligar funciones a una postura concreta; un diseño especial para «sobre la mesa» debe tener los mismos controles y jerarquía",
+    "ancla": "If you decide to do a special layout for this pose"
+   },
+   {
+    "texto": "**Controles al lado:** los botones de la toolbar superior van arriba de la franja vertical, los de la inferior abajo; la tab bar queda alineada abajo; si no caben, pasan a un menú de desbordamiento. Solo en la pantalla interior en vertical se mantienen barras horizontales",
+    "ancla": "Toolbar buttons at the top of your app move to the top"
+   },
+   {
+    "texto": "**Excepción:** elementos demasiado anchos (botón de texto, segmented control) se quedan en la nav bar",
+    "ancla": "Toolbar items that are too wide for the space on the right"
+   },
+   {
+    "texto": "**Composición:** casi todo el contenido necesita un desplazamiento para no quedar bajo los controles (automático con safe area insets); centra en toda la pantalla solo interfaces inmersivas que no hacen scroll",
+    "ancla": "But on iPhone Duo, most content needs an offset"
+   },
+   {
+    "texto": "**Pantalla interior:** no estires la app de iPhone; usa split views (sin cambiar la jerarquía), layouts de dos columnas o la tab bar como sidebar en apps densas",
+    "ancla": "You don't want just a stretched out iPhone app"
+   },
+   {
+    "texto": "**Pliegue:** sheets, alerts, menús y botones de toolbar se apartan del pliegue automáticamente; usa componentes del sistema. El contenido con scroll no necesita evitarlo",
+    "ancla": "We found buttons are tough to tap"
+   }
+  ]
+ },
+ "wwdc2025/208": {
+  "resumen": "iPadOS 26: navegación (sidebar o tab bar que se transforma en sidebar), nuevo sistema de ventanas (asa de redimensionado, controles de ventana en la esquina superior izquierda), nuevo puntero preciso con efecto de resaltado de Liquid Glass y barra de menús en todas las apps de iPad.",
+  "reglas": [
+   {
+    "texto": "**Navegación:** sidebar para apps con muchas subvistas o contenido anidado (Mail); si dudas, empieza con una tab bar, que puede transformarse en sidebar",
+    "ancla": "If you’re still not sure which navigation is best for your app, start with a tab bar"
+   },
+   {
+    "texto": "**Haz:** que los cambios de diseño al redimensionar no sean destructivos y vuelvan al estado inicial cuando sea posible",
+    "ancla": "When adapting to size changes, make sure that any change in layout is non-destructive"
+   },
+   {
+    "texto": "**Haz:** extiende el contenido bajo la toolbar (scroll edge effect) y bajo la sidebar",
+    "ancla": "You can start doing this by drawing content below the toolbar"
+   },
+   {
+    "texto": "**Haz:** envuelve la toolbar alrededor de los controles de ventana para que queden en línea; la colocación encima de la toolbar es solo de compatibilidad y desperdicia espacio",
+    "ancla": "You should instead wrap your toolbar around window controls"
+   },
+   {
+    "texto": "**Haz:** abre cada documento en su propia ventana (ya no se recomienda «Open in Place») y dale un nombre descriptivo",
+    "ancla": "Going forward, your app should create a new window for each document"
+   },
+   {
+    "texto": "**Puntero:** ya no se magnetiza ni se adapta al objetivo; el resaltado es una plataforma de Liquid Glass. Prueba la app con el nuevo puntero",
+    "ancla": "The new pointer will no longer magnetize"
+   },
+   {
+    "texto": "**Menús:** ordena por frecuencia (no alfabéticamente), agrupa en secciones, pasa lo secundario a submenús, asigna símbolos y atajos de teclado",
+    "ancla": "You should order these actions by frequency of use"
+   },
+   {
+    "texto": "**Menú View:** añade las pestañas (con atajos) y el botón de mostrar/ocultar la sidebar",
+    "ancla": "Add your tabs as items in the View menu"
+   },
+   {
+    "texto": "**No hagas:** ocultar menús o elementos según el contexto; atenúalos cuando no sean aplicables",
+    "ancla": "Next thing to keep in mind is to never hide any menus"
+   }
+  ]
+ },
+ "wwdc2025/219": {
+  "resumen": "Presentación de Liquid Glass (WWDC25): un «meta-material» digital que dobla y concentra la luz (lensing) en lugar de dispersarla como los materiales anteriores. Se mueve como un líquido ligero: se «energiza» con la luz al tocarlo, se transforma (morph) entre los controles de cada contexto y los menús «brotan» del botón que los abre. Es adaptativo: sombras, tinte y rango dinámico cambian según el contenido de detrás; los elementos pequeños (barras) alternan entre claro y oscuro y los grandes (menús, sidebars) no. Explica las scroll edge effects (suave y «hard style»), las dos variantes (regular y clear), el nuevo sistema de tintado y las adaptaciones de accesibilidad automáticas (Reduce Transparency, Increase Contrast, Reduce Motion).",
+  "reglas": [
+   {
+    "texto": "**Haz:** reserva Liquid Glass para la capa de navegación que flota sobre el contenido",
+    "ancla": "it is best reserved for the navigation layer"
+   },
+   {
+    "texto": "**No hagas:** convertir una table view (contenido) en Liquid Glass; compite con otros elementos y enturbia la jerarquía",
+    "ancla": "Consider this tableview"
+   },
+   {
+    "texto": "**No hagas:** cristal sobre cristal; para elementos encima de Liquid Glass usa rellenos, transparencia y vibrancy",
+    "ancla": "always avoid glass on glass"
+   },
+   {
+    "texto": "**No hagas:** mezclar las variantes regular y clear",
+    "ancla": "They should never be mixed"
+   },
+   {
+    "texto": "**Haz:** usa regular por defecto: funciona en cualquier tamaño y sobre cualquier contenido",
+    "ancla": "Regular is the most versatile"
+   },
+   {
+    "texto": "**Haz:** usa clear solo si se cumplen 3 condiciones: está sobre contenido rico en medios, la capa de contenido tolera una capa de atenuación (dimming) y el contenido encima es llamativo y brillante",
+    "ancla": "Clear should only be used when these 3"
+   },
+   {
+    "texto": "**Haz:** con clear añade una capa de atenuación; sin ella la legibilidad empeora notablemente",
+    "ancla": "To provide enough legibility for symbols or labels"
+   },
+   {
+    "texto": "**Haz:** tinta solo los elementos y acciones primarios (p. ej. el botón «View Bag» en rojo)",
+    "ancla": "Tinting should only be used"
+   },
+   {
+    "texto": "**No hagas:** tintar todos los elementos; si quieres color, ponlo en la capa de contenido",
+    "ancla": "Avoid tinting all your elements"
+   },
+   {
+    "texto": "**No hagas:** usar un relleno sólido en un botón de cristal: lo vuelve opaco y rompe el carácter del material; usa el tintado nativo",
+    "ancla": "Here is a button that is using a solid fill"
+   },
+   {
+    "texto": "**No hagas:** en estados de reposo (p. ej. al abrir la app) que el contenido se cruce con Liquid Glass; reposiciona o escala el contenido",
+    "ancla": "In steady states"
+   },
+   {
+    "texto": "**Ten en cuenta:** usa el estilo «hard» de scroll edge effect cuando hay vistas accesorias fijadas bajo la toolbar (p. ej. cabeceras de columna)",
+    "ancla": "In some cases, like when there are pinned accessory views"
+   },
+   {
+    "texto": "**Accesibilidad:** Reduce Transparency hace el cristal más esmerilado; Increase Contrast lo vuelve predominantemente blanco o negro con borde contrastado; Reduce Motion reduce efectos y quita la elasticidad. Es automático con el material del sistema",
+    "ancla": "For instance, Reduced Transparency"
+   }
+  ]
+ },
+ "wwdc2025/220": {
+  "resumen": "Nuevo aspecto de los iconos de app (versión 26): material Liquid Glass específico para iconos (reflejos de borde, esmerilado, translucidez; la luz se mueve con el giroscopio en la pantalla de inicio de iOS) y nuevos modos de apariencia: claro, oscuro, monocromo de cristal (claro/oscuro) y dos tintados (oscuro: color en el primer plano; claro: color infundido en el cristal). Disponibles en iPhone, iPad y Mac. Rejilla unificada y más simple, esquinas más redondeadas, lienzo de 1024 px para el rectángulo redondeado y de 1088 px para el círculo de watchOS. En macOS la forma del lienzo actúa como máscara: se acabaron las siluetas irregulares.",
+  "reglas": [
+   {
+    "texto": "**Valor:** lienzo de 1024 px para iconos de rectángulo redondeado",
+    "ancla": "Still using our 1024 pixel canvas"
+   },
+   {
+    "texto": "**Valor:** el lienzo circular de watchOS es de 1088 px y sobrepasa al rectángulo redondeado para facilitar la traducción entre plataformas",
+    "ancla": "The 1088 pixel canvas overshoots"
+   },
+   {
+    "texto": "**macOS:** la forma del lienzo enmascara el diseño; los iconos con formas únicas se reescalan automáticamente sin sombras, pero es mejor redibujarlos para aprovechar todo el lienzo",
+    "ancla": "In order to avoid irregular shapes"
+   },
+   {
+    "texto": "**Haz:** construye el icono por capas: un fondo y una o varias capas de primer plano",
+    "ancla": "First off is layering"
+   },
+   {
+    "texto": "**No hagas:** objetos 3D realistas y perspectivas complejas que compitan con el material; prefiere vista frontal y aspecto más plano",
+    "ancla": "Realistic 3D objects and perspectives"
+   },
+   {
+    "texto": "**Haz:** «menos es más»: reduce solapamientos para que brillen las intersecciones y los bordes reflectantes",
+    "ancla": "By reducing the amount of overlapping"
+   },
+   {
+    "texto": "**No hagas:** hornear efectos estáticos (sombras, biseles) en el arte de origen; el material ya los aporta dinámicamente",
+    "ancla": "we also recommend pairing back any built-in static effects"
+   },
+   {
+    "texto": "**Evita:** bordes afilados y líneas finas; usa esquinas más redondas y trazos más gruesos para conservar detalle a tamaño pequeño",
+    "ancla": "Ideally, sharp edges and thin lines should be avoided"
+   },
+   {
+    "texto": "**Fondos:** degradados suaves de claro a oscuro; usa los degradados System Light y System Dark en lugar de blanco o negro puros",
+    "ancla": "We’ve also developed a System Light and System Dark gradient"
+   },
+   {
+    "texto": "**Haz:** apuesta por fondos de color para diferenciar mejor al cambiar entre modos",
+    "ancla": "we actually recommend leaning more into colored backgrounds"
+   },
+   {
+    "texto": "**Plantillas:** disponibles para Figma, Sketch, Photoshop e Illustrator en Apple Design Resources",
+    "ancla": "We’ve made these available for Figma, Sketch, Photoshop, and Illustrator"
+   }
+  ]
+ },
+ "wwdc2025/337": {
+  "resumen": "SF Symbols 7: animaciones Draw On y Draw Off (inspiradas en la escritura a mano, con reproducción By Layer, Whole Symbol o la nueva Individually), Variable Draw para expresar progreso, Magic Replace mejorado (conserva envolventes compartidas y usa Draw), degradados lineales generados a partir de un solo color en todos los modos de renderizado, y anotación de símbolos propios con puntos guía.",
+  "reglas": [
+   {
+    "texto": "**Haz:** usa Draw para enfatizar momentos relevantes; Individually cuando quieras llamar la atención sobre cada trazo",
+    "ancla": "With Draw, we’ve introduced two new animation presets"
+   },
+   {
+    "texto": "**Variable Draw:** útil para progreso (descargas, temperatura); un símbolo puede admitir Variable Color y Draw, pero solo uno se usa al renderizar",
+    "ancla": "It’s important to note that symbols can opt in to support both variable color and draw"
+   },
+   {
+    "texto": "**Degradados:** aportan profundidad; destacan sobre todo a tamaños grandes",
+    "ancla": "Gradients render great at all scales and sizes"
+   },
+   {
+    "texto": "**Símbolos propios:** cada trazo necesita al menos dos puntos guía (inicio y fin); anota primero el peso Regular, el sistema interpola Ultralight y Black",
+    "ancla": "At a minimum, a path must contain two guide points"
+   },
+   {
+    "texto": "**Valor:** los símbolos tienen 9 pesos y 3 escalas; solo hay que anotar 3 pesos",
+    "ancla": "Remember that symbols support nine different weights and three scales"
+   },
+   {
+    "texto": "**Haz:** separa las puntas de flecha en trazos propios para poder adjuntarlas al recorrido",
+    "ancla": "It’s important to note that in order to create an attachment"
+   }
+  ]
+ },
+ "wwdc2025/356": {
+  "resumen": "Recorrido por el nuevo sistema de diseño de la versión 26 en tres bloques: lenguaje visual (colores de sistema reajustados en claro/oscuro/alto contraste, tipografía más gruesa y alineada a la izquierda en alertas y onboarding, formas concéntricas), estructura (Liquid Glass como capa funcional, hojas que surgen de su origen, agrupación de elementos de barra, pestaña de búsqueda dedicada en iOS, scroll edge effects suave/duro, sidebars insertadas con background extension) y continuidad entre dispositivos (diseñar la anatomía una vez, mismos símbolos, menús con símbolos).",
+  "reglas": [
+   {
+    "texto": "**Formas:** tres tipos — fijas (radio constante), cápsula (radio = mitad de la altura) y concéntricas (radio = radio del padre − padding)",
+    "ancla": "We use three shape types to build concentric layouts"
+   },
+   {
+    "texto": "**macOS:** los controles Mini, Small y Medium siguen con rectángulos redondeados; Large pasa a cápsula y aparece el tamaño X-Large con Liquid Glass",
+    "ancla": "On macOS, Mini, Small, and Medium controls"
+   },
+   {
+    "texto": "**Haz:** en contenedores anidados (p. ej. ilustración dentro de una tarjeta) usa una forma concéntrica para que el sistema calcule el radio interior; evita esquinas «pellizcadas» o «abiertas»",
+    "ancla": "One place this often shows up in is nested containers"
+   },
+   {
+    "texto": "**Haz:** junto al borde de pantalla en iPhone usa cápsula con margen extra; en iPad y Mac, forma concéntrica alineada con el borde de la ventana",
+    "ancla": "For phone layouts, use a capsule with extra margin"
+   },
+   {
+    "texto": "**Truco:** forma concéntrica con radio de respaldo (fallback) para componentes que viven dentro o fuera de un contenedor",
+    "ancla": "use a concentric shape with a fallback radius"
+   },
+   {
+    "texto": "**Haz:** en controles propios aplica el material al control, no a sus vistas internas",
+    "ancla": "make sure to apply the material directly to the control"
+   },
+   {
+    "texto": "**Haz:** si una tarea interrumpe el flujo, combina Liquid Glass con capa de atenuación (dimming)",
+    "ancla": "When a task interrupts the main flow"
+   },
+   {
+    "texto": "**No hagas:** fondos o bordes extra en los botones de barra; la jerarquía se expresa con disposición y agrupación",
+    "ancla": "Instead of relying on decoration"
+   },
+   {
+    "texto": "**Haz:** agrupa los elementos de barra por función y frecuencia; si la barra está llena, mueve lo secundario a un menú «more»",
+    "ancla": "Group bar items by function and frequency"
+   },
+   {
+    "texto": "**No hagas:** agrupar un símbolo con un texto (p. ej. «Select» y compartir): parecería un solo botón",
+    "ancla": "Just be sure to not group symbols with text"
+   },
+   {
+    "texto": "**Haz:** la acción primaria (Done) va separada y tintada (en iOS/iPadOS suele ser un checkmark azul; en macOS un botón de texto prominente)",
+    "ancla": "A primary action, like Done, stays separate"
+   },
+   {
+    "texto": "**No hagas:** poner acciones de una pantalla concreta (p. ej. «checkout») en el accesorio de la tab bar; ahí solo funciones persistentes como el reproductor",
+    "ancla": "Avoid placing screen-specific actions here"
+   },
+   {
+    "texto": "**Scroll edge effect:** no es decorativo; no lo uses donde no hay UI flotante; uno por vista; no mezcles suave y duro. Suave por defecto (iOS/iPadOS); duro sobre todo en macOS (texto interactivo, controles sin fondo, cabeceras de tabla fijadas)",
+    "ancla": "And remember, scroll edge effects are not decorative"
+   },
+   {
+    "texto": "**Split View:** cada panel puede tener su propio scroll edge effect; mantén la misma altura",
+    "ancla": "In Split View layouts on iPad or macOS"
+   },
+   {
+    "texto": "**Background extension effect:** para imágenes hero o fondos que deben llegar bajo la sidebar; el texto y los controles van por encima",
+    "ancla": "Background extension effects let content expand"
+   },
+   {
+    "texto": "**Haz:** si no hay un símbolo inequívoco (Select, Edit), usa etiqueta de texto",
+    "ancla": "When there’s no clear shorthand"
+   },
+   {
+    "texto": "**Menús:** pon símbolos donde ayuden; en acciones muy relacionadas (varias formas de copiar) usa el símbolo una vez para el grupo y deja que el texto haga el resto",
+    "ancla": "When actions are closely related"
+   }
+  ]
+ },
+ "wwdc2025/359": {
+  "resumen": "Ejercicio práctico de rediseño de una app ficticia (colección de vinilos) en cuatro capas: estructura (arquitectura de información: listar todo lo que hace la app, imaginar el contexto de uso, recortar, renombrar y agrupar), navegación (tab bar simplificada, acciones fuera de la tab bar, toolbar con título y acciones de la pantalla), contenido (progressive disclosure, lista frente a rejilla, colecciones, agrupar por tiempo/progreso/patrones) y diseño visual (jerarquía, estilos de texto del sistema con Dynamic Type, fondos tras texto sobre imagen, paleta propia y colores semánticos del sistema). Toda pantalla debe responder: ¿dónde estoy?, ¿qué puedo hacer?, ¿adónde puedo ir?",
+  "reglas": [
+   {
+    "texto": "**Comprueba:** cada pantalla responde «¿dónde estoy?», «¿qué puedo hacer?» y «¿adónde puedo ir desde aquí?»",
+    "ancla": "When I look at an app, I want to find clarity"
+   },
+   {
+    "texto": "**No hagas:** abrir con un menú o con un título que es solo branding; el usuario necesita contexto primero",
+    "ancla": "I expect to know where I am — but the first thing I find is a menu"
+   },
+   {
+    "texto": "**Haz:** reduce las pestañas a lo esencial; cada pestaña es otra decisión",
+    "ancla": "Simplifying it matters because each extra tab"
+   },
+   {
+    "texto": "**No hagas:** poner una acción («Add») en la tab bar: las pestañas son para navegar, no para actuar",
+    "ancla": "tabs are for navigation, not for taking action"
+   },
+   {
+    "texto": "**Haz:** etiquetas directas e iconos de SF Symbols en las pestañas",
+    "ancla": "I’ll use SF Symbols"
+   },
+   {
+    "texto": "**Haz:** usa una toolbar con el título de la pantalla y solo las acciones esenciales de esa pantalla",
+    "ancla": "That’s because the tool bar includes"
+   },
+   {
+    "texto": "**Haz:** progressive disclosure: muestra unos pocos elementos y el resto tras un control de despliegue junto al título",
+    "ancla": "That concept is called progressive disclosure"
+   },
+   {
+    "texto": "**Elige:** lista para información estructurada y escaneo rápido; collection para muchos elementos visuales, con espaciado constante y poco texto",
+    "ancla": "A List works way better"
+   },
+   {
+    "texto": "**Agrupa contenido** por tiempo (recientes, temporada), por progreso (borradores, continuar) y por patrones (relacionados)",
+    "ancla": "Grouping things into themes"
+   },
+   {
+    "texto": "**Haz:** usa los estilos de texto del sistema (jerarquía + Dynamic Type) en lugar de tamaños a ojo",
+    "ancla": "That’s where system text styles come in handy"
+   },
+   {
+    "texto": "**Haz:** si el texto va sobre una imagen, añade un fondo sutil (degradado o desenfoque)",
+    "ancla": "One simple way to fix this is by adding a subtle background"
+   },
+   {
+    "texto": "**Color:** usa colores semánticos (label, secondarySystemBackground…) para lo dinámico y el acento con moderación (botones, selección)",
+    "ancla": "These are semantic colors"
+   }
+  ]
+ },
+ "wwdc2025/361": {
+  "resumen": "Flujo de trabajo con Icon Composer (2025): diseñar en la herramienta habitual (vectores), exportar capas como SVG (o PNG si hay degradados propios o raster), importarlas en Icon Composer, ajustar el material Liquid Glass por grupos, apariencias y plataformas, y guardar un único archivo .icon que se arrastra a Xcode. Un solo diseño produce iconos para iPhone, iPad, Mac y Watch y seis apariencias: Default, Dark, Clear light, Clear dark, Tinted light y Tinted dark.",
+  "reglas": [
+   {
+    "texto": "**Valor:** iPhone, iPad y Mac usan el mismo lienzo de 1024 px; Watch usa 1088 px con la misma rejilla",
+    "ancla": "these now use the same 1024px canvas"
+   },
+   {
+    "texto": "**Haz:** separa por capas según profundidad (Z) y también por colores, para cambiar un solo relleno al crear la variante oscura",
+    "ancla": "Alongside layering by Z, splitting different colors"
+   },
+   {
+    "texto": "**Haz:** deja el arte de origen plano y opaco; desenfoque, sombra, especular, opacidad y translucidez se añaden en Icon Composer",
+    "ancla": "it's best for me to still my source art down"
+   },
+   {
+    "texto": "**Exportación:** SVG al tamaño del lienzo, numeradas por orden Z; texto convertido a contornos; PNG para degradados propios o raster; fondos y degradados simples se añaden en Icon Composer",
+    "ancla": "Once the artwork is in a good place, next we want to export the layers as SVGs"
+   },
+   {
+    "texto": "**No hagas:** incluir la máscara de rectángulo redondeado o círculo en lo exportado; se aplica automáticamente",
+    "ancla": "we never include the rounded rectangle or circle mask"
+   },
+   {
+    "texto": "**Valor:** de 1 a 4 grupos como máximo; los grupos controlan el apilado y las propiedades del cristal",
+    "ancla": "By default, it’ll always be one, but you can go all the way up to four"
+   },
+   {
+    "texto": "**Nombres:** las anotaciones light/dark/tinted pasan a llamarse default, dark y mono",
+    "ancla": "This year we renamed these to default, dark and mono"
+   },
+   {
+    "texto": "**Modo oscuro:** revisa los rellenos (p. ej. un granate que se pierde sobre negro)",
+    "ancla": "So we should change the fill"
+   },
+   {
+    "texto": "**Mono:** pon en blanco al menos un elemento (el más reconocible) y el resto en tonos de gris",
+    "ancla": "Setting at least one element of your icon to be white"
+   },
+   {
+    "texto": "**Watch:** revisa la composición para el círculo; los elementos que tocan el borde deben escalarse para volver a tocarlo",
+    "ancla": "Consider optical adjustments for the circle shape"
+   },
+   {
+    "texto": "**Sombras:** neutras por defecto; prueba sombras cromáticas cuando hay color sobre blanco",
+    "ancla": "When using color against white though"
+   }
+  ]
+ },
+ "wwdc2025/404": {
+  "resumen": "Cuatro cambios pequeños de UX writing: quitar relleno (adverbios, adjetivos, interjecciones y cortesías), evitar repeticiones, empezar por el porqué («Para X, haz Y») y mantener una lista de palabras para la coherencia. Consejo final: lee tus textos en voz alta.",
+  "reglas": [
+   {
+    "texto": "**No hagas:** rellenar con «simply», «quickly», «easily»… si no aportan; pregunta si cada palabra añade valor",
+    "ancla": "Adverbs are words that describe actions"
+   },
+   {
+    "texto": "**No hagas:** interjecciones («Uh oh», «Oops») en errores ni disculpas que suenan insinceras; evita signos de exclamación innecesarios",
+    "ancla": "Words like “uh oh, “oops” or “oh no!”"
+   },
+   {
+    "texto": "**Haz:** une ideas repetidas: «Delivery delayed 10 minutes»",
+    "ancla": "I can combine those thoughts by changing the headline"
+   },
+   {
+    "texto": "**Haz:** pon el beneficio delante: «To get reservation updates, enter your phone number.»",
+    "ancla": "To get reservation updates, enter your phone number"
+   },
+   {
+    "texto": "**Haz:** una lista de palabras (usar / no usar / definición) y usa siempre el mismo nombre para la misma acción (p. ej. el botón Next)",
+    "ancla": "Think of the words you would use in your app"
+   },
+   {
+    "texto": "**Referencia:** si dudas de un término, consulta la Apple Style Guide",
+    "ancla": "the Apple Style Guide, available to anyone"
+   }
+  ]
+ },
+ "wwdc2026/220": {
+  "resumen": "Accesibilidad de controles personalizados (WWDC26). Un control estándar comunica a simple vista propósito, valor, acciones y respuesta; un control propio debe transmitir lo mismo a VoiceOver, Switch Control y Voice Control. Ejemplos: un dispensador de café tipo slider (accessibilityLabel, accessibilityValue, rasgo adjustable, passthrough gesture), un pad de ecualizador 2D (acciones personalizadas) y un gato virtual (direct touch).",
+  "reglas": [
+   {
+    "texto": "**Principios:** asegúrate de que se entiende el propósito, el valor, las acciones posibles y la respuesta de cada control",
+    "ancla": "Ensure that the purpose of the control is understood"
+   },
+   {
+    "texto": "**Haz:** etiqueta (accessibilityLabel), valor (accessibilityValue) y rasgo adjustable con acción de incremento/decremento para controles de tipo slider",
+    "ancla": "To give it a clear purpose, I use the accessibilityLabel"
+   },
+   {
+    "texto": "**Haz:** para precisión, sitúa el accessibilityActivationPoint en el valor actual (passthrough gesture)",
+    "ancla": "For precise control, VoiceOver has that build-in capability"
+   },
+   {
+    "texto": "**Valor:** anuncia los cambios solo si el valor cambió y han pasado al menos 0,3 s desde el último anuncio",
+    "ancla": "at least .3 seconds have passed"
+   },
+   {
+    "texto": "**Haz:** en controles de dos ejes usa acciones personalizadas con nombres descriptivos (Move up/right/down/left)",
+    "ancla": "This is where custom actions come in"
+   },
+   {
+    "texto": "**Direct touch:** para controles basados en gestos; .requiresActivation evita activaciones accidentales y .silentOnTouch silencia VoiceOver si el control tiene su propio audio. Ofrece también acciones personalizadas porque no todos pueden hacer esos gestos",
+    "ancla": "So for this control, I'll use direct touch"
+   }
+  ]
+ },
+ "wwdc2026/234": {
+  "resumen": "Proceso de diseño de entornos inmersivos para visionOS y la web espacial en tres fases (preproducción, producción y posproducción), con ejemplos de Mount Hood, la Luna, Júpiter, Yosemite, Thorsmork y Bora Bora: intención, localización, captura fotográfica de 360°, limpieza, malla 3D con textura, audio espacial y movimiento eficiente mediante shaders.",
+  "reglas": [
+   {
+    "texto": "**Valor:** con inmersión total se ven aproximadamente 81° del entorno",
+    "ancla": "viewers will see approximately 81°"
+   },
+   {
+    "texto": "**Valor:** un entorno se ve nítido a 40 píxeles por grado; un panorama de 360° de 14.400 × 7.200 píxeles es el objetivo ideal",
+    "ancla": "an environment will be sharp at 40 pixels per degree"
+   },
+   {
+    "texto": "**Captura:** trípode nivelado a 1 m del suelo y, si es posible, una segunda cámara a 2 m; exposiciones en horquilla",
+    "ancla": "use a tripod with your camera leveled 1 meter off the ground"
+   },
+   {
+    "texto": "**Haz:** define la intención antes de producir (¿para qué es?, ¿cómo se usará?) y piensa en capas del fondo al primer plano",
+    "ancla": "These are all important questions to ask yourself about your project"
+   },
+   {
+    "texto": "**Movimiento eficiente:** flow maps UV para nubes, máscaras desplazables para sombras, texturas precalculadas; «menos es más»",
+    "ancla": "UV flow maps made this possible"
+   },
+   {
+    "texto": "**Haz:** sé capaz de justificar todo lo que añades o quitas; une la escena con sonido y movimiento",
+    "ancla": "You should be able to explain the reasoning"
+   }
+  ]
+ },
+ "wwdc2026/250": {
+  "resumen": "Los dos Design Evangelists presentan los ocho principios de diseño reintroducidos en las HIG en la WWDC26 (página «Design principles», 8 de junio de 2026): Purpose, Agency, Responsibility, Familiarity, Flexibility, Simplicity, Craft y Delight. Diseñar es «hacer algo con intención»; no hay fórmula para combinarlos y a veces tiran en direcciones opuestas.",
+  "reglas": [
+   {
+    "texto": "**Purpose:** cada función pide tiempo, atención y confianza; elegir qué construir es decidir qué no incluir",
+    "ancla": "So choosing what to build"
+   },
+   {
+    "texto": "**Agency:** ofrece elecciones; la interfaz no debe interponerse; no fuerces recorridos predeterminados",
+    "ancla": "An interface should never stand in the way"
+   },
+   {
+    "texto": "**Agency / perdón:** facilita deshacer y confirma las acciones destructivas; interrumpe solo ante un error grave",
+    "ancla": "When that happens, offer forgiveness"
+   },
+   {
+    "texto": "**Responsibility:** no lances peticiones de permisos nada más abrir la app; pide datos en el momento oportuno, solo lo necesario y explicando para qué",
+    "ancla": "They throw permission prompts the second you launch them"
+   },
+   {
+    "texto": "**Responsibility / IA:** anticipa salidas inesperadas o inexactas del modelo (p. ej. alergias en una app de recetas); usa vistas previas, confirmaciones y avisos, o elimina la función si el riesgo supera el valor",
+    "ancla": "Think about what it means to responsibly add AI"
+   },
+   {
+    "texto": "**Familiarity:** usa metáforas ni demasiado literales ni demasiado abstractas; no uses la papelera para otra cosa que borrar",
+    "ancla": "The trick to metaphors"
+   },
+   {
+    "texto": "**Familiarity / consistencia:** lo que se ve igual debe comportarse igual; coloca las acciones siempre en el mismo sitio",
+    "ancla": "Simply put, things that look the same should behave the same"
+   },
+   {
+    "texto": "**Flexibility:** diseña para cada contexto y dispositivo (táctil rápido en iPhone, flujos profundos y puntero preciso en Mac) y para todas las capacidades; permite personalizar (reordenar u ocultar controles)",
+    "ancla": "An interface that accommodates different situations"
+   },
+   {
+    "texto": "**Simplicity:** simple no es minimalista; esconder todo en un solo lugar no simplifica. Lenguaje llano, menos pasos, jerarquía clara (orden, espaciado, contraste); a veces simplificar es añadir contexto",
+    "ancla": "When we say simple, we don't mean minimal"
+   },
+   {
+    "texto": "**Craft:** fuentes, colores que se adaptan a claro y oscuro, iconografía clara, animaciones que responden al instante; mantén y evoluciona el diseño con el tiempo",
+    "ancla": "So, what are the actual ingredients to a well-crafted design"
+   },
+   {
+    "texto": "**Delight:** no es añadir confeti al final; identifica la emoción que quieres provocar y refuérzala",
+    "ancla": "The way to make a design delightful isn't by adding confetti"
+   }
+  ]
+ },
+ "wwdc2026/251": {
+  "resumen": "Cómo expresar la marca en una app de iOS sin romper las convenciones del sistema. La app tiene dos capas: la de UI (navegación y acciones: tab bar, toolbars), que debe ser familiar y nativa, y la de contenido, que es el lienzo de la marca (imágenes, vídeo, ilustración, tono de voz, movimiento). Ejemplos: Gentler Streak, Slack, Moonlitt, Crumbl y NYT Cooking. Color en el contenido y como tinte con significado, tipografías propias con Dynamic Type, iconografía reconocible y logotipos discretos.",
+  "reglas": [
+   {
+    "texto": "**Haz:** expresa la marca sobre todo en la capa de contenido; la capa de UI debe apoyarse en lo que la gente ya conoce",
+    "ancla": "Conceptually, the content layer is the best opportunity"
+   },
+   {
+    "texto": "**No hagas:** replicar componentes utilitarios (p. ej. menús) a medida; parecen menos nativos o anticuados. Usa componentes de plataforma para tareas convencionales",
+    "ancla": "These types of custom elements, the ones that serve a very utilitarian purpose"
+   },
+   {
+    "texto": "**Haz:** dedica los componentes propios a las zonas de mayor impacto; audita el resto para usar estándar (p. ej. context menus desde la toolbar)",
+    "ancla": "So you should focus your time building them"
+   },
+   {
+    "texto": "**Haz:** mueve el color de marca de las barras al área de contenido (scroll view); los controles de Liquid Glass lo recogen dinámicamente",
+    "ancla": "our recommendation is to move color into the content area"
+   },
+   {
+    "texto": "**Haz:** usa el color con significado (jerarquía, agrupación, interacción): acciones primarias, badges, selección en la tab bar",
+    "ancla": "Aim to use color in ways that create meaning"
+   },
+   {
+    "texto": "**Haz:** soporta Dark Mode con una paleta refinada para poca luz",
+    "ancla": "If your app doesn't support Dark Mode"
+   },
+   {
+    "texto": "**Haz:** si usas una fuente propia, implementa y prueba Dynamic Type; deja que el texto pase a varias líneas en vez de truncarse",
+    "ancla": "The primary thing to be aware of when using custom fonts"
+   },
+   {
+    "texto": "**Valor:** San Francisco admite más de 150 idiomas; SF Compact para tamaños pequeños, SF Mono para alinear filas/columnas, New York serif",
+    "ancla": "It's a typeface that provides a consistent, legible, and friendly"
+   },
+   {
+    "texto": "**Iconos:** propios o SF Symbols (más de 7.000, gratis, escalan como texto); que sean reconocibles, coherentes y escalen bien; respeta el patrón de plataforma (p. ej. el icono de compartir de iOS)",
+    "ancla": "SF Symbols is a Mac app with over 7,000 symbols"
+   },
+   {
+    "texto": "**No hagas:** ocupar espacio con el logotipo; si lo muestras, hazlo de forma discreta (NYT Cooking: solo en Home y se desvanece al hacer scroll)",
+    "ancla": "And logo's can take up precious real estate"
+   },
+   {
+    "texto": "**Movimiento:** las transiciones (p. ej. zoom transitions de SwiftUI) conectan el objetivo táctil con el estado; los tiempos de carga y frames perdidos dañan la percepción",
+    "ancla": "These kind of transitions are delightful"
+   }
+  ]
+ },
+ "wwdc2026/290": {
+  "resumen": "UX writing para nombrar funciones y etiquetas (WWDC26). Tres criterios: Belongs (encaja en la app y en lo ya nombrado), Expectations (cumple lo que promete, genera confianza) y Works everywhere (funciona en idiomas, mercados y plataformas); son guía, no reglamento. Proceso: definir la audiencia y qué debe pensar, sentir y hacer (ejercicio con notas adhesivas), agrupar temas, descartar y probar el nombre en frases habladas. Ejemplos: Balance (Apple Cash), Visited Places (Maps), Memories (Photos), Enhance Dialogue (Podcasts), AutoMix (Music).",
+  "reglas": [
+   {
+    "texto": "**Haz:** en contextos de confianza (dinero) prioriza la claridad: «Balance» frente a «Spending Power» o «Current Funds»",
+    "ancla": "So the best name here for this value is Balance"
+   },
+   {
+    "texto": "**Evita:** nombres que juzgan al usuario cuando el valor es bajo o cero",
+    "ancla": "If my Spending Power is low"
+   },
+   {
+    "texto": "**Prueba:** dilo en voz alta dentro de una frase («busca X», «mira X»)",
+    "ancla": "Take the names and drop them into the sentences"
+   },
+   {
+    "texto": "**Haz:** nombra por lo que hace por la persona, no por la tecnología («Enhance Dialogue» frente a «Isolate Vocals»)",
+    "ancla": "Another obvious choice might be something like Enhance Playback"
+   },
+   {
+    "texto": "**Haz:** usa un verbo cuando la función es algo que la persona hace",
+    "ancla": "For a feature like this, a verb works well"
+   },
+   {
+    "texto": "**Ten en cuenta:** los nombres de marca (p. ej. Lightweight/Heavyweight) son válidos pero exigen más trabajo para que se entiendan",
+    "ancla": "That's fun and seems on brand"
+   }
+  ]
+ },
+ "wwdc2026/292": {
+  "resumen": "Diseño de búsqueda (WWDC26): anatomía del search field (icono de lupa, placeholder, botón de borrar y, en iOS, botón Cancel al enfocar; adopta cristal en una toolbar y estilo de contenido en el área de scroll), patrones de ubicación en iOS (toolbar inferior o superior, pestaña Search estándar o «prominente», campo en línea para búsquedas acotadas) y en iPad/Mac (posición final de la toolbar, parte superior de la sidebar o pestaña dedicada), y buenas prácticas: recientes, sugerencias predictivas, scope bar, filtros contextuales, tokens y estado vacío.",
+  "reglas": [
+   {
+    "texto": "**Haz:** mantén los elementos básicos del search field aunque tengas iconografía propia; la lupa es universal",
+    "ancla": "If your app has its own distinct brand and set of iconography"
+   },
+   {
+    "texto": "**Decide la ubicación con dos preguntas:** ¿cómo navega la gente por la app? y ¿cuál es el alcance de la búsqueda?",
+    "ancla": "When deciding where to place Search, there are two big questions"
+   },
+   {
+    "texto": "**iOS:** la toolbar inferior es la posición preferida (ergonomía; el campo sube sobre el teclado); con más de dos elementos adicionales, empieza como botón y se expande",
+    "ancla": "When search is placed in the bottom Toolbar"
+   },
+   {
+    "texto": "**Apps con pestañas:** crea una pestaña Search como punto de entrada principal. Estándar (página con sugerencias, mentalidad exploratoria, p. ej. Apple TV) o prominente (abre el teclado al instante, p. ej. Teléfono)",
+    "ancla": "Here, it is generally recommended to create a primary entry point for Search"
+   },
+   {
+    "texto": "**Búsqueda acotada:** campo en línea bajo el título con placeholder descriptivo (p. ej. biblioteca de Music)",
+    "ancla": "Here, search is placed directly inline with the content"
+   },
+   {
+    "texto": "**iPad y Mac:** mantén ambas experiencias alineadas; en apps de Split View (Mail) búsqueda en la posición final de la toolbar; en la sidebar cuando filtra lo que hay en ella (Settings, Stocks)",
+    "ancla": "And, I recommend trying to keep your iPad and Mac search experiences"
+   },
+   {
+    "texto": "**Recientes:** en iOS, en línea al enfocar; en iPad/Mac, en un menú; deja borrarlos (swipe y botón «borrar todo»)",
+    "ancla": "On iOS, recent searches should be shown directly inline"
+   },
+   {
+    "texto": "**Sugerencias:** distingue visualmente lo tecleado de la parte predicha y limita su número",
+    "ancla": "To keep people oriented, visually distinguish"
+   },
+   {
+    "texto": "**Filtrar:** empieza amplio y deja acotar; scope bar para filtros ligeros; muestra solo filtros relevantes. Los tokens son poco descubribles: no sustituyen a filtros visibles",
+    "ancla": "For lightweight filtering, Apple provides a control called a scope bar"
+   },
+   {
+    "texto": "**Sin resultados:** usa un estado vacío (content unavailable view con símbolo, título y subtítulo) y muestra el texto buscado para detectar erratas",
+    "ancla": "Consider displaying the current search text in this view"
+   }
+  ]
+ }
+}
