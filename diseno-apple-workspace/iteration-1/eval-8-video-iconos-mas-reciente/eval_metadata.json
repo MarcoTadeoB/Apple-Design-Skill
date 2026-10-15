@@ -1,0 +1,10 @@
+{
+ "eval_id": 8,
+ "eval_name": "video-iconos-mas-reciente",
+ "prompt": "Resume lo que dice Apple sobre los iconos de app en su vídeo más reciente, con la marca de tiempo.",
+ "assertions": [
+  "Identifica el vídeo de WWDC26 (8012) como el más reciente",
+  "Incluye marcas de tiempo enlazadas a developer.apple.com/videos/play",
+  "Incluye al menos 4 marcas de tiempo"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "eval_id": 14,
+ "eval_name": "contraste-minimo",
+ "prompt": "¿Qué contraste mínimo necesito para un texto de 15 pt normal y para uno de 20 pt en negrita?",
+ "assertions": [
+  "4.5:1 para 15 pt",
+  "3:1 para 20 pt en negrita",
+  "Cita la página Accessibility"
+ ]
+}

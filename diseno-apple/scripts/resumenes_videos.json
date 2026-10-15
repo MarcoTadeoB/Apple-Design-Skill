@@ -732,5 +732,74 @@
     "ancla": "Consider displaying the current search text in this view"
    }
   ]
+ },
+ "wwdc2026/8012": {
+  "resumen": "Laboratorio en grupo de la WWDC26 (10-6-2026, 61 min) con el equipo de iconos y de Icon Composer: demo de Icon Composer 2 y preguntas. Novedades del renderizado de iconos en la versión 27: especular más nítido con zonas oscuras (automático, dentro o fuera), control 2D de refracción (altura, intensidad e inversa), nuevas sombras «ring», translucidez revisable, degradados automáticos a partir de un color de marca, copiar y pegar atributos y vista previa de cómo se verá en OS 26. Es el vídeo más reciente sobre iconos de app; la sesión de referencia sobre el diseño de iconos sigue siendo `2025-220`.",
+  "reglas": [
+   {
+    "texto": "**Especular**: automático por defecto; *inside* queda bien cuando el primer plano es más oscuro que el fondo y *outside* cuando el fondo es más oscuro que el primer plano",
+    "ancla": "By default, you'll get automatic treatment"
+   },
+   {
+    "texto": "**Refracción** (nuevo): control 2D — vertical = altura, horizontal = intensidad; admite refracción inversa",
+    "ancla": "So you can see here if you go up and down, this is actually controlling the height of the refraction"
+   },
+   {
+    "texto": "**Flujo**: idea/metáfora → dibujar por capas en tu herramienta → exportar capas al tamaño del lienzo → anotar en Icon Composer",
+    "ancla": "So first step is coming up with an idea"
+   },
+   {
+    "texto": "**Haz:** formas vectoriales simples y potentes; evita detalles finos complejos",
+    "ancla": "if you stick to really, you know, powerful but simple vector shapes"
+   },
+   {
+    "texto": "**Haz:** exporta las capas al tamaño completo del lienzo para que lleguen ya colocadas",
+    "ancla": "So if you export them at the full canvas size"
+   },
+   {
+    "texto": "**Prefiere SVG**: se pueden usar bitmaps, pero la recomendación es vector escalable",
+    "ancla": "You can use bitmaps, you can bring them into Icon Composer, but the recommendation is to use scalable vectors"
+   },
+   {
+    "texto": "**Error más común:** no revisar el icono a todos los tamaños y sobre distintos fondos; míralo a su tamaño más pequeño",
+    "ancla": "in the case of an icon, it's really important to evaluate it at all the different sizes"
+   },
+   {
+    "texto": "**De 26 a 27:** abre el archivo de Icon Composer de 2025 en la nueva versión; el nuevo renderizado se aplica solo. Revisa especulares, sombras y refracción",
+    "ancla": "So the first step is if you have an Icon Composer file from last year"
+   },
+   {
+    "texto": "**No hace falta recompilar** la app: un icono de Icon Composer de iOS 26 adopta el aspecto de iOS 27 automáticamente",
+    "ancla": "your application doesn't even have to recompile"
+   },
+   {
+    "texto": "**Translucidez:** Apple redujo la translucidez en muchos de sus iconos para que se vean más nítidos; eso no es automático, revísalo",
+    "ancla": "we reduced the use of translucency"
+   },
+   {
+    "texto": "**Modo clear:** el cristal del icono no responde al deslizador de transparencia del sistema; se mantiene constante a propósito",
+    "ancla": "it was a deliberate choice to have the glass and clear mode"
+   },
+   {
+    "texto": "**Mono:** una sola anotación en escala de grises sirve para clear (claro/oscuro) y todos los tintados",
+    "ancla": "there's a single mono mode for which you make grayscale annotations"
+   },
+   {
+    "texto": "**Tintado:** que al menos una parte del primer plano sea blanca o casi blanca; maximiza el rango dinámico en la anotación mono; preferible usar los fondos del sistema",
+    "ancla": "So always having foreground elements, being white or close to white"
+   },
+   {
+    "texto": "**Xcode:** sin cambios respecto a 2025: arrastra el `.icon` al proyecto (junto a los archivos Swift, no dentro del asset catalog) y comprueba el nombre del icono en el editor del target",
+    "ancla": "just drag it into your Xcode project"
+   },
+   {
+    "texto": "**Daltonismo:** el icono debe reconocerse por la forma y el contraste, no por el color",
+    "ancla": "you wouldn't want to depend on people's ability to be able to see color"
+   },
+   {
+    "texto": "**Watch:** reconsidera la composición para el círculo (p. ej. Maps centra el indicador)",
+    "ancla": "when you design for watch, you might want to reconsider how that layout works for a circle"
+   }
+  ]
  }
 }

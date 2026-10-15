@@ -1,0 +1,13 @@
+{
+ "eval_id": 7,
+ "eval_name": "cambios-26-a-27",
+ "prompt": "¿Qué cambió en el diseño de Apple entre la versión 26 y la 27?",
+ "assertions": [
+  "Fecha 8 de junio de 2026",
+  "Menciona los principios de diseño reintroducidos",
+  "Menciona iPhone Duo",
+  "Menciona búsqueda / pestaña Search",
+  "Menciona Liquid Glass como base de la 26",
+  "Cita What's new o los registros de cambios"
+ ]
+}

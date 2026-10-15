@@ -1,0 +1,11 @@
+{
+ "eval_id": 13,
+ "eval_name": "marca-naranja-a-liquid-glass",
+ "prompt": "Mi app de iPhone tiene la tab bar y la barra de navegación en naranja sólido (nuestro color de marca). ¿Cómo lo adapto a Liquid Glass sin perder la identidad?",
+ "assertions": [
+  "Recomienda mover el color al contenido",
+  "Color/tinte solo en lo primario o con moderación",
+  "Cita el vídeo de marca de WWDC26 (251) o la página Branding",
+  "Cita la sección Liquid Glass color"
+ ]
+}

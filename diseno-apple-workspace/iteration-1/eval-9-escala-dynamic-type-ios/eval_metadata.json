@@ -1,0 +1,12 @@
+{
+ "eval_id": 9,
+ "eval_name": "escala-dynamic-type-ios",
+ "prompt": "Dame la escala tipográfica de Dynamic Type de iOS en el tamaño por defecto, con peso, tamaño, interlineado y tracking de cada estilo.",
+ "assertions": [
+  "Large Title 34 pt / 41",
+  "Body 17 / 22",
+  "Caption 2 11 / 13",
+  "Incluye tracking (p. ej. -26 o -0.43 para 17 pt)",
+  "Cita la página Typography"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "eval_id": 12,
+ "eval_name": "icono-watchos-apariencias",
+ "prompt": "¿Qué tamaño tiene el lienzo de un icono de app para watchOS y qué apariencias admite un icono en iOS 27?",
+ "assertions": [
+  "1088x1088 px",
+  "Apariencias clear y tinted",
+  "Cita la página App icons"
+ ]
+}

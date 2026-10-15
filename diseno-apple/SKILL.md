@@ -62,7 +62,7 @@ No marques como problema algo que ninguna fuente respalde, o márcalo como opini
 | `references/tokens.md` | Pidan valores exactos: colores, tipografía, tamaños mínimos, márgenes, radios, materiales, iconos. |
 | `references/componentes.md` | Haya que elegir o especificar componentes (cuándo usarlo, anatomía, valores, estados, errores). |
 | `references/liquid-glass.md` | Se hable de Liquid Glass, materiales, transparencias, tintado, scroll edge effects. |
-| `references/videos/_indice.md` y `videos/<año>-<id>.md` | Pidan lo que dice Apple en un vídeo, ejemplos o el «porqué». Los 18 vídeos clave tienen resumen y reglas con cita verificada; el resto, capítulos y citas literales seleccionadas. |
+| `references/videos/_indice.md` y `videos/<año>-<id>.md` | Pidan lo que dice Apple en un vídeo, ejemplos o el «porqué». Los 19 vídeos clave tienen resumen y reglas con cita verificada; el resto, capítulos y citas literales seleccionadas. |
 | `references/novedades.md` | Pregunten qué ha cambiado, qué es nuevo o qué versión está vigente. |
 | `references/licencias-y-marcas.md` | Pregunten si se puede usar SF Pro, SF Symbols, kits, marcos, logotipos o marcas. |
 | `references/web.md` | Haya que llevar el estilo a HTML/CSS (fuente del sistema, Dynamic Type en Safari, tokens CSS, Liquid Glass en web, tab bar de ejemplo, iconos, instalación como app). |

@@ -1,0 +1,12 @@
+{
+ "eval_id": 4,
+ "eval_name": "sf-symbols-sf-pro-en-web",
+ "prompt": "¿Puedo usar SF Symbols o SF Pro en mi web?",
+ "assertions": [
+  "Dice que no se puede incrustar SF Pro (@font-face)",
+  "Propone -apple-system / system-ui",
+  "Menciona la prohibición de SF Symbols en logos o iconos de app",
+  "Cita la página de fuentes o la licencia",
+  "Cita la HIG de SF Symbols"
+ ]
+}

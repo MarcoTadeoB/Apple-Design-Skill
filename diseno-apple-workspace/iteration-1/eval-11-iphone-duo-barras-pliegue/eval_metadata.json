@@ -1,0 +1,12 @@
+{
+ "eval_id": 11,
+ "eval_name": "iphone-duo-barras-pliegue",
+ "prompt": "Estoy adaptando mi app de iOS a iPhone Duo. ¿Qué tengo que tener en cuenta con las barras y con el pliegue?",
+ "assertions": [
+  "Menciona barras verticales / controles en el lateral",
+  "Menciona size classes compact y regular",
+  "Menciona evitar el pliegue / zona de bisagra",
+  "Cita la página Designing for iPhone Duo",
+  "Cita un tech talk de iPhone Duo con marca de tiempo"
+ ]
+}

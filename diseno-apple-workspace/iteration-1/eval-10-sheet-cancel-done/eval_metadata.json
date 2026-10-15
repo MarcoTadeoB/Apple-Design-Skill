@@ -1,0 +1,11 @@
+{
+ "eval_id": 10,
+ "eval_name": "sheet-cancel-done",
+ "prompt": "En una sheet de iOS, ¿dónde pongo los botones Cancel y Done? ¿Y si la sheet tiene varios pasos?",
+ "assertions": [
+  "Cancel a la izquierda/leading",
+  "Done a la derecha/trailing",
+  "Back sustituye a Cancel en pasos siguientes",
+  "Cita la página Sheets"
+ ]
+}

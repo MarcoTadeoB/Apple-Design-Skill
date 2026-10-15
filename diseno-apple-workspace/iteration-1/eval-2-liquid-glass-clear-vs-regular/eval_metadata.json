@@ -1,0 +1,12 @@
+{
+ "eval_id": 2,
+ "eval_name": "liquid-glass-clear-vs-regular",
+ "prompt": "¿Cuándo usar Liquid Glass clear en vez de regular?",
+ "assertions": [
+  "Menciona la capa de atenuación del 35 %",
+  "Clear solo sobre medios / fondos visualmente ricos",
+  "Cita el vídeo Meet Liquid Glass (wwdc2025/219) con marca de tiempo",
+  "Cita la página Materials",
+  "Dice que no se deben mezclar las variantes"
+ ]
+}

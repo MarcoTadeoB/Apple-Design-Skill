@@ -1,0 +1,11 @@
+{
+ "eval_id": 3,
+ "eval_name": "tamano-minimo-control-ios-visionos",
+ "prompt": "Tamaño mínimo de un control en iOS y en visionOS",
+ "assertions": [
+  "iOS 44x44 pt",
+  "Mínimo 28x28 pt",
+  "visionOS 60x60 pt",
+  "Cita la página Accessibility"
+ ]
+}

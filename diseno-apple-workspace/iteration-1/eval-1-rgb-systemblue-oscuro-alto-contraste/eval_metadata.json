@@ -1,0 +1,10 @@
+{
+ "eval_id": 1,
+ "eval_name": "rgb-systemblue-oscuro-alto-contraste",
+ "prompt": "Valores RGB de systemBlue en modo oscuro con alto contraste. Dame también el hexadecimal y dime de dónde sale el dato.",
+ "assertions": [
+  "Da R=92, G=184, B=255",
+  "Da el hex #5CB8FF",
+  "Cita la página Color de las HIG con URL"
+ ]
+}

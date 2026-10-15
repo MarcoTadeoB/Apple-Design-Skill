@@ -1,0 +1,14 @@
+{
+ "eval_id": 5,
+ "eval_name": "tab-bar-iphone-html-css",
+ "prompt": "Diseña la barra de pestañas de una app de recetas para iPhone y hazla en HTML/CSS. Guarda el código en un archivo index.html y explica las decisiones de diseño con sus fuentes.",
+ "assertions": [
+  "Genera un archivo HTML",
+  "Usa env(safe-area-inset-bottom)",
+  "Destinos táctiles de al menos 44 px",
+  "Usa backdrop-filter (vidrio)",
+  "Atiende prefers-reduced-transparency o prefers-contrast",
+  "No incrusta SF Pro (sin @font-face de SF)",
+  "Explica que la tab bar es para navegar, no para acciones, citando Tab bars"
+ ]
+}
