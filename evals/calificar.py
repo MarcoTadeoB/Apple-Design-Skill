@@ -123,7 +123,8 @@ def main():
         eid = int(d.name.split("-")[1])
         e = evals[eid]
         for conf in ("with_skill", "without_skill"):
-            out = d / conf / "outputs"
+            run = d / conf / "run-1"
+            out = run / "outputs"
             texto = "".join(p.read_text(errors="replace") for p in out.glob("*.md")) if out.exists() else ""
             exps = []
             for asr in e["assertions"]:
@@ -140,8 +141,8 @@ def main():
             n = sum(x["passed"] for x in exps)
             g = {"expectations": exps, "summary": {"passed": n, "failed": len(exps) - n, "total": len(exps),
                                                    "pass_rate": round(n / len(exps), 3) if exps else 0}}
-            (d / conf).mkdir(parents=True, exist_ok=True)
-            json.dump(g, open(d / conf / "grading.json", "w"), ensure_ascii=False, indent=1)
+            run.mkdir(parents=True, exist_ok=True)
+            json.dump(g, open(run / "grading.json", "w"), ensure_ascii=False, indent=1)
             resumen.append((eid, e["nombre"], conf, n, len(exps)))
     for r in sorted(resumen):
         print(f"eval {r[0]:>2} {r[1]:<40} {r[2]:<14} {r[3]}/{r[4]}")

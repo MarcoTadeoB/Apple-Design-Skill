@@ -1,0 +1,15 @@
+{
+ "eval_id": 6,
+ "eval_name": "revision-pantalla-hig",
+ "prompt": "Revisa esta pantalla según las HIG y dame una lista de problemas.\n\nPantalla (app de notas para iPhone): arriba, una barra de navegación sólida de color naranja con el logotipo de la app centrado y tres botones: «Editar» (solo un icono de lápiz), «Compartir» y «Filtrar», los tres con fondo azul tintado de Liquid Glass. Debajo, una lista de notas donde cada tarjeta usa un efecto de vidrio Liquid Glass. El texto secundario de las tarjetas es gris claro (#C7C7CC) sobre blanco, a 10 pt y con peso Light. Abajo, una tab bar con cuatro pestañas: «Notas», «Carpetas», «+ Nueva nota» (crea una nota) y «Papelera», que aparece desactivada cuando está vacía. Las pestañas solo tienen icono, sin texto. Los botones de la tarjeta (favorito, borrar) miden 24×24 pt. Al abrir la app por primera vez aparece la petición de permiso de ubicación.",
+ "assertions": [
+  "Detecta la acción en la tab bar (navegación, no acciones)",
+  "Detecta la pestaña desactivada/oculta",
+  "Detecta Liquid Glass en la capa de contenido",
+  "Detecta tamaño de control < 44 pt",
+  "Detecta texto demasiado pequeño (mínimo 11 pt) o contraste insuficiente (4.5:1)",
+  "Detecta la petición de permiso al abrir la app",
+  "Detecta el tintado de todos los botones",
+  "Cita al menos 4 páginas distintas de las HIG"
+ ]
+}

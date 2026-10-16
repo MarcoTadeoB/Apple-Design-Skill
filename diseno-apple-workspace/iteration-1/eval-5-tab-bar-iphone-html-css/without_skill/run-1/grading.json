@@ -1,0 +1,45 @@
+{
+ "expectations": [
+  {
+   "text": "Genera un archivo HTML",
+   "passed": true,
+   "evidence": "existe"
+  },
+  {
+   "text": "Usa env(safe-area-inset-bottom)",
+   "passed": true,
+   "evidence": "encontrado: «safe-area-inset-bottom»"
+  },
+  {
+   "text": "Destinos táctiles de al menos 44 px",
+   "passed": true,
+   "evidence": "encontrado: «62px»"
+  },
+  {
+   "text": "Usa backdrop-filter (vidrio)",
+   "passed": true,
+   "evidence": "encontrado: «backdrop-filter»"
+  },
+  {
+   "text": "Atiende prefers-reduced-transparency o prefers-contrast",
+   "passed": true,
+   "evidence": "encontrado: «prefers-reduced-transparency»"
+  },
+  {
+   "text": "No incrusta SF Pro (sin @font-face de SF)",
+   "passed": true,
+   "evidence": "no aparece (bien)"
+  },
+  {
+   "text": "Explica que la tab bar es para navegar, no para acciones, citando Tab bars",
+   "passed": true,
+   "evidence": "encontrado: «human-interface-guidelines/tab-bars»"
+  }
+ ],
+ "summary": {
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "pass_rate": 1.0
+ }
+}

@@ -74,6 +74,14 @@ No marques como problema algo que ninguna fuente respalde, o márcalo como opini
 | `references/premios-e-historias.md` | Busquen ejemplos reales (Apple Design Awards 2020–2026, historias de desarrolladores). |
 | `references/_inventario.md` | Haya que saber qué se descargó, qué falta y por qué. |
 
+**Lectura mínima según la tarea** (lee esto primero y amplía solo si falta algo; ahorra tiempo y tokens):
+
+- Valor concreto (color, tamaño, tipografía) → la sección de `tokens.md` (localízala con `grep -n`).
+- «¿Cuándo usar X?» → ficha de X en `componentes.md` o `liquid-glass.md` + su página en `hig/`.
+- Revisión de un diseño → `checklist-revision.md` + las páginas de los componentes que aparezcan.
+- Diseño en HTML/CSS → `web.md` (ya trae CSS probado, tokens y una tab bar de ejemplo) + la página del componente.
+- Novedades → `novedades.md`. Licencias → `licencias-y-marcas.md`. Vídeos → `videos/_indice.md` y la ficha.
+
 **Cómo buscar rápido** (desde la carpeta de la skill):
 
 ```bash

@@ -1,0 +1,55 @@
+{
+ "expectations": [
+  {
+   "text": "Genera un archivo HTML",
+   "passed": true,
+   "evidence": "existe"
+  },
+  {
+   "text": "Usa env(safe-area-inset-bottom)",
+   "passed": true,
+   "evidence": "encontrado: «safe-area-inset-bottom»"
+  },
+  {
+   "text": "Destinos táctiles de al menos 44 px",
+   "passed": true,
+   "evidence": "encontrado: «--tap-min»"
+  },
+  {
+   "text": "Usa backdrop-filter (vidrio)",
+   "passed": true,
+   "evidence": "encontrado: «backdrop-filter»"
+  },
+  {
+   "text": "Atiende prefers-reduced-transparency o prefers-contrast",
+   "passed": true,
+   "evidence": "encontrado: «prefers-contrast»"
+  },
+  {
+   "text": "No incrusta SF Pro (sin @font-face de SF)",
+   "passed": true,
+   "evidence": "no aparece (bien)"
+  },
+  {
+   "text": "Explica que la tab bar es para navegar, no para acciones, citando Tab bars",
+   "passed": true,
+   "evidence": "encontrado: «human-interface-guidelines/tab-bars»"
+  },
+  {
+   "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+   "passed": true,
+   "evidence": "4 verificadas, 0 no verificables. "
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "23 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 9,
+  "failed": 0,
+  "total": 9,
+  "pass_rate": 1.0
+ }
+}

@@ -1,0 +1,1363 @@
+{
+ "metadata": {
+  "skill_name": "diseno-apple",
+  "skill_path": "<path/to/skill>",
+  "executor_model": "claude-opus-5-5 (subagentes)",
+  "analyzer_model": "<model-name>",
+  "timestamp": "2026-10-16T13:42:37Z",
+  "evals_run": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14
+  ],
+  "runs_per_configuration": 3
+ },
+ "runs": [
+  {
+   "eval_id": 1,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "time_seconds": 25.0,
+    "tokens": 61103,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Da R=92, G=184, B=255",
+     "passed": true,
+     "evidence": "encontrado: «92 · G 184 · B 255»"
+    },
+    {
+     "text": "Da el hex #5CB8FF",
+     "passed": true,
+     "evidence": "encontrado: «5CB8FF»"
+    },
+    {
+     "text": "Cita la página Color de las HIG con URL",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/color»"
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "1 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 10,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "time_seconds": 47.4,
+    "tokens": 69424,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Cancel a la izquierda/leading",
+     "passed": true,
+     "evidence": "encontrado: «borde inicial»"
+    },
+    {
+     "text": "Done a la derecha/trailing",
+     "passed": true,
+     "evidence": "encontrado: «derech»"
+    },
+    {
+     "text": "Back sustituye a Cancel en pasos siguientes",
+     "passed": true,
+     "evidence": "encontrado: «Back»"
+    },
+    {
+     "text": "Cita la página Sheets",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/sheets»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "1 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "15 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 11,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "time_seconds": 78.2,
+    "tokens": 86276,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Menciona barras verticales / controles en el lateral",
+     "passed": true,
+     "evidence": "encontrado: «vertical»"
+    },
+    {
+     "text": "Menciona size classes compact y regular",
+     "passed": true,
+     "evidence": "encontrado: «compact»"
+    },
+    {
+     "text": "Menciona evitar el pliegue / zona de bisagra",
+     "passed": true,
+     "evidence": "encontrado: «pliegue»"
+    },
+    {
+     "text": "Cita la página Designing for iPhone Duo",
+     "passed": true,
+     "evidence": "encontrado: «designing-for-iphone-duo»"
+    },
+    {
+     "text": "Cita un tech talk de iPhone Duo con marca de tiempo",
+     "passed": true,
+     "evidence": "encontrado: «tech-talks/111466/?time=248»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "7 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "13 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 12,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "time_seconds": 32.0,
+    "tokens": 68033,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "1088x1088 px",
+     "passed": true,
+     "evidence": "encontrado: «1088»"
+    },
+    {
+     "text": "Apariencias clear y tinted",
+     "passed": true,
+     "evidence": "encontrado: «Clear light, Clear dark, Tinted light y Tinted»"
+    },
+    {
+     "text": "Cita la página App icons",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/app-icons»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "1 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "7 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 13,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "time_seconds": 0.0,
+    "tokens": 0,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Recomienda mover el color al contenido",
+     "passed": true,
+     "evidence": "encontrado: «content layer»"
+    },
+    {
+     "text": "Color/tinte solo en lo primario o con moderación",
+     "passed": true,
+     "evidence": "encontrado: «sparingly»"
+    },
+    {
+     "text": "Cita el vídeo de marca de WWDC26 (251) o la página Branding",
+     "passed": true,
+     "evidence": "encontrado: «wwdc2026/251»"
+    },
+    {
+     "text": "Cita la sección Liquid Glass color",
+     "passed": true,
+     "evidence": "encontrado: «Liquid Glass color»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "6 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "21 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 14,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "time_seconds": 26.3,
+    "tokens": 56914,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "4.5:1 para 15 pt",
+     "passed": true,
+     "evidence": "encontrado: «4.5:1»"
+    },
+    {
+     "text": "3:1 para 20 pt en negrita",
+     "passed": true,
+     "evidence": "encontrado: «3:1»"
+    },
+    {
+     "text": "Cita la página Accessibility",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/accessibility»"
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "6 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 2,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "time_seconds": 53.0,
+    "tokens": 74178,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Menciona la capa de atenuación del 35 %",
+     "passed": true,
+     "evidence": "encontrado: «35%»"
+    },
+    {
+     "text": "Clear solo sobre medios / fondos visualmente ricos",
+     "passed": true,
+     "evidence": "encontrado: «media»"
+    },
+    {
+     "text": "Cita el vídeo Meet Liquid Glass (wwdc2025/219) con marca de tiempo",
+     "passed": true,
+     "evidence": "encontrado: «wwdc2025/219/?time=840»"
+    },
+    {
+     "text": "Cita la página Materials",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/materials»"
+    },
+    {
+     "text": "Dice que no se deben mezclar las variantes",
+     "passed": true,
+     "evidence": "encontrado: «never be mixed»"
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "7 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 3,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "time_seconds": 43.7,
+    "tokens": 66627,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "iOS 44x44 pt",
+     "passed": true,
+     "evidence": "encontrado: «44 × 44»"
+    },
+    {
+     "text": "Mínimo 28x28 pt",
+     "passed": true,
+     "evidence": "encontrado: «28 × 28»"
+    },
+    {
+     "text": "visionOS 60x60 pt",
+     "passed": true,
+     "evidence": "encontrado: «60 × 60»"
+    },
+    {
+     "text": "Cita la página Accessibility",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/accessibility»"
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "8 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 4,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "time_seconds": 45.0,
+    "tokens": 66164,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Dice que no se puede incrustar SF Pro (@font-face)",
+     "passed": true,
+     "evidence": "encontrado: «no puedes incrust»"
+    },
+    {
+     "text": "Propone -apple-system / system-ui",
+     "passed": true,
+     "evidence": "encontrado: «-apple-system»"
+    },
+    {
+     "text": "Menciona la prohibición de SF Symbols en logos o iconos de app",
+     "passed": true,
+     "evidence": "encontrado: «logo»"
+    },
+    {
+     "text": "Cita la página de fuentes o la licencia",
+     "passed": true,
+     "evidence": "encontrado: «San Francisco Font»"
+    },
+    {
+     "text": "Cita la HIG de SF Symbols",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/sf-symbols»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "1 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "4 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 5,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "time_seconds": 433.1,
+    "tokens": 165528,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Genera un archivo HTML",
+     "passed": true,
+     "evidence": "existe"
+    },
+    {
+     "text": "Usa env(safe-area-inset-bottom)",
+     "passed": true,
+     "evidence": "encontrado: «safe-area-inset-bottom»"
+    },
+    {
+     "text": "Destinos táctiles de al menos 44 px",
+     "passed": true,
+     "evidence": "encontrado: «--tap-min»"
+    },
+    {
+     "text": "Usa backdrop-filter (vidrio)",
+     "passed": true,
+     "evidence": "encontrado: «backdrop-filter»"
+    },
+    {
+     "text": "Atiende prefers-reduced-transparency o prefers-contrast",
+     "passed": true,
+     "evidence": "encontrado: «prefers-contrast»"
+    },
+    {
+     "text": "No incrusta SF Pro (sin @font-face de SF)",
+     "passed": true,
+     "evidence": "no aparece (bien)"
+    },
+    {
+     "text": "Explica que la tab bar es para navegar, no para acciones, citando Tab bars",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/tab-bars»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "4 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "23 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 6,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.9,
+    "passed": 9,
+    "failed": 1,
+    "total": 10,
+    "time_seconds": 0.0,
+    "tokens": 0,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Detecta la acción en la tab bar (navegación, no acciones)",
+     "passed": true,
+     "evidence": "encontrado: «not to provide actions»"
+    },
+    {
+     "text": "Detecta la pestaña desactivada/oculta",
+     "passed": true,
+     "evidence": "encontrado: «desactivad»"
+    },
+    {
+     "text": "Detecta Liquid Glass en la capa de contenido",
+     "passed": true,
+     "evidence": "encontrado: «capa de contenido»"
+    },
+    {
+     "text": "Detecta tamaño de control < 44 pt",
+     "passed": true,
+     "evidence": "encontrado: «44»"
+    },
+    {
+     "text": "Detecta texto demasiado pequeño (mínimo 11 pt) o contraste insuficiente (4.5:1)",
+     "passed": true,
+     "evidence": "encontrado: «4,5:1»"
+    },
+    {
+     "text": "Detecta la petición de permiso al abrir la app",
+     "passed": true,
+     "evidence": "encontrado: «permiso»"
+    },
+    {
+     "text": "Detecta el tintado de todos los botones",
+     "passed": true,
+     "evidence": "encontrado: «sparingly»"
+    },
+    {
+     "text": "Cita al menos 4 páginas distintas de las HIG",
+     "passed": true,
+     "evidence": "12 páginas distintas: accessibility, alerts, branding, buttons, color, dark-mode, materials, privacy, scroll-views, tab-bars, toolbars, typography"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "8 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": false,
+     "evidence": "26 encontradas, 1 no encontradas. don't group symbols with text  it could be perceived as a single butto"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 7,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 8,
+    "failed": 0,
+    "total": 8,
+    "time_seconds": 98.7,
+    "tokens": 103312,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Fecha 8 de junio de 2026",
+     "passed": true,
+     "evidence": "encontrado: «8-6-2026»"
+    },
+    {
+     "text": "Menciona los principios de diseño reintroducidos",
+     "passed": true,
+     "evidence": "encontrado: «Design principles»"
+    },
+    {
+     "text": "Menciona iPhone Duo",
+     "passed": true,
+     "evidence": "encontrado: «iPhone Duo»"
+    },
+    {
+     "text": "Menciona búsqueda / pestaña Search",
+     "passed": true,
+     "evidence": "encontrado: «búsqueda»"
+    },
+    {
+     "text": "Menciona Liquid Glass como base de la 26",
+     "passed": true,
+     "evidence": "encontrado: «Liquid Glass»"
+    },
+    {
+     "text": "Cita What's new o los registros de cambios",
+     "passed": true,
+     "evidence": "encontrado: «Change log»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "2 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "17 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 8,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "time_seconds": 65.0,
+    "tokens": 73194,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Identifica el vídeo de WWDC26 (8012) como el más reciente",
+     "passed": true,
+     "evidence": "encontrado: «Icon Composer for Beginners»"
+    },
+    {
+     "text": "Incluye marcas de tiempo enlazadas a developer.apple.com/videos/play",
+     "passed": true,
+     "evidence": "encontrado: «videos/play/wwdc2026/8012/?time=106»"
+    },
+    {
+     "text": "Incluye al menos 4 marcas de tiempo",
+     "passed": true,
+     "evidence": "28 marcas de tiempo enlazadas"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "27 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "26 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 9,
+   "configuration": "with_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "time_seconds": 40.1,
+    "tokens": 67253,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Large Title 34 pt / 41",
+     "passed": true,
+     "evidence": "encontrado: «34 | 41»"
+    },
+    {
+     "text": "Body 17 / 22",
+     "passed": true,
+     "evidence": "encontrado: «Body | Regular | 17 | 22»"
+    },
+    {
+     "text": "Caption 2 11 / 13",
+     "passed": true,
+     "evidence": "encontrado: «Caption 2 | Regular | 11 | 13»"
+    },
+    {
+     "text": "Incluye tracking (p. ej. -26 o -0.43 para 17 pt)",
+     "passed": true,
+     "evidence": "encontrado: «−26»"
+    },
+    {
+     "text": "Cita la página Typography",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/typography»"
+    },
+    {
+     "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+     "passed": true,
+     "evidence": "2 verificadas, 0 no verificables. "
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "9 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 1,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.667,
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "time_seconds": 26.3,
+    "tokens": 47801,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Da R=92, G=184, B=255",
+     "passed": true,
+     "evidence": "encontrado: «92, 184, 255»"
+    },
+    {
+     "text": "Da el hex #5CB8FF",
+     "passed": true,
+     "evidence": "encontrado: «5CB8FF»"
+    },
+    {
+     "text": "Cita la página Color de las HIG con URL",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 10,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.75,
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "time_seconds": 36.0,
+    "tokens": 49312,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Cancel a la izquierda/leading",
+     "passed": true,
+     "evidence": "encontrado: «izquierd»"
+    },
+    {
+     "text": "Done a la derecha/trailing",
+     "passed": true,
+     "evidence": "encontrado: «derech»"
+    },
+    {
+     "text": "Back sustituye a Cancel en pasos siguientes",
+     "passed": true,
+     "evidence": "encontrado: «Back»"
+    },
+    {
+     "text": "Cita la página Sheets",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 11,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.6,
+    "passed": 3,
+    "failed": 2,
+    "total": 5,
+    "time_seconds": 51.4,
+    "tokens": 50646,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Menciona barras verticales / controles en el lateral",
+     "passed": true,
+     "evidence": "encontrado: «lado»"
+    },
+    {
+     "text": "Menciona size classes compact y regular",
+     "passed": true,
+     "evidence": "encontrado: «compact»"
+    },
+    {
+     "text": "Menciona evitar el pliegue / zona de bisagra",
+     "passed": true,
+     "evidence": "encontrado: «pliegue»"
+    },
+    {
+     "text": "Cita la página Designing for iPhone Duo",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Cita un tech talk de iPhone Duo con marca de tiempo",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 12,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.667,
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "time_seconds": 19.5,
+    "tokens": 47515,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "1088x1088 px",
+     "passed": true,
+     "evidence": "encontrado: «1088»"
+    },
+    {
+     "text": "Apariencias clear y tinted",
+     "passed": true,
+     "evidence": "encontrado: «Clear)** | Efecto de vidrio translúcido. Tiene variante **clara** y **oscura**. »"
+    },
+    {
+     "text": "Cita la página App icons",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 13,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.25,
+    "passed": 1,
+    "failed": 3,
+    "total": 4,
+    "time_seconds": 60.8,
+    "tokens": 52045,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Recomienda mover el color al contenido",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Color/tinte solo en lo primario o con moderación",
+     "passed": true,
+     "evidence": "encontrado: «moderaci»"
+    },
+    {
+     "text": "Cita el vídeo de marca de WWDC26 (251) o la página Branding",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Cita la sección Liquid Glass color",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 14,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.667,
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "time_seconds": 23.5,
+    "tokens": 47685,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "4.5:1 para 15 pt",
+     "passed": true,
+     "evidence": "encontrado: «4.5:1»"
+    },
+    {
+     "text": "3:1 para 20 pt en negrita",
+     "passed": true,
+     "evidence": "encontrado: «3:1»"
+    },
+    {
+     "text": "Cita la página Accessibility",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 2,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.6,
+    "passed": 3,
+    "failed": 2,
+    "total": 5,
+    "time_seconds": 32.0,
+    "tokens": 48650,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Menciona la capa de atenuación del 35 %",
+     "passed": true,
+     "evidence": "encontrado: «35 %»"
+    },
+    {
+     "text": "Clear solo sobre medios / fondos visualmente ricos",
+     "passed": true,
+     "evidence": "encontrado: «media»"
+    },
+    {
+     "text": "Cita el vídeo Meet Liquid Glass (wwdc2025/219) con marca de tiempo",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Cita la página Materials",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Dice que no se deben mezclar las variantes",
+     "passed": true,
+     "evidence": "encontrado: «No mezcl»"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 3,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.75,
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "time_seconds": 23.4,
+    "tokens": 47951,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "iOS 44x44 pt",
+     "passed": true,
+     "evidence": "encontrado: «44 × 44»"
+    },
+    {
+     "text": "Mínimo 28x28 pt",
+     "passed": true,
+     "evidence": "encontrado: «28 × 28»"
+    },
+    {
+     "text": "visionOS 60x60 pt",
+     "passed": true,
+     "evidence": "encontrado: «60 × 60»"
+    },
+    {
+     "text": "Cita la página Accessibility",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 4,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.8,
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "time_seconds": 54.7,
+    "tokens": 50288,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Dice que no se puede incrustar SF Pro (@font-face)",
+     "passed": true,
+     "evidence": "encontrado: «@font-face»"
+    },
+    {
+     "text": "Propone -apple-system / system-ui",
+     "passed": true,
+     "evidence": "encontrado: «system-ui»"
+    },
+    {
+     "text": "Menciona la prohibición de SF Symbols en logos o iconos de app",
+     "passed": true,
+     "evidence": "encontrado: «logo»"
+    },
+    {
+     "text": "Cita la página de fuentes o la licencia",
+     "passed": true,
+     "evidence": "encontrado: «developer.apple.com/fonts»"
+    },
+    {
+     "text": "Cita la HIG de SF Symbols",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 5,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 1.0,
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "time_seconds": 337.9,
+    "tokens": 84290,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Genera un archivo HTML",
+     "passed": true,
+     "evidence": "existe"
+    },
+    {
+     "text": "Usa env(safe-area-inset-bottom)",
+     "passed": true,
+     "evidence": "encontrado: «safe-area-inset-bottom»"
+    },
+    {
+     "text": "Destinos táctiles de al menos 44 px",
+     "passed": true,
+     "evidence": "encontrado: «62px»"
+    },
+    {
+     "text": "Usa backdrop-filter (vidrio)",
+     "passed": true,
+     "evidence": "encontrado: «backdrop-filter»"
+    },
+    {
+     "text": "Atiende prefers-reduced-transparency o prefers-contrast",
+     "passed": true,
+     "evidence": "encontrado: «prefers-reduced-transparency»"
+    },
+    {
+     "text": "No incrusta SF Pro (sin @font-face de SF)",
+     "passed": true,
+     "evidence": "no aparece (bien)"
+    },
+    {
+     "text": "Explica que la tab bar es para navegar, no para acciones, citando Tab bars",
+     "passed": true,
+     "evidence": "encontrado: «human-interface-guidelines/tab-bars»"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 6,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.75,
+    "passed": 6,
+    "failed": 2,
+    "total": 8,
+    "time_seconds": 68.6,
+    "tokens": 53208,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Detecta la acción en la tab bar (navegación, no acciones)",
+     "passed": true,
+     "evidence": "encontrado: «para navegar»"
+    },
+    {
+     "text": "Detecta la pestaña desactivada/oculta",
+     "passed": true,
+     "evidence": "encontrado: «desactivad»"
+    },
+    {
+     "text": "Detecta Liquid Glass en la capa de contenido",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Detecta tamaño de control < 44 pt",
+     "passed": true,
+     "evidence": "encontrado: «44»"
+    },
+    {
+     "text": "Detecta texto demasiado pequeño (mínimo 11 pt) o contraste insuficiente (4.5:1)",
+     "passed": true,
+     "evidence": "encontrado: «4,5:1»"
+    },
+    {
+     "text": "Detecta la petición de permiso al abrir la app",
+     "passed": true,
+     "evidence": "encontrado: «permiso»"
+    },
+    {
+     "text": "Detecta el tintado de todos los botones",
+     "passed": true,
+     "evidence": "encontrado: «tint»"
+    },
+    {
+     "text": "Cita al menos 4 páginas distintas de las HIG",
+     "passed": false,
+     "evidence": "0 páginas distintas: "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 7,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.5,
+    "passed": 3,
+    "failed": 3,
+    "total": 6,
+    "time_seconds": 42.5,
+    "tokens": 49875,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Fecha 8 de junio de 2026",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Menciona los principios de diseño reintroducidos",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Menciona iPhone Duo",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Menciona búsqueda / pestaña Search",
+     "passed": true,
+     "evidence": "encontrado: «búsqueda»"
+    },
+    {
+     "text": "Menciona Liquid Glass como base de la 26",
+     "passed": true,
+     "evidence": "encontrado: «Liquid Glass»"
+    },
+    {
+     "text": "Cita What's new o los registros de cambios",
+     "passed": true,
+     "evidence": "encontrado: «What's new»"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 8,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.25,
+    "passed": 1,
+    "failed": 3,
+    "total": 4,
+    "time_seconds": 25.7,
+    "tokens": 48010,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Identifica el vídeo de WWDC26 (8012) como el más reciente",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Incluye marcas de tiempo enlazadas a developer.apple.com/videos/play",
+     "passed": false,
+     "evidence": "no encontrado"
+    },
+    {
+     "text": "Incluye al menos 4 marcas de tiempo",
+     "passed": false,
+     "evidence": "0 marcas de tiempo enlazadas"
+    },
+    {
+     "text": "Las citas literales en inglés existen en las fuentes de Apple",
+     "passed": true,
+     "evidence": "1 encontradas, 0 no encontradas. "
+    }
+   ],
+   "notes": []
+  },
+  {
+   "eval_id": 9,
+   "configuration": "without_skill",
+   "run_number": 1,
+   "result": {
+    "pass_rate": 0.8,
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "time_seconds": 26.0,
+    "tokens": 48542,
+    "tool_calls": 0,
+    "errors": 0
+   },
+   "expectations": [
+    {
+     "text": "Large Title 34 pt / 41",
+     "passed": true,
+     "evidence": "encontrado: «34 | 41»"
+    },
+    {
+     "text": "Body 17 / 22",
+     "passed": true,
+     "evidence": "encontrado: «Body | `.body` / `.body` | Regular | 17 | 22»"
+    },
+    {
+     "text": "Caption 2 11 / 13",
+     "passed": true,
+     "evidence": "encontrado: «caption2` | Regular | 11 | 13»"
+    },
+    {
+     "text": "Incluye tracking (p. ej. -26 o -0.43 para 17 pt)",
+     "passed": true,
+     "evidence": "encontrado: «−0,43»"
+    },
+    {
+     "text": "Cita la página Typography",
+     "passed": false,
+     "evidence": "no encontrado"
+    }
+   ],
+   "notes": []
+  }
+ ],
+ "run_summary": {
+  "with_skill": {
+   "pass_rate": {
+    "mean": 0.9929,
+    "stddev": 0.0267,
+    "min": 0.9,
+    "max": 1.0
+   },
+   "time_seconds": {
+    "mean": 70.5357,
+    "stddev": 107.7542,
+    "min": 0.0,
+    "max": 433.1
+   },
+   "tokens": {
+    "mean": 68429.0,
+    "stddev": 39789.3878,
+    "min": 0,
+    "max": 165528
+   }
+  },
+  "without_skill": {
+   "pass_rate": {
+    "mean": 0.6465,
+    "stddev": 0.2049,
+    "min": 0.25,
+    "max": 1.0
+   },
+   "time_seconds": {
+    "mean": 59.1643,
+    "stddev": 81.7321,
+    "min": 19.5,
+    "max": 337.9
+   },
+   "tokens": {
+    "mean": 51844.1429,
+    "stddev": 9495.47,
+    "min": 47515,
+    "max": 84290
+   }
+  },
+  "delta": {
+   "pass_rate": "+0.35",
+   "time_seconds": "+11.4",
+   "tokens": "+16585"
+  }
+ },
+ "notes": [
+  "1 ejecución por configuración y prueba (no 3): la variación entre pruebas no mide la variación entre ejecuciones.",
+  "La referencia (sin skill) no podía usar la web; la versión con skill solo podía leer la carpeta de la skill (sin _fuentes/), igual que una skill publicada.",
+  "Las comprobaciones de 'cita la página X' explican buena parte de la diferencia: sin skill casi nunca se dan URL ni marcas de tiempo.",
+  "Prueba 5 (tab bar en HTML/CSS) no discrimina: ambas configuraciones pasan todas las comprobaciones automáticas; revisarla visualmente.",
+  "Verificación de citas (solo con skill): 59 citas de vídeo con marca de tiempo comprobadas contra la transcripción (0 fallos) y más de 180 citas literales en inglés encontradas en las fuentes; 1 paráfrasis entre comillas (prueba 6) → corregido en SKILL.md.",
+  "Sin skill, los fallos de contenido son de actualidad: valores de color anteriores a la versión 26, desconocimiento de iPhone Duo, de los principios de 2026 y del vídeo de iconos de la WWDC26.",
+  "Coste: con skill +11 s y +16.6k tokens de media; la prueba 5 con skill fue la más cara (433 s, 38 herramientas)."
+ ]
+}
