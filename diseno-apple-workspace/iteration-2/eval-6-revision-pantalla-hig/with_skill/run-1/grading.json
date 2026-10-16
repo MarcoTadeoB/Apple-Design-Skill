@@ -1,0 +1,60 @@
+{
+ "expectations": [
+  {
+   "text": "Detecta la acción en la tab bar (navegación, no acciones)",
+   "passed": true,
+   "evidence": "encontrado: «not to provide actions»"
+  },
+  {
+   "text": "Detecta la pestaña desactivada/oculta",
+   "passed": true,
+   "evidence": "encontrado: «desactivad»"
+  },
+  {
+   "text": "Detecta Liquid Glass en la capa de contenido",
+   "passed": true,
+   "evidence": "encontrado: «capa de contenido»"
+  },
+  {
+   "text": "Detecta tamaño de control < 44 pt",
+   "passed": true,
+   "evidence": "encontrado: «44»"
+  },
+  {
+   "text": "Detecta texto demasiado pequeño (mínimo 11 pt) o contraste insuficiente (4.5:1)",
+   "passed": true,
+   "evidence": "encontrado: «4,5:1»"
+  },
+  {
+   "text": "Detecta la petición de permiso al abrir la app",
+   "passed": true,
+   "evidence": "encontrado: «Al abrir»"
+  },
+  {
+   "text": "Detecta el tintado de todos los botones",
+   "passed": true,
+   "evidence": "encontrado: «sparingly»"
+  },
+  {
+   "text": "Cita al menos 4 páginas distintas de las HIG",
+   "passed": true,
+   "evidence": "14 páginas distintas: accessibility, alerts, branding, buttons, color, dark-mode, layout, materials, privacy, scroll-views, tab-bars, toolbars, typography, writing"
+  },
+  {
+   "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+   "passed": true,
+   "evidence": "4 verificadas, 0 no verificables. "
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "26 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 10,
+  "failed": 0,
+  "total": 10,
+  "pass_rate": 1.0
+ }
+}

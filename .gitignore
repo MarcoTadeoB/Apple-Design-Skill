@@ -3,3 +3,4 @@
 _fuentes/
 __pycache__/
 *.pyc
+dist/
