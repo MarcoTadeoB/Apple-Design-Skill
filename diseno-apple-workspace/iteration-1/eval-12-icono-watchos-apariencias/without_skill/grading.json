@@ -1,0 +1,25 @@
+{
+ "expectations": [
+  {
+   "text": "1088x1088 px",
+   "passed": true,
+   "evidence": "encontrado: «1088»"
+  },
+  {
+   "text": "Apariencias clear y tinted",
+   "passed": true,
+   "evidence": "encontrado: «Clear)** | Efecto de vidrio translúcido. Tiene variante **clara** y **oscura**. »"
+  },
+  {
+   "text": "Cita la página App icons",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 2,
+  "failed": 1,
+  "total": 3,
+  "pass_rate": 0.667
+ }
+}

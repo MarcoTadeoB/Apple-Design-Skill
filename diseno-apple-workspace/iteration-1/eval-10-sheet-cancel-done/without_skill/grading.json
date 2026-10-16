@@ -1,0 +1,30 @@
+{
+ "expectations": [
+  {
+   "text": "Cancel a la izquierda/leading",
+   "passed": true,
+   "evidence": "encontrado: «izquierd»"
+  },
+  {
+   "text": "Done a la derecha/trailing",
+   "passed": true,
+   "evidence": "encontrado: «derech»"
+  },
+  {
+   "text": "Back sustituye a Cancel en pasos siguientes",
+   "passed": true,
+   "evidence": "encontrado: «Back»"
+  },
+  {
+   "text": "Cita la página Sheets",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ }
+}

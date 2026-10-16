@@ -19,6 +19,8 @@ tiene guía propia desde el 9-9-2026. Detalle en `references/novedades.md`.
 1. **Cita siempre la fuente.** Página de las HIG con su URL (y apartado), o vídeo con su marca de tiempo enlazada
    (`[13:24](https://developer.apple.com/videos/play/wwdc2025/219/?time=804)`). Las referencias ya incluyen las URL;
    cópialas tal cual. Las marcas de tiempo de las reglas de vídeo están verificadas contra la transcripción.
+   Lo que pongas entre «» debe ser **literal**, copiado de las referencias palabra por palabra (puedes recortar
+   con «…»); si resumes o traduces, no uses comillas.
 2. **No inventes valores.** Si un dato no está en `references/`, di claramente que las fuentes de Apple no lo
    publican (hay una lista de huecos en `tokens.md` §11 y `_inventario.md`). Puedes proponer una aproximación,
    pero márcala como **propia** y explica en qué se basa. Nunca completes de memoria un RGB, un tamaño o una fecha.

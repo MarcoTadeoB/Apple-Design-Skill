@@ -1,0 +1,35 @@
+{
+ "expectations": [
+  {
+   "text": "iOS 44x44 pt",
+   "passed": true,
+   "evidence": "encontrado: «44 × 44»"
+  },
+  {
+   "text": "Mínimo 28x28 pt",
+   "passed": true,
+   "evidence": "encontrado: «28 × 28»"
+  },
+  {
+   "text": "visionOS 60x60 pt",
+   "passed": true,
+   "evidence": "encontrado: «60 × 60»"
+  },
+  {
+   "text": "Cita la página Accessibility",
+   "passed": true,
+   "evidence": "encontrado: «human-interface-guidelines/accessibility»"
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "8 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 5,
+  "failed": 0,
+  "total": 5,
+  "pass_rate": 1.0
+ }
+}

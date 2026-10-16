@@ -1,0 +1,50 @@
+{
+ "expectations": [
+  {
+   "text": "Fecha 8 de junio de 2026",
+   "passed": true,
+   "evidence": "encontrado: «8-6-2026»"
+  },
+  {
+   "text": "Menciona los principios de diseño reintroducidos",
+   "passed": true,
+   "evidence": "encontrado: «Design principles»"
+  },
+  {
+   "text": "Menciona iPhone Duo",
+   "passed": true,
+   "evidence": "encontrado: «iPhone Duo»"
+  },
+  {
+   "text": "Menciona búsqueda / pestaña Search",
+   "passed": true,
+   "evidence": "encontrado: «búsqueda»"
+  },
+  {
+   "text": "Menciona Liquid Glass como base de la 26",
+   "passed": true,
+   "evidence": "encontrado: «Liquid Glass»"
+  },
+  {
+   "text": "Cita What's new o los registros de cambios",
+   "passed": true,
+   "evidence": "encontrado: «Change log»"
+  },
+  {
+   "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+   "passed": true,
+   "evidence": "2 verificadas, 0 no verificables. "
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "17 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 8,
+  "failed": 0,
+  "total": 8,
+  "pass_rate": 1.0
+ }
+}

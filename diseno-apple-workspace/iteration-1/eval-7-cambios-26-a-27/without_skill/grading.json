@@ -1,0 +1,40 @@
+{
+ "expectations": [
+  {
+   "text": "Fecha 8 de junio de 2026",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Menciona los principios de diseño reintroducidos",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Menciona iPhone Duo",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Menciona búsqueda / pestaña Search",
+   "passed": true,
+   "evidence": "encontrado: «búsqueda»"
+  },
+  {
+   "text": "Menciona Liquid Glass como base de la 26",
+   "passed": true,
+   "evidence": "encontrado: «Liquid Glass»"
+  },
+  {
+   "text": "Cita What's new o los registros de cambios",
+   "passed": true,
+   "evidence": "encontrado: «What's new»"
+  }
+ ],
+ "summary": {
+  "passed": 3,
+  "failed": 3,
+  "total": 6,
+  "pass_rate": 0.5
+ }
+}

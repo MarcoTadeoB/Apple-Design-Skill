@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-RX_LINK = re.compile(r"videos/play/([a-z0-9-]+)/(\d+)/?\?time=(\d+)\)?\s*[«\"“]([^»\"”]{12,})[»\"”]")
+RX_LINK = re.compile(r"videos/play/([a-z0-9-]+)/(\d+)/?\?time=(\d+)\)?[^«\n]{0,250}?«([^»]{12,})»")
 
 
 def norm(t):
@@ -23,24 +23,68 @@ def norm(t):
 
 
 def verificar_citas(texto, fuentes: Path):
+    """Para cada enlace de vídeo con ?time=T, busca en la misma línea citas «…» que estén en la
+    transcripción de ESE vídeo. Si la cita está en el vídeo, su tiempo real debe estar a ±45 s de T.
+    Las citas que no están en el vídeo (p. ej. citas de las HIG en la misma línea) se ignoran."""
     ok = mal = 0
     detalles = []
-    for ev, vid, t, cita in RX_LINK.findall(texto):
-        f = fuentes / "videos" / "json" / f"{ev}-{vid}.json"
-        if not f.exists():
-            mal += 1
-            detalles.append(f"{ev}/{vid}@{t}: vídeo no existe")
+    for linea in texto.splitlines():
+        enlaces = re.findall(r"videos/play/([a-z0-9-]+)/(\d+)/?\?time=(\d+)", linea)
+        citas = [norm(c.replace("…", " ").replace("*", ""))[:50] for c in re.findall(r"«([^»]{15,})»", linea)]
+        for ev, vid, t in enlaces:
+            f = fuentes / "videos" / "json" / f"{ev}-{vid}.json"
+            if not f.exists():
+                mal += 1
+                detalles.append(f"{ev}/{vid}: el vídeo no existe")
+                continue
+            tr = json.loads(f.read_text())["transcripcion"]
+            t = int(t)
+            for c in citas:
+                if len(c) < 20:
+                    continue
+                pos = [x["t"] for i, x in enumerate(tr) if c[:30] in norm(" ".join(y["texto"] for y in tr[i:i + 4]))]
+                if not pos:
+                    continue
+                if any(abs(p - t) <= 45 for p in pos):
+                    ok += 1
+                else:
+                    mal += 1
+                    detalles.append(f"{ev}/{vid}@{t}: la cita está en {int(pos[0])} s")
+    return ok, mal, detalles
+
+
+_CORPUS = None
+
+
+def corpus(fuentes: Path) -> str:
+    global _CORPUS
+    if _CORPUS is None:
+        partes = [p.read_text(errors="replace") for p in (fuentes / "hig" / "md").glob("*.md")]
+        partes += [p.read_text(errors="replace") for p in (fuentes / "web").glob("*.md")]
+        for p in (fuentes / "videos" / "json").glob("*.json"):
+            partes.append(" ".join(x["texto"] for x in json.loads(p.read_text())["transcripcion"]))
+        _CORPUS = norm(re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"\1", " ".join(partes)))
+    return _CORPUS
+
+
+def verificar_literales(texto, fuentes: Path):
+    """Citas «…» en inglés (≥ 6 palabras): deben aparecer literalmente en las fuentes descargadas."""
+    ok, mal, det = 0, 0, []
+    c = corpus(fuentes)
+    for q in re.findall(r"«([^»]{25,})»", texto):
+        q2 = q.replace("**", "").replace("…", " ").strip()
+        palabras = re.findall(r"[A-Za-z’']+", q2)
+        ingles = sum(w.lower() in ("the", "and", "to", "of", "a", "your", "you", "for", "in", "that", "is", "it") for w in palabras)
+        espanol = sum(w.lower() in ("de", "la", "el", "que", "los", "las", "una", "un", "con", "por", "para", "nota", "añadir") for w in palabras)
+        if len(palabras) < 6 or ingles < 2 or espanol:
             continue
-        tr = json.loads(f.read_text())["transcripcion"]
-        t = int(t)
-        ventana = norm(" ".join(x["texto"] for x in tr if t - 30 <= x["t"] <= t + 45))
-        frag = norm(cita.replace("…", " "))[:60]
-        if frag and frag[:40] in ventana:
+        trozos = [t for t in re.split(r"\s*\.\.\.\s*|\s{2,}", q2) if len(t) > 15] or [q2]
+        if all(norm(t)[:60] in c for t in trozos):
             ok += 1
         else:
             mal += 1
-            detalles.append(f"{ev}/{vid}@{t}: «{cita[:50]}…» no está en ±30 s")
-    return ok, mal, detalles
+            det.append(q2[:70])
+    return ok, mal, det
 
 
 def evaluar(a, texto, outdir: Path):
@@ -89,6 +133,10 @@ def main():
             if okc + malc:
                 exps.append({"text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
                              "passed": malc == 0, "evidence": f"{okc} verificadas, {malc} no verificables. " + "; ".join(det[:5])})
+            okl, mall, detl = verificar_literales(texto, Path(a.fuentes))
+            if okl + mall:
+                exps.append({"text": "Las citas literales en inglés existen en las fuentes de Apple",
+                             "passed": mall == 0, "evidence": f"{okl} encontradas, {mall} no encontradas. " + " | ".join(detl[:4])})
             n = sum(x["passed"] for x in exps)
             g = {"expectations": exps, "summary": {"passed": n, "failed": len(exps) - n, "total": len(exps),
                                                    "pass_rate": round(n / len(exps), 3) if exps else 0}}

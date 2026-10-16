@@ -1,0 +1,45 @@
+{
+ "expectations": [
+  {
+   "text": "Dice que no se puede incrustar SF Pro (@font-face)",
+   "passed": true,
+   "evidence": "encontrado: «no puedes incrust»"
+  },
+  {
+   "text": "Propone -apple-system / system-ui",
+   "passed": true,
+   "evidence": "encontrado: «-apple-system»"
+  },
+  {
+   "text": "Menciona la prohibición de SF Symbols en logos o iconos de app",
+   "passed": true,
+   "evidence": "encontrado: «logo»"
+  },
+  {
+   "text": "Cita la página de fuentes o la licencia",
+   "passed": true,
+   "evidence": "encontrado: «San Francisco Font»"
+  },
+  {
+   "text": "Cita la HIG de SF Symbols",
+   "passed": true,
+   "evidence": "encontrado: «human-interface-guidelines/sf-symbols»"
+  },
+  {
+   "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+   "passed": true,
+   "evidence": "1 verificadas, 0 no verificables. "
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "4 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "pass_rate": 1.0
+ }
+}

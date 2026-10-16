@@ -1,0 +1,30 @@
+{
+ "expectations": [
+  {
+   "text": "Recomienda mover el color al contenido",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Color/tinte solo en lo primario o con moderación",
+   "passed": true,
+   "evidence": "encontrado: «moderaci»"
+  },
+  {
+   "text": "Cita el vídeo de marca de WWDC26 (251) o la página Branding",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Cita la sección Liquid Glass color",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ }
+}

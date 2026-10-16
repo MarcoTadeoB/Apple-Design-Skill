@@ -1,0 +1,30 @@
+{
+ "expectations": [
+  {
+   "text": "Identifica el vídeo de WWDC26 (8012) como el más reciente",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Incluye marcas de tiempo enlazadas a developer.apple.com/videos/play",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Incluye al menos 4 marcas de tiempo",
+   "passed": false,
+   "evidence": "0 marcas de tiempo enlazadas"
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "1 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ }
+}

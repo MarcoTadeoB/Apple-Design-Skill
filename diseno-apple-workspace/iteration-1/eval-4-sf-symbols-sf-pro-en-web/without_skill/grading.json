@@ -1,0 +1,35 @@
+{
+ "expectations": [
+  {
+   "text": "Dice que no se puede incrustar SF Pro (@font-face)",
+   "passed": true,
+   "evidence": "encontrado: «@font-face»"
+  },
+  {
+   "text": "Propone -apple-system / system-ui",
+   "passed": true,
+   "evidence": "encontrado: «system-ui»"
+  },
+  {
+   "text": "Menciona la prohibición de SF Symbols en logos o iconos de app",
+   "passed": true,
+   "evidence": "encontrado: «logo»"
+  },
+  {
+   "text": "Cita la página de fuentes o la licencia",
+   "passed": true,
+   "evidence": "encontrado: «developer.apple.com/fonts»"
+  },
+  {
+   "text": "Cita la HIG de SF Symbols",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 4,
+  "failed": 1,
+  "total": 5,
+  "pass_rate": 0.8
+ }
+}

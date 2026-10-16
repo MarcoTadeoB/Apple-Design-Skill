@@ -1,0 +1,30 @@
+{
+ "expectations": [
+  {
+   "text": "4.5:1 para 15 pt",
+   "passed": true,
+   "evidence": "encontrado: «4.5:1»"
+  },
+  {
+   "text": "3:1 para 20 pt en negrita",
+   "passed": true,
+   "evidence": "encontrado: «3:1»"
+  },
+  {
+   "text": "Cita la página Accessibility",
+   "passed": true,
+   "evidence": "encontrado: «human-interface-guidelines/accessibility»"
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "6 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ }
+}

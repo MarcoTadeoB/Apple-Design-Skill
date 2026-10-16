@@ -1,0 +1,30 @@
+{
+ "expectations": [
+  {
+   "text": "Da R=92, G=184, B=255",
+   "passed": true,
+   "evidence": "encontrado: «92 · G 184 · B 255»"
+  },
+  {
+   "text": "Da el hex #5CB8FF",
+   "passed": true,
+   "evidence": "encontrado: «5CB8FF»"
+  },
+  {
+   "text": "Cita la página Color de las HIG con URL",
+   "passed": true,
+   "evidence": "encontrado: «human-interface-guidelines/color»"
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "1 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ }
+}

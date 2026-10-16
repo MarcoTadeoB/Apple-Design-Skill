@@ -1,0 +1,35 @@
+{
+ "expectations": [
+  {
+   "text": "Menciona barras verticales / controles en el lateral",
+   "passed": true,
+   "evidence": "encontrado: «lado»"
+  },
+  {
+   "text": "Menciona size classes compact y regular",
+   "passed": true,
+   "evidence": "encontrado: «compact»"
+  },
+  {
+   "text": "Menciona evitar el pliegue / zona de bisagra",
+   "passed": true,
+   "evidence": "encontrado: «pliegue»"
+  },
+  {
+   "text": "Cita la página Designing for iPhone Duo",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Cita un tech talk de iPhone Duo con marca de tiempo",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 3,
+  "failed": 2,
+  "total": 5,
+  "pass_rate": 0.6
+ }
+}

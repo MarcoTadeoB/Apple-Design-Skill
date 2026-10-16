@@ -1,0 +1,50 @@
+{
+ "expectations": [
+  {
+   "text": "Detecta la acción en la tab bar (navegación, no acciones)",
+   "passed": true,
+   "evidence": "encontrado: «para navegar»"
+  },
+  {
+   "text": "Detecta la pestaña desactivada/oculta",
+   "passed": true,
+   "evidence": "encontrado: «desactivad»"
+  },
+  {
+   "text": "Detecta Liquid Glass en la capa de contenido",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Detecta tamaño de control < 44 pt",
+   "passed": true,
+   "evidence": "encontrado: «44»"
+  },
+  {
+   "text": "Detecta texto demasiado pequeño (mínimo 11 pt) o contraste insuficiente (4.5:1)",
+   "passed": true,
+   "evidence": "encontrado: «4,5:1»"
+  },
+  {
+   "text": "Detecta la petición de permiso al abrir la app",
+   "passed": true,
+   "evidence": "encontrado: «permiso»"
+  },
+  {
+   "text": "Detecta el tintado de todos los botones",
+   "passed": true,
+   "evidence": "encontrado: «tint»"
+  },
+  {
+   "text": "Cita al menos 4 páginas distintas de las HIG",
+   "passed": false,
+   "evidence": "0 páginas distintas: "
+  }
+ ],
+ "summary": {
+  "passed": 6,
+  "failed": 2,
+  "total": 8,
+  "pass_rate": 0.75
+ }
+}

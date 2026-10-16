@@ -1,0 +1,45 @@
+{
+ "expectations": [
+  {
+   "text": "Large Title 34 pt / 41",
+   "passed": true,
+   "evidence": "encontrado: «34 | 41»"
+  },
+  {
+   "text": "Body 17 / 22",
+   "passed": true,
+   "evidence": "encontrado: «Body | Regular | 17 | 22»"
+  },
+  {
+   "text": "Caption 2 11 / 13",
+   "passed": true,
+   "evidence": "encontrado: «Caption 2 | Regular | 11 | 13»"
+  },
+  {
+   "text": "Incluye tracking (p. ej. -26 o -0.43 para 17 pt)",
+   "passed": true,
+   "evidence": "encontrado: «−26»"
+  },
+  {
+   "text": "Cita la página Typography",
+   "passed": true,
+   "evidence": "encontrado: «human-interface-guidelines/typography»"
+  },
+  {
+   "text": "Las citas de vídeo con marca de tiempo son verificables (±30 s)",
+   "passed": true,
+   "evidence": "2 verificadas, 0 no verificables. "
+  },
+  {
+   "text": "Las citas literales en inglés existen en las fuentes de Apple",
+   "passed": true,
+   "evidence": "9 encontradas, 0 no encontradas. "
+  }
+ ],
+ "summary": {
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "pass_rate": 1.0
+ }
+}

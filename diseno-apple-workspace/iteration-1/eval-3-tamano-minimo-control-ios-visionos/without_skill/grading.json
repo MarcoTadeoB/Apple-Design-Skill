@@ -1,0 +1,30 @@
+{
+ "expectations": [
+  {
+   "text": "iOS 44x44 pt",
+   "passed": true,
+   "evidence": "encontrado: «44 × 44»"
+  },
+  {
+   "text": "Mínimo 28x28 pt",
+   "passed": true,
+   "evidence": "encontrado: «28 × 28»"
+  },
+  {
+   "text": "visionOS 60x60 pt",
+   "passed": true,
+   "evidence": "encontrado: «60 × 60»"
+  },
+  {
+   "text": "Cita la página Accessibility",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ }
+}

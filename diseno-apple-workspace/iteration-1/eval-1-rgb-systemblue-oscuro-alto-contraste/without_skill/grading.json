@@ -1,0 +1,25 @@
+{
+ "expectations": [
+  {
+   "text": "Da R=92, G=184, B=255",
+   "passed": true,
+   "evidence": "encontrado: «92, 184, 255»"
+  },
+  {
+   "text": "Da el hex #5CB8FF",
+   "passed": true,
+   "evidence": "encontrado: «5CB8FF»"
+  },
+  {
+   "text": "Cita la página Color de las HIG con URL",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 2,
+  "failed": 1,
+  "total": 3,
+  "pass_rate": 0.667
+ }
+}

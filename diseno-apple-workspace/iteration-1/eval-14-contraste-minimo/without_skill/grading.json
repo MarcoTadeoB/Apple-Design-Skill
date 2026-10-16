@@ -1,0 +1,25 @@
+{
+ "expectations": [
+  {
+   "text": "4.5:1 para 15 pt",
+   "passed": true,
+   "evidence": "encontrado: «4.5:1»"
+  },
+  {
+   "text": "3:1 para 20 pt en negrita",
+   "passed": true,
+   "evidence": "encontrado: «3:1»"
+  },
+  {
+   "text": "Cita la página Accessibility",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 2,
+  "failed": 1,
+  "total": 3,
+  "pass_rate": 0.667
+ }
+}

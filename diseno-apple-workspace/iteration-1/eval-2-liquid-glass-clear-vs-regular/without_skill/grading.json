@@ -1,0 +1,35 @@
+{
+ "expectations": [
+  {
+   "text": "Menciona la capa de atenuación del 35 %",
+   "passed": true,
+   "evidence": "encontrado: «35 %»"
+  },
+  {
+   "text": "Clear solo sobre medios / fondos visualmente ricos",
+   "passed": true,
+   "evidence": "encontrado: «media»"
+  },
+  {
+   "text": "Cita el vídeo Meet Liquid Glass (wwdc2025/219) con marca de tiempo",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Cita la página Materials",
+   "passed": false,
+   "evidence": "no encontrado"
+  },
+  {
+   "text": "Dice que no se deben mezclar las variantes",
+   "passed": true,
+   "evidence": "encontrado: «No mezcl»"
+  }
+ ],
+ "summary": {
+  "passed": 3,
+  "failed": 2,
+  "total": 5,
+  "pass_rate": 0.6
+ }
+}

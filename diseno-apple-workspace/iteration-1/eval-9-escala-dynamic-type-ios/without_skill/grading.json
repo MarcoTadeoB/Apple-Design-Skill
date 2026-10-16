@@ -1,0 +1,35 @@
+{
+ "expectations": [
+  {
+   "text": "Large Title 34 pt / 41",
+   "passed": true,
+   "evidence": "encontrado: «34 | 41»"
+  },
+  {
+   "text": "Body 17 / 22",
+   "passed": true,
+   "evidence": "encontrado: «Body | `.body` / `.body` | Regular | 17 | 22»"
+  },
+  {
+   "text": "Caption 2 11 / 13",
+   "passed": true,
+   "evidence": "encontrado: «caption2` | Regular | 11 | 13»"
+  },
+  {
+   "text": "Incluye tracking (p. ej. -26 o -0.43 para 17 pt)",
+   "passed": true,
+   "evidence": "encontrado: «−0,43»"
+  },
+  {
+   "text": "Cita la página Typography",
+   "passed": false,
+   "evidence": "no encontrado"
+  }
+ ],
+ "summary": {
+  "passed": 4,
+  "failed": 1,
+  "total": 5,
+  "pass_rate": 0.8
+ }
+}
