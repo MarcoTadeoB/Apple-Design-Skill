@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover: el contenido llega bajo la barra y respetamos env(safe-area-inset-*) [Web] -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>Recetario · tab bar</title>
+<style>
+/* =========================================================================
+   Tab bar de una app de recetas para iPhone — HTML/CSS
+   Leyenda de comentarios:
+     [HIG]   regla o valor de las Human Interface Guidelines de Apple
+     [vídeo] sesión de Apple con marca de tiempo
+     [Web]   plataforma web (WebKit/W3C), no Apple
+     [Propio] decisión de diseño propia (Apple no publica el valor)
+   ========================================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  color-scheme: light dark;
+  /* Fuente del sistema del visitante: San Francisco en dispositivos Apple.
+     No se incrusta SF Pro (su licencia lo prohíbe en webs) [HIG Fonts]. */
+  --font: -apple-system, BlinkMacSystemFont, system-ui, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Colores de sistema [HIG Color › Specifications] */
+  --red: #FF383C;          /* systemRed (claro) */
+  --gray6: #F2F2F7;        /* systemGray6 (claro) */
+
+  /* Semánticos: Apple NO publica sus RGB → aproximación [Propio] */
+  --label: #000;
+  --label-2: rgb(60 60 67 / .6);
+  --bg: #fff;
+  --bg-2: var(--gray6);
+  --fill: rgb(120 120 128 / .16);
+  --separator: rgb(60 60 67 / .29);
+
+  /* Color de acento de la marca «albahaca» [Propio]: los verdes/naranjas de sistema
+     no llegan a 4.5:1 sobre el cristal claro con texto de 11 pt [HIG Accessibility]. */
+  --accent: #0E6B34;
+
+  /* Liquid Glass aproximado (regular) [Propio, basado en web.md de la skill] */
+  --glass-bg: rgb(250 250 252 / .84);   /* opacidad alta para mantener el contraste sobre fotos [Propio] */
+  --glass-edge: inset 0 1px 0 rgb(255 255 255 / .8), inset 0 0 0 1px rgb(255 255 255 / .4), inset 0 -1px 0 rgb(0 0 0 / .06);
+  --glass-shadow: 0 8px 24px rgb(0 0 0 / .16), 0 1px 3px rgb(0 0 0 / .10);
+
+  --tap-min: 44px;                 /* iOS: 44×44 pt por defecto [HIG Accessibility] */
+  --gutter: 16px;                  /* margen lateral de la barra [Propio]; HIG: «capsule with extra margin» */
+  --bar-pad: 4px;                  /* padding interno de la cápsula [Propio] */
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --red: #FF4245;                /* systemRed (oscuro) [HIG Color] */
+    --gray6: #1C1C1E;              /* systemGray6 (oscuro) [HIG Color] */
+    --label: #fff;
+    --label-2: rgb(235 235 245 / .6);
+    --bg: #000;
+    --fill: rgb(120 120 128 / .32);
+    --separator: rgb(84 84 88 / .6);
+    --accent: #5EDC7B;             /* [Propio] variante oscura */
+    --glass-bg: rgb(38 38 42 / .84);
+    --glass-edge: inset 0 1px 0 rgb(255 255 255 / .22), inset 0 0 0 1px rgb(255 255 255 / .12);
+    --glass-shadow: 0 8px 24px rgb(0 0 0 / .45), 0 1px 3px rgb(0 0 0 / .3);
+  }
+}
+/* Increase Contrast → colores de alto contraste [HIG Color] y cristal casi opaco con borde [vídeo 2025-219, 18:22] */
+@media (prefers-contrast: more) {
+  :root {
+    --red: #E9152D; --gray6: #EBEBF0; --accent: #0A4F25; --label-2: rgb(60 60 67 / .85);
+    --glass-bg: #fff; --glass-edge: inset 0 0 0 2px #000;
+  }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --red: #FF6165; --gray6: #242426; --accent: #8FF0A4; --label-2: rgb(235 235 245 / .85);
+    --glass-bg: #000; --glass-edge: inset 0 0 0 2px #fff;
+  }
+}
+
+/* ---------- 2. Base y Dynamic Type ---------- */
+html { font: -apple-system-body; }          /* [Web/WebKit] tamaño de texto elegido en Ajustes */
+@supports not (font: -apple-system-body) { html { font-size: 106.25%; } } /* 17 px fuera de WebKit [Propio] */
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: var(--font); font-size: 1rem; line-height: 1.294;  /* Body 17/22 [HIG Typography] */
+  letter-spacing: -0.026em;                                                  /* tracking −26 a 17 pt [HIG] */
+  color: var(--label); background: var(--bg-2);
+  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+}
+.app { max-width: 430px; margin: 0 auto; min-height: 100dvh; background: var(--bg); position: relative; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- 3. Capa de contenido (aquí vive la marca) ---------- */
+main {
+  padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px
+           calc(env(safe-area-inset-bottom, 0px) + 170px);   /* hueco para que la barra no tape lo último [Web] */
+}
+.panel[hidden] { display: none; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 8px 0 12px; }
+.large-title { font-size: 2rem; line-height: 1.206; font-weight: 700; letter-spacing: 0.012em; margin: 0; } /* Large Title 34/41 enfatizado [HIG] */
+.title-3 { font-size: 1.176rem; line-height: 1.25; font-weight: 600; letter-spacing: -0.023em; margin: 24px 0 8px; } /* Title 3 20/25 [HIG] */
+.subhead { font-size: .882rem; line-height: 1.333; color: var(--label-2); letter-spacing: -0.016em; margin: 0; } /* Subhead 15/20 [HIG] */
+
+/* Acción de pantalla en la cabecera, NUNCA en la tab bar [HIG Tab bars] */
+.boton-icono {
+  inline-size: var(--tap-min); block-size: var(--tap-min); border-radius: 50%; border: 0;
+  display: grid; place-items: center; background: var(--fill); color: var(--accent); cursor: pointer;
+}
+.boton-icono svg { width: 22px; height: 22px; }
+
+.hero {
+  border-radius: 24px; min-height: 220px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end;
+  color: #fff; position: relative; overflow: hidden;
+  background: radial-gradient(circle at 70% 30%, #F6C453 0 18%, transparent 19%),
+              radial-gradient(circle at 35% 55%, #D8432C 0 24%, transparent 25%),
+              linear-gradient(135deg, #7A2E1C, #C8642C 55%, #E9A23B);
+}
+/* Texto sobre imagen: fondo sutil (degradado) [vídeo 2025-359, 15:40] */
+.hero::before { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(transparent, rgb(0 0 0 / .55)); }
+.hero > * { position: relative; }
+.hero h2 { font-size: 1.294rem; line-height: 1.27; margin: 0; letter-spacing: -0.012em; }
+.hero p { margin: 4px 0 0; font-size: .882rem; opacity: .92; }
+
+.carrusel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; margin: 0 -16px; padding-inline: 16px; }
+.tarjeta { flex: 0 0 160px; scroll-snap-align: start; }
+.foto { aspect-ratio: 1; border-radius: 18px; }
+.f1 { background: radial-gradient(circle at 50% 55%, #F2D16B 0 30%, #C0392B 31% 45%, #6B2A1A 46%); }
+.f2 { background: radial-gradient(circle at 45% 45%, #FBE3B0 0 22%, #E07A2E 23% 40%, #8C4A2F 41%); }
+.f3 { background: radial-gradient(circle at 55% 50%, #8E44AD 0 20%, #E8B4A0 21% 38%, #5A2C3A 39%); }
+.f4 { background: radial-gradient(circle at 50% 50%, #FFE08A 0 26%, #D35400 27% 42%, #3E2723 43%); }
+.tarjeta h3 { font-size: .882rem; line-height: 1.333; font-weight: 600; margin: 8px 0 0; }
+.tarjeta p { font-size: .765rem; line-height: 1.385; margin: 0; color: var(--label-2); }  /* Footnote 13/18 [HIG] */
+
+.lista { list-style: none; margin: 0; padding: 0; }
+.lista li { display: flex; align-items: center; gap: 12px; min-height: var(--tap-min); padding: 10px 0;
+  border-bottom: .5px solid var(--separator); }
+.lista .mini { width: 56px; height: 56px; border-radius: 12px; flex: none; }
+.lista label { display: flex; align-items: center; gap: 12px; flex: 1; min-height: var(--tap-min); cursor: pointer; }
+.lista input[type=checkbox] { width: 22px; height: 22px; accent-color: var(--accent); margin: 0; }
+.nuevo { font-size: .706rem; font-weight: 700; white-space: nowrap; color: var(--accent); margin-left: auto; }   /* Caption 1 12 pt */
+
+.vacio { text-align: center; padding: 48px 8px; }
+.vacio svg { width: 56px; height: 56px; color: var(--label-2); }
+.vacio h2 { font-size: 1.176rem; margin: 12px 0 4px; }
+.boton { margin-top: 16px; min-height: var(--tap-min); padding: 0 20px; border: 0; border-radius: 999px;
+  background: var(--accent); color: var(--bg); font: 600 1rem/1 var(--font); cursor: pointer; }
+
+.campo-busqueda { display: flex; align-items: center; gap: 8px; min-height: var(--tap-min); padding: 0 12px;
+  border-radius: 999px; background: var(--fill); color: var(--label-2); }
+.campo-busqueda svg { width: 18px; height: 18px; flex: none; }
+.campo-busqueda input { flex: 1; border: 0; background: transparent; font: inherit; color: var(--label); outline: none; min-height: var(--tap-min); }
+.sugerencias { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.sugerencias button { min-height: var(--tap-min); padding: 0 16px; border-radius: 999px; border: 0;
+  background: var(--fill); color: var(--label); font: inherit; font-size: .882rem; cursor: pointer; }
+
+/* ---------- 4. Scroll edge effect inferior ----------
+   Separa la barra flotante del contenido sin fondo sólido [HIG Layout / Scroll views].
+   Solo existe porque hay UI flotante encima; uno por vista [vídeo 2025-356, 11:28]. */
+.borde-scroll {
+  position: fixed; left: 0; right: 0; bottom: 0; height: calc(env(safe-area-inset-bottom, 0px) + 120px);
+  pointer-events: none; z-index: 10;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  -webkit-mask-image: linear-gradient(transparent, #000 70%); mask-image: linear-gradient(transparent, #000 70%);
+  background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 35%, transparent));
+}
+
+/* ---------- 5. Liquid Glass (capa funcional) ----------
+   Solo en la barra y en su accesorio; nunca en tarjetas o listas [HIG Materials].
+   La sombra exterior va en una capa hermana para no romper el filtro de refracción [Probado, web.md §6.2]. */
+.glass { position: relative; isolation: isolate; border-radius: 999px; }           /* cápsula [vídeo 2025-356, 3:42] */
+.glass__sombra { position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none; box-shadow: var(--glass-shadow); }
+.glass__vidrio {
+  position: relative; border-radius: inherit; background: var(--glass-bg); box-shadow: var(--glass-edge);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);                              /* Safari: esmerilado */
+  backdrop-filter: blur(16px) saturate(180%) url(#lg-refraccion);                  /* Chromium: + refracción */
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass__vidrio { background: color-mix(in srgb, var(--bg) 94%, transparent); }
+}
+/* Reduce Transparency: más esmerilado / opaco [vídeo 2025-219, 18:22] */
+@media (prefers-reduced-transparency: reduce) {
+  .glass__vidrio { -webkit-backdrop-filter: none; backdrop-filter: none; background: #F6F6F8; }
+  .borde-scroll { -webkit-backdrop-filter: none; backdrop-filter: none; background: linear-gradient(transparent, var(--bg) 60%); }
+}
+@media (prefers-reduced-transparency: reduce) and (prefers-color-scheme: dark) {
+  .glass__vidrio { background: #242426; }
+}
+@media (prefers-contrast: more) {
+  .glass__vidrio { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* ---------- 6. Contenedor inferior: accesorio + tab bar ---------- */
+.inferior {
+  position: fixed; z-index: 20; left: 50%; transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+  width: min(100vw - 2 * var(--gutter), 430px - 2 * var(--gutter));
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+/* Accesorio de la tab bar: solo funciones persistentes (temporizador de cocina),
+   nunca acciones de una pantalla concreta [vídeo 2025-356, 10:40]. */
+.accesorio .glass__vidrio { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 4px 4px 4px 14px; }
+.accesorio .reloj { width: 22px; height: 22px; color: var(--accent); flex: none; }
+.accesorio .texto { flex: 1; min-width: 0; line-height: 1.2; }
+.accesorio .t1 { font-size: 15px; font-weight: 600; letter-spacing: -0.016em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.accesorio .t2 { font-size: 13px; color: var(--label-2); font-variant-numeric: tabular-nums; }
+/* Botón dentro del cristal: sin fondo propio ni otro cristal («glass on glass») [vídeo 2025-219, 13:24; 2025-356, 8:55] */
+.accesorio button { inline-size: var(--tap-min); block-size: var(--tap-min); border: 0; border-radius: 50%;
+  background: transparent; color: var(--label); display: grid; place-items: center; cursor: pointer; flex: none; }
+.accesorio button:active { background: var(--fill); }
+.accesorio button svg { width: 22px; height: 22px; }
+
+/* Tab bar */
+.tab-bar ul { display: flex; margin: 0; padding: var(--bar-pad); list-style: none; gap: 0; }
+.tab-bar li { flex: 1 1 0; min-width: 0; }
+.tab-bar a {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: 54px; min-width: var(--tap-min);       /* destino ≥ 44×44 [HIG Accessibility] */
+  border-radius: 999px;                              /* cápsula interior concéntrica con la barra [vídeo 2025-356, 3:42] */
+  color: var(--label);                               /* monocromo por defecto [HIG Color › Liquid Glass color] */
+  text-decoration: none; -webkit-touch-callout: none; user-select: none;
+}
+.tab-bar svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* Etiqueta: 11 px = mínimo de texto de iOS [HIG Typography]. Apple no publica el tamaño de la etiqueta de la tab bar [Propio].
+   Tamaño fijo, como en la barra nativa; en tamaños AX se ofrece el Large Content Viewer (ver JS) [vídeo WWDC24 10074, 13:05]. */
+.tab-bar .etiqueta { font-size: 11px; line-height: 13px; font-weight: 600; letter-spacing: 0.006em;
+  max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Seleccionada: color de acento + fondo neutro → no solo color [HIG Accessibility; vídeo 2026-251, 10:01] */
+.tab-bar a[aria-current="page"] { color: var(--accent); background: var(--fill); }
+/* Etiqueta seleccionada en negrita: otra pista además del color y umbral de 3:1 para texto en negrita [HIG Accessibility] */
+.tab-bar a[aria-current="page"] .etiqueta { font-weight: 700; }
+.tab-bar a:focus-visible, .inferior button:focus-visible, .boton-icono:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Badge: solo para información crítica [HIG Tab bars].
+   Texto en negrita → mínimo 3:1 (blanco sobre systemRed ≈ 3.6:1) [HIG Accessibility]. */
+.badge { position: absolute; top: 3px; left: calc(50% + 6px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
+  background: var(--red); color: #fff; font: 700 12px/18px var(--font); text-align: center; letter-spacing: 0; }
+.badge[hidden] { display: none; }
+
+/* Minimizada al hacer scroll hacia abajo, con el accesorio en línea [HIG Tab bars › iOS] */
+.inferior.minimizada { flex-direction: row; align-items: center; }
+.inferior.minimizada .tab-bar { order: 0; flex: none; }
+.inferior.minimizada .accesorio { order: 1; flex: 1; min-width: 0; }
+.inferior.minimizada .tab-bar li:not(:has(a[aria-current="page"])) { display: none; }
+.inferior.minimizada .tab-bar a { min-height: 52px; width: 52px; }
+.inferior.minimizada .tab-bar a[aria-current="page"] { background: transparent; }
+.inferior.minimizada .tab-bar .etiqueta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.inferior.minimizada .tab-bar .badge { top: 4px; left: 30px; }
+.inferior.minimizada .tab-bar ul { padding: 0; }
+
+/* Movimiento breve y opcional; sin rebotes con Reduce Motion [HIG Motion; vídeo 2025-219, 18:22] */
+@media (prefers-reduced-motion: no-preference) {
+  .tab-bar a { transition: background-color .2s ease, color .2s ease; }
+  .inferior { transition: width .25s ease; }
+  .inferior .glass { animation: aparecer .22s ease both; }
+  @keyframes aparecer { from { opacity: .6; transform: scale(.98); } to { opacity: 1; transform: none; } }
+}
+
+/* Large Content Viewer (equivalente web) */
+.lcv { position: fixed; inset: 0; display: grid; place-items: center; pointer-events: none; z-index: 50; }
+.lcv[hidden] { display: none; }
+.lcv div { min-width: 160px; padding: 20px 24px; border-radius: 24px; text-align: center; color: var(--label);
+  background: var(--glass-bg); box-shadow: var(--glass-edge), var(--glass-shadow);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.lcv svg { width: 64px; height: 64px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.lcv p { margin: 8px 0 0; font-size: 28px; font-weight: 600; }
+
+/* Windows: contraste alto forzado → el sistema pinta; bordes visibles [Web] */
+@media (forced-colors: active) {
+  .glass__vidrio, .lcv div { border: 2px solid CanvasText; }
+  .tab-bar a[aria-current="page"] { outline: 2px solid Highlight; }
+  .badge { border: 1px solid CanvasText; }
+}
+</style>
+</head>
+<body>
+
+<!-- Filtro de refracción para Liquid Glass (solo lo aplica Chromium; Safari se queda con el desenfoque) [web.md §6.1] -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="lg-refraccion" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="ruido"/>
+    <feGaussianBlur in="ruido" stdDeviation="2" result="ruidoSuave"/>
+    <feDisplacementMap in="SourceGraphic" in2="ruidoSuave" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <!-- Iconos propios (no SF Symbols: no consta permiso para usarlos en webs) -->
+  <symbol id="i-hoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+  <symbol id="i-recetas" viewBox="0 0 24 24"><path d="M12 6.5C10 5 7 4.5 3.5 5v13.5c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5V20"/></symbol>
+  <symbol id="i-plan" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01"/></symbol>
+  <symbol id="i-compra" viewBox="0 0 24 24"><path d="M3.5 10h17l-1.7 8.3a2 2 0 0 1-2 1.7H7.2a2 2 0 0 1-2-1.7z"/><path d="M8 10l3-5.5M16 10l-3-5.5M9.5 13.5v3M14.5 13.5v3"/></symbol>
+  <symbol id="i-buscar" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M10 2.5h4M18.5 6.5l1.3-1.3"/></symbol>
+  <symbol id="i-pausa" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+</svg>
+
+<div class="app">
+<main id="contenido">
+
+  <!-- ===== Hoy ===== -->
+  <section class="panel" id="hoy" aria-labelledby="t-hoy">
+    <div class="cabecera"><h1 class="large-title" id="t-hoy">Hoy</h1></div>
+    <article class="hero">
+      <h2>Gazpacho de fresas y tomate</h2>
+      <p>Temporada · 20 min · Sin cocción</p>
+    </article>
+    <h2 class="title-3">Para esta semana</h2>
+    <div class="carrusel" role="list">
+      <div class="tarjeta" role="listitem"><div class="foto f1"></div><h3>Shakshuka</h3><p>25 min</p></div>
+      <div class="tarjeta" role="listitem"><div class="foto f2"></div><h3>Crema de calabaza</h3><p>35 min</p></div>
+      <div class="tarjeta" role="listitem"><div class="foto f3"></div><h3>Berenjenas asadas</h3><p>40 min</p></div>
+      <div class="tarjeta" role="listitem"><div class="foto f4"></div><h3>Tortilla de patatas</h3><p>30 min</p></div>
+    </div>
+    <h2 class="title-3">Recientes</h2>
+    <ul class="lista">
+      <li><div class="mini f2"></div><div><strong>Lentejas estofadas</strong><p class="subhead">Ayer</p></div></li>
+      <li><div class="mini f1"></div><div><strong>Pasta alla norma</strong><p class="subhead">Lunes</p></div></li>
+      <li><div class="mini f4"></div><div><strong>Bizcocho de yogur</strong><p class="subhead">Domingo</p></div></li>
+      <li><div class="mini f3"></div><div><strong>Pisto manchego</strong><p class="subhead">Sábado</p></div></li>
+      <li><div class="mini f2"></div><div><strong>Arroz con verduras</strong><p class="subhead">Viernes</p></div></li>
+      <li><div class="mini f1"></div><div><strong>Salmorejo</strong><p class="subhead">Jueves</p></div></li>
+    </ul>
+  </section>
+
+  <!-- ===== Recetas ===== -->
+  <section class="panel" id="recetas" aria-labelledby="t-recetas" hidden>
+    <div class="cabecera">
+      <h1 class="large-title" id="t-recetas">Recetas</h1>
+      <!-- «Añadir receta» es una acción: va en la cabecera/toolbar de esta pantalla, no en la tab bar [HIG Tab bars; vídeo 2025-359, 6:01] -->
+      <button class="boton-icono" type="button" aria-label="Añadir receta"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-mas"/></svg></button>
+    </div>
+    <ul class="lista">
+      <li><div class="mini f1"></div><div><strong>Shakshuka</strong><p class="subhead">Desayunos · 25 min</p></div></li>
+      <li><div class="mini f3"></div><div><strong>Berenjenas asadas con miso</strong><p class="subhead">Verduras · 40 min</p></div></li>
+      <li><div class="mini f2"></div><div><strong>Crema de calabaza</strong><p class="subhead">Cremas · 35 min</p></div></li>
+      <li><div class="mini f4"></div><div><strong>Tortilla de patatas</strong><p class="subhead">Clásicos · 30 min</p></div></li>
+      <li><div class="mini f1"></div><div><strong>Gazpacho</strong><p class="subhead">Sopas frías · 15 min</p></div></li>
+      <li><div class="mini f3"></div><div><strong>Risotto de setas</strong><p class="subhead">Arroces · 35 min</p></div></li>
+      <li><div class="mini f2"></div><div><strong>Galletas de avena</strong><p class="subhead">Repostería · 25 min</p></div></li>
+      <li><div class="mini f4"></div><div><strong>Pollo al ajillo</strong><p class="subhead">Carnes · 45 min</p></div></li>
+    </ul>
+  </section>
+
+  <!-- ===== Plan (vacío: la pestaña NO se oculta ni se desactiva; se explica por qué está vacía) [HIG Tab bars] ===== -->
+  <section class="panel" id="plan" aria-labelledby="t-plan" hidden>
+    <div class="cabecera"><h1 class="large-title" id="t-plan">Plan</h1></div>
+    <div class="vacio">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-plan"/></svg>
+      <h2>Aún no has planificado la semana</h2>
+      <p class="subhead">Arrastra recetas a cada día y los ingredientes se añadirán a tu lista de la compra.</p>
+      <button class="boton" type="button">Planificar la semana</button>
+    </div>
+  </section>
+
+  <!-- ===== Compra ===== -->
+  <section class="panel" id="compra" aria-labelledby="t-compra" hidden>
+    <div class="cabecera"><h1 class="large-title" id="t-compra">Compra</h1></div>
+    <p class="subhead">Lista compartida con Ana</p>
+    <ul class="lista">
+      <li><label><input type="checkbox"> Tomates de rama (1 kg) <span class="nuevo">Nuevo · Ana</span></label></li>
+      <li><label><input type="checkbox"> Fresas (500 g) <span class="nuevo">Nuevo · Ana</span></label></li>
+      <li><label><input type="checkbox"> Arroz arborio</label></li>
+      <li><label><input type="checkbox" checked> Setas variadas</label></li>
+      <li><label><input type="checkbox"> Parmesano</label></li>
+      <li><label><input type="checkbox"> Huevos camperos</label></li>
+    </ul>
+  </section>
+
+  <!-- ===== Buscar (pestaña de búsqueda al final, estilo «standard tab» para fomentar el descubrimiento) [HIG Search fields] ===== -->
+  <section class="panel" id="buscar" aria-labelledby="t-buscar" hidden>
+    <div class="cabecera"><h1 class="large-title" id="t-buscar">Buscar</h1></div>
+    <label class="campo-busqueda">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-buscar"/></svg>
+      <span class="sr">Buscar recetas</span>
+      <input type="search" placeholder="Recetas, ingredientes o platos" enterkeyhint="search">
+    </label>
+    <h2 class="title-3">Sugerencias</h2>
+    <ul class="sugerencias">
+      <li><button type="button">Con calabaza</button></li>
+      <li><button type="button">Menos de 20 min</button></li>
+      <li><button type="button">Vegetariano</button></li>
+      <li><button type="button">Sin horno</button></li>
+      <li><button type="button">Para niños</button></li>
+    </ul>
+  </section>
+</main>
+
+<div class="borde-scroll" aria-hidden="true"></div>
+
+<!-- ===== Capa funcional: accesorio + tab bar ===== -->
+<div class="inferior" id="inferior">
+
+  <!-- Accesorio: temporizador de cocina en curso (función persistente, visible en todas las pestañas) -->
+  <aside class="accesorio glass" aria-label="Temporizador de cocina">
+    <span class="glass__sombra" aria-hidden="true"></span>
+    <div class="glass__vidrio">
+      <svg class="reloj" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><use href="#i-reloj"/></svg>
+      <div class="texto">
+        <div class="t1">Risotto de setas</div>
+        <div class="t2">Paso 4 · <span id="tiempo">12:00</span></div>
+      </div>
+      <button type="button" id="pausa" aria-label="Pausar temporizador">
+        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pausa"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <nav class="tab-bar glass" aria-label="Secciones">
+    <span class="glass__sombra" aria-hidden="true"></span>
+    <ul class="glass__vidrio" role="list">
+      <li><a href="#hoy" data-tab="hoy" aria-current="page"><svg aria-hidden="true"><use href="#i-hoy"/></svg><span class="etiqueta">Hoy</span></a></li>
+      <li><a href="#recetas" data-tab="recetas"><svg aria-hidden="true"><use href="#i-recetas"/></svg><span class="etiqueta">Recetas</span></a></li>
+      <li><a href="#plan" data-tab="plan"><svg aria-hidden="true"><use href="#i-plan"/></svg><span class="etiqueta">Plan</span></a></li>
+      <li><a href="#compra" data-tab="compra"><svg aria-hidden="true"><use href="#i-compra"/></svg><span class="etiqueta">Compra</span><span class="badge" id="badge-compra" aria-hidden="true">2</span><span class="sr" id="badge-compra-sr">, 2 artículos nuevos</span></a></li>
+      <li><a href="#buscar" data-tab="buscar"><svg aria-hidden="true"><use href="#i-buscar"/></svg><span class="etiqueta">Buscar</span></a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Large Content Viewer: muestra en grande el elemento de la barra al mantenerlo pulsado (tamaños de accesibilidad) -->
+<div class="lcv" id="lcv" aria-hidden="true" hidden><div><svg><use id="lcv-icono" href="#i-hoy"/></svg><p id="lcv-texto"></p></div></div>
+</div>
+
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('.tab-bar a')];
+  const panels = Object.fromEntries([...document.querySelectorAll('.panel')].map(p => [p.id, p]));
+  const inferior = document.getElementById('inferior');
+  const scrollPorPestaña = {};      // cada pestaña conserva su posición de scroll [Propio]
+  let actual = 'hoy';
+
+  function mostrar(id, { desdeHash = false } = {}) {
+    if (!panels[id]) id = 'hoy';
+    if (id === actual && !desdeHash) {           // tocar la pestaña activa → volver arriba [Propio]
+      window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      return;
+    }
+    scrollPorPestaña[actual] = window.scrollY;
+    panels[actual].hidden = true;
+    panels[id].hidden = false;
+    tabs.forEach(a => a.removeAttribute('aria-current'));
+    tabs.find(a => a.dataset.tab === id).setAttribute('aria-current', 'page');
+    actual = id;
+    window.scrollTo(0, scrollPorPestaña[id] || 0);
+    expandir();
+    if (id === 'compra') {                         // el badge desaparece al ver la información
+      document.getElementById('badge-compra').hidden = true;
+      document.getElementById('badge-compra-sr').textContent = '';
+    }
+  }
+
+  tabs.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    if (inferior.classList.contains('minimizada')) { expandir(); return; }   // la barra minimizada se expande al tocarla
+    const id = a.dataset.tab;
+    if (id !== actual) history.replaceState(null, '', '#' + id);
+    mostrar(id);
+  }));
+  if (location.hash) mostrar(location.hash.slice(1), { desdeHash: true });
+
+  /* Minimizar al bajar / expandir al subir. Solo tiene sentido porque hay accesorio [HIG Tab bars › iOS]. */
+  let ultimoY = window.scrollY;
+  function expandir() { inferior.classList.remove('minimizada'); }
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY, d = y - ultimoY;
+    if (Math.abs(d) < 8) return;
+    if (d > 0 && y > 80) inferior.classList.add('minimizada'); else if (d < 0) expandir();
+    ultimoY = y;
+  }, { passive: true });
+
+  /* Temporizador del accesorio */
+  let restante = 12 * 60, enMarcha = true;
+  const tiempo = document.getElementById('tiempo'), pausa = document.getElementById('pausa');
+  const fmt = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+  setInterval(() => { if (enMarcha && restante > 0) { restante--; tiempo.textContent = fmt(restante); } }, 1000);
+  pausa.addEventListener('click', () => {
+    enMarcha = !enMarcha;
+    pausa.setAttribute('aria-label', enMarcha ? 'Pausar temporizador' : 'Reanudar temporizador');
+    pausa.querySelector('use').setAttribute('href', enMarcha ? '#i-pausa' : '#i-play');
+  });
+
+  /* Large Content Viewer (equivalente web). En nativo, las barras no crecen con Dynamic Type y
+     se recomienda el Large Content Viewer en barras propias [vídeo WWDC24 10074, 13:05].
+     Se activa en tamaños de accesibilidad (Body ≥ 28 pt = AX1 [HIG Typography]) o con ?ax para probarlo. */
+  const lcv = document.getElementById('lcv');
+  const usarLCV = () => parseFloat(getComputedStyle(document.documentElement).fontSize) >= 28 || new URLSearchParams(location.search).has('ax');
+  let temporizadorLCV = null;
+  tabs.forEach(a => {
+    a.addEventListener('pointerdown', () => {
+      if (!usarLCV()) return;
+      temporizadorLCV = setTimeout(() => {
+        document.getElementById('lcv-icono').setAttribute('href', a.querySelector('use').getAttribute('href'));
+        document.getElementById('lcv-texto').textContent = a.querySelector('.etiqueta').textContent;
+        lcv.hidden = false;
+      }, 450);
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => a.addEventListener(ev, () => { clearTimeout(temporizadorLCV); lcv.hidden = true; }));
+  });
+})();
+</script>
+</body>
+</html>

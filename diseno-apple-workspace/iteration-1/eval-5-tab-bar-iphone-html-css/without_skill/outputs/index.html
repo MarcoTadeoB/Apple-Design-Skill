@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>Barra de pestañas · Recetas</title>
+<style>
+/* =========================================================
+   TOKENS
+   Valores inspirados en los colores de sistema de iOS
+   (systemGroupedBackground, secondaryLabel, separator…),
+   con el acento y el gris inactivo oscurecidos para cumplir
+   WCAG 4.5:1 sobre fondo claro.
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+:root {
+  color-scheme: light dark;
+
+  --page: #dcdce2;
+  --bg: #f2f2f7;               /* systemGroupedBackground */
+  --surface: #ffffff;          /* secondarySystemGroupedBackground */
+  --label: #000000;
+  --label-2: rgba(60, 60, 67, .78);
+  --separator: rgba(60, 60, 67, .2);
+  --fill: rgba(120, 120, 128, .14);
+
+  --accent: #c2410c;           /* "tomate": 5,2:1 sobre blanco */
+  --tab-inactive: #58585e;     /* más oscuro que systemGray para >4,5:1 */
+  --badge: #d70015;            /* systemRed de alto contraste (claro) */
+
+  --glass: rgba(255, 255, 255, .64);
+  --glass-solid: #f7f7f9;
+  --glass-rim: rgba(255, 255, 255, .85);
+  --glass-edge: rgba(0, 0, 0, .07);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, .14), 0 1px 3px rgba(0, 0, 0, .08);
+  --pill: rgba(0, 0, 0, .07);
+
+  /* Geometría (1 px CSS ≈ 1 pt en iPhone) */
+  --side: 20px;                /* margen lateral de la barra flotante */
+  --gap: 10px;                 /* separación barra ↔ botón Buscar */
+  --bar-h: 62px;               /* alto de la cápsula expandida */
+  --acc-h: 48px;               /* alto del accesorio inferior */
+  --safe-top: 54px;            /* barra de estado con Dynamic Island */
+  --safe-bottom: 34px;         /* indicador de inicio */
+  --bar-bottom: max(calc(var(--safe-bottom) - 10px), 12px);
+
+  --ease: cubic-bezier(.32, .72, 0, 1);  /* curva tipo "spring" sin rebote */
+  --dur: .42s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #111113;
+    --bg: #000000;
+    --surface: #1c1c1e;
+    --label: #ffffff;
+    --label-2: rgba(235, 235, 245, .7);
+    --separator: rgba(84, 84, 88, .65);
+    --fill: rgba(120, 120, 128, .28);
+
+    --accent: #ff8a50;
+    --tab-inactive: #aeaeb2;
+    --badge: #d70015;
+
+    --glass: rgba(36, 36, 40, .62);
+    --glass-solid: #1f1f22;
+    --glass-rim: rgba(255, 255, 255, .14);
+    --glass-edge: rgba(255, 255, 255, .06);
+    --glass-shadow: 0 10px 30px rgba(0, 0, 0, .55), 0 1px 3px rgba(0, 0, 0, .4);
+    --pill: rgba(255, 255, 255, .12);
+  }
+}
+
+/* Dynamic Type en Safari iOS: el rem sigue el tamaño de texto del usuario.
+   La barra de pestañas usa px fijos (como en iOS) y ofrece el
+   "visor de contenido ampliado" con pulsación larga. */
+html { font: 17px/1.3 -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+@supports (font: -apple-system-body) {
+  html { font: -apple-system-body; }
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: var(--page);
+  color: var(--label);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   MARCO DE IPHONE (solo en escritorio)
+   ========================================================= */
+.device {
+  position: relative;
+  width: 393px;                 /* iPhone 15/16: 393 × 852 pt */
+  height: 852px;
+  max-height: calc(100dvh - 32px);
+  border-radius: 55px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow:
+    0 0 0 11px #1a1a1c,
+    0 0 0 12.5px #3a3a3e,
+    0 30px 80px rgba(0, 0, 0, .35);
+  isolation: isolate;
+}
+
+.status-bar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: var(--safe-top);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 34px 0 46px;
+  font: 600 17px/1 -apple-system, system-ui, sans-serif;
+  pointer-events: none;
+}
+.status-bar .island {
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  width: 124px;
+  height: 36px;
+  transform: translateX(-50%);
+  background: #000;
+  border-radius: 20px;
+}
+.status-bar .icons { display: flex; gap: 6px; align-items: center; }
+.status-bar svg { display: block; }
+
+.home-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 139px;
+  height: 5px;
+  border-radius: 3px;
+  transform: translateX(-50%);
+  background: var(--label);
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* En un teléfono real: pantalla completa y safe areas reales */
+@media (max-width: 500px) {
+  body { display: block; }
+  .device {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --side: max(16px, env(safe-area-inset-left, 0px));
+  }
+  .status-bar, .home-indicator { display: none; }
+}
+
+/* =========================================================
+   CONTENIDO (paneles)
+   ========================================================= */
+.panel {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding:
+    calc(var(--safe-top) + 6px)
+    var(--side)
+    calc(var(--bar-bottom) + 62px + var(--acc-h) + 40px);
+  outline: none;
+}
+.panel[hidden] { display: none; }
+.panel:focus-visible { box-shadow: inset 0 0 0 3px var(--accent); }
+
+.eyebrow {
+  font-size: .82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--label-2);
+  margin-top: 8px;
+}
+.large-title {
+  font-size: 2rem;              /* ≈ 34 pt con texto por defecto */
+  font-weight: 700;
+  letter-spacing: .01em;
+  line-height: 1.2;
+  margin: 2px 0 14px;
+}
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 22px 0 10px;
+}
+
+.cards { display: grid; gap: 16px; padding: 0; list-style: none; }
+.card {
+  background: var(--surface);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.card-img {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: end start;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+}
+.card-body { padding: 12px 16px 14px; }
+.card h3 { font-size: 1rem; font-weight: 600; }
+.meta { font-size: .88rem; color: var(--label-2); margin-top: 2px; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+.grid-2 .card-img { aspect-ratio: 1; }
+
+.group {
+  background: var(--surface);
+  border-radius: 22px;
+  list-style: none;
+  padding: 0 0 0 16px;
+  overflow: hidden;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 10px 16px 10px 0;
+  border-bottom: .5px solid var(--separator);
+}
+.group > li:last-child .row, .group > li:last-child.row { border-bottom: 0; }
+.row .grow { flex: 1; min-width: 0; }
+.row .day { font-weight: 600; width: 5.2em; flex: none; }
+.row .meta { margin: 0; }
+
+.check {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid var(--tab-inactive);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  margin: 0;
+}
+.check:checked { background: var(--accent); border-color: var(--accent); }
+.check:checked::after {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border: solid #fff;
+  border-width: 0 0 2.5px 2.5px;
+  transform: translate(0, -1px) rotate(-45deg);
+}
+.check:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.check:checked + label { color: var(--label-2); text-decoration: line-through; }
+label { cursor: pointer; }
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 20px;
+  background: var(--fill);
+  color: var(--label-2);
+  margin-bottom: 18px;
+}
+.search-field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--label);
+  outline: none;
+}
+.search-field:focus-within { box-shadow: 0 0 0 2px var(--accent); }
+.empty { color: var(--label-2); padding: 20px 0; text-align: center; }
+
+/* Efecto de borde de desplazamiento: el contenido se desvanece
+   bajo la barra de estado y bajo la barra de pestañas. */
+.edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.edge-top {
+  top: 0;
+  height: calc(var(--safe-top) + 10px);
+  background: linear-gradient(var(--bg) 45%, transparent);
+}
+.edge-bottom {
+  bottom: 0;
+  height: 130px;
+  background: linear-gradient(to top, var(--bg) 0%, color-mix(in srgb, var(--bg) 70%, transparent) 35%, transparent);
+  opacity: .9;
+}
+
+/* =========================================================
+   VIDRIO (material de la barra, botón Buscar y accesorio)
+   ========================================================= */
+.glass {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  box-shadow:
+    inset 0 0.5px 0 var(--glass-rim),
+    inset 0 0 0 0.5px var(--glass-edge),
+    var(--glass-shadow);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: var(--glass-solid); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass { background: var(--glass-solid); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .glass {
+    background: var(--glass-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: inset 0 0 0 1.5px var(--label), var(--glass-shadow);
+  }
+  :root { --pill: color-mix(in srgb, var(--accent) 18%, transparent); }
+}
+@media (forced-colors: active) {
+  .glass { border: 1px solid CanvasText; }
+  .tab[aria-selected="true"] { outline: 2px solid Highlight; }
+}
+
+/* =========================================================
+   BARRA DE PESTAÑAS
+   ========================================================= */
+.tabs-root { position: absolute; inset: 0; z-index: 20; pointer-events: none; }
+.tabs-root > * { pointer-events: auto; }
+
+.tabbar {
+  position: absolute;
+  left: var(--side);
+  bottom: var(--bar-bottom);
+  width: calc(100% - 2 * var(--side) - var(--bar-h) - var(--gap));
+  height: var(--bar-h);
+  display: flex;
+  padding: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  transition: width var(--dur) var(--ease), height var(--dur) var(--ease);
+}
+
+.tab {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 2px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tab-inactive);
+  font: inherit;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  transition:
+    flex-grow var(--dur) var(--ease),
+    opacity .2s ease,
+    background-color .25s ease,
+    color .25s ease,
+    transform .18s ease;
+}
+.tab svg { width: 26px; height: 26px; flex: none; display: block; }
+.tab-label {
+  font: 600 10px/12px -apple-system, system-ui, sans-serif;
+  letter-spacing: .01em;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity .2s ease, max-height var(--dur) var(--ease);
+  max-height: 12px;
+}
+.tab[aria-selected="true"] { color: var(--accent); background: var(--pill); }
+.tab:active { transform: scale(.94); }
+.tab:focus-visible { outline: none; box-shadow: inset 0 0 0 2.5px var(--accent); }
+
+.badge {
+  position: absolute;
+  top: 3px;
+  left: calc(50% + 6px);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--badge);
+  color: #fff;
+  font: 600 12px/18px -apple-system, system-ui, sans-serif;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.badge[hidden] { display: none; }
+
+/* Pestaña Buscar: círculo de vidrio separado (rol "search") */
+.search-tab {
+  position: absolute;
+  right: var(--side);
+  bottom: var(--bar-bottom);
+  width: var(--bar-h);
+  height: var(--bar-h);
+  border-radius: 50%;
+  flex: none;
+  transition: width var(--dur) var(--ease), height var(--dur) var(--ease), transform .18s ease;
+}
+.search-tab svg { width: 24px; height: 24px; }
+
+/* Accesorio inferior: temporizador de cocina en curso */
+.accessory {
+  position: absolute;
+  left: var(--side);
+  right: var(--side);
+  bottom: calc(var(--bar-bottom) + var(--bar-h) + 8px);
+  height: var(--acc-h);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 6px 0 16px;
+  color: var(--label);
+  transition:
+    left var(--dur) var(--ease),
+    right var(--dur) var(--ease),
+    bottom var(--dur) var(--ease),
+    height var(--dur) var(--ease);
+}
+.accessory .acc-icon { color: var(--accent); flex: none; display: block; }
+.accessory .acc-text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.15; }
+.accessory .acc-title {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.accessory .acc-time { font-size: 13px; color: var(--label-2); font-variant-numeric: tabular-nums; }
+.acc-btn {
+  width: 44px;               /* objetivo táctil mínimo 44 × 44 pt */
+  height: 44px;
+  margin: -4px 0;
+  flex: none;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--label);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.acc-btn:focus-visible { outline: none; box-shadow: inset 0 0 0 2.5px var(--accent); }
+
+/* ---------- Estado minimizado (al desplazarse hacia abajo) ---------- */
+.device.is-min { --bar-h: 48px; }
+.device.is-min .tabbar { width: 64px; }
+.device.is-min .tabbar .tab:not([aria-selected="true"]) {
+  flex-grow: 0;
+  flex-basis: 0;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.device.is-min .tab-label { opacity: 0; max-height: 0; }
+.device.is-min .tab .badge { display: none; }
+.device.is-min .accessory {
+  left: calc(var(--side) + 64px + var(--gap));
+  right: calc(var(--side) + var(--bar-h) + var(--gap));
+  bottom: var(--bar-bottom);
+  height: var(--bar-h);
+}
+.device.is-min .accessory .acc-title { font-size: 12px; }
+
+/* ---------- Visor de contenido ampliado (pulsación larga) ---------- */
+.hud {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 50;
+  width: 168px;
+  min-height: 168px;
+  padding: 22px 16px;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--label);
+  transform: translate(-50%, -50%) scale(.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .2s var(--ease);
+}
+.hud.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.hud svg { width: 64px; height: 64px; }
+.hud span { font-size: 22px; font-weight: 600; text-align: center; }
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: .01s; }
+  .tab:active, .search-tab:active { transform: none; }
+  .hud { transition: opacity .15s ease; transform: translate(-50%, -50%); }
+  .hud.show { transform: translate(-50%, -50%); }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<div class="device" id="device">
+
+  <!-- Barra de estado simulada (solo decorativa, oculta en móvil) -->
+  <div class="status-bar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="island"></span>
+    <span class="icons">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.2c2.3 0 4.4.9 6 2.4l1.2-1.3A10.4 10.4 0 0 0 8 .4C5.2.4 2.7 1.5.8 3.3L2 4.6a8.6 8.6 0 0 1 6-2.4zm0 3.5c1.4 0 2.6.5 3.6 1.4l1.2-1.3A7 7 0 0 0 8 3.9a7 7 0 0 0-4.8 1.9l1.2 1.3c1-.9 2.2-1.4 3.6-1.4zM8 9.2c.5 0 1 .2 1.3.5L8 11.6 6.7 9.7c.3-.3.8-.5 1.3-.5z"/></svg>
+      <svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".5" y=".5" width="23" height="12" rx="3.5" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2" fill="currentColor"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" fill="currentColor" opacity=".4"/></svg>
+    </span>
+  </div>
+
+  <!-- ===================== PANELES ===================== -->
+  <section class="panel" id="panel-descubrir" role="tabpanel" aria-labelledby="tab-descubrir" tabindex="0">
+    <p class="eyebrow" id="today"></p>
+    <h1 class="large-title">Descubrir</h1>
+    <h2 class="section-title">Para cocinar hoy</h2>
+    <ul class="cards" id="discover-list"></ul>
+  </section>
+
+  <section class="panel" id="panel-recetas" role="tabpanel" aria-labelledby="tab-recetas" tabindex="0" hidden>
+    <h1 class="large-title">Recetas</h1>
+    <h2 class="section-title">Guardadas</h2>
+    <ul class="grid-2" id="saved-list"></ul>
+  </section>
+
+  <section class="panel" id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" tabindex="0" hidden>
+    <h1 class="large-title">Plan semanal</h1>
+    <ul class="group" id="plan-list"></ul>
+  </section>
+
+  <section class="panel" id="panel-compra" role="tabpanel" aria-labelledby="tab-compra" tabindex="0" hidden>
+    <h1 class="large-title">Compra</h1>
+    <ul class="group" id="shop-list"></ul>
+  </section>
+
+  <section class="panel" id="panel-buscar" role="tabpanel" aria-labelledby="tab-buscar" tabindex="0" hidden>
+    <h1 class="large-title">Buscar</h1>
+    <div class="search-field">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+      <label for="q" class="visually-hidden">Buscar recetas</label>
+      <input id="q" type="search" placeholder="Recetas, ingredientes…" autocomplete="off" enterkeyhint="search">
+    </div>
+    <ul class="group" id="search-list" aria-live="polite"></ul>
+  </section>
+
+  <div class="edge edge-top" aria-hidden="true"></div>
+  <div class="edge edge-bottom" aria-hidden="true"></div>
+
+  <!-- ===================== BARRA DE PESTAÑAS ===================== -->
+  <nav class="tabs-root" aria-label="Secciones de la app">
+    <div role="tablist" aria-label="Secciones" id="tablist">
+
+      <div class="tabbar glass" role="presentation">
+        <button class="tab" role="tab" id="tab-descubrir" aria-controls="panel-descubrir" aria-selected="true" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.2 3.4c.2-.6 1-.6 1.2 0l1.3 3.8a4 4 0 0 0 2.5 2.5l3.8 1.3c.6.2.6 1 0 1.2l-3.8 1.3a4 4 0 0 0-2.5 2.5l-1.3 3.8c-.2.6-1 .6-1.2 0L8.9 16a4 4 0 0 0-2.5-2.5l-3.8-1.3c-.6-.2-.6-1 0-1.2l3.8-1.3a4 4 0 0 0 2.5-2.5z"/><path d="M18.6 1.3c.1-.3.5-.3.6 0l.5 1.4c.2.5.5.9 1 1l1.4.5c.3.1.3.5 0 .6l-1.4.5c-.5.2-.9.5-1 1l-.5 1.4c-.1.3-.5.3-.6 0l-.5-1.4c-.2-.5-.5-.9-1-1l-1.4-.5c-.3-.1-.3-.5 0-.6l1.4-.5c.5-.2.9-.5 1-1z"/></svg>
+          <span class="tab-label">Descubrir</span>
+        </button>
+
+        <button class="tab" role="tab" id="tab-recetas" aria-controls="panel-recetas" aria-selected="false" tabindex="-1">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7.5a1 1 0 0 0 0 2H19a1 1 0 1 1 0 2H7.5A2.5 2.5 0 0 1 5 19.5zM9 6.2v1.6h7V6.2z"/></svg>
+          <span class="tab-label">Recetas</span>
+        </button>
+
+        <button class="tab" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="false" tabindex="-1">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.8a1 1 0 0 1 1 1V4h6V2.8a1 1 0 1 1 2 0V4h1.5A2.5 2.5 0 0 1 21 6.5v12a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-12A2.5 2.5 0 0 1 5.5 4H7V2.8a1 1 0 0 1 1-1zM5 9.5v9c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5v-9zm2 2h2.5V14H7zm3.8 0h2.5V14h-2.5zm3.7 0H17V14h-2.5zM7 15.5h2.5V18H7zm3.8 0h2.5V18h-2.5z"/></svg>
+          <span class="tab-label">Plan</span>
+        </button>
+
+        <button class="tab" role="tab" id="tab-compra" aria-controls="panel-compra" aria-selected="false" tabindex="-1">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.8 3.2a1 1 0 0 1 1-1h1.6a1.8 1.8 0 0 1 1.8 1.4L6.4 5h14.1a1 1 0 0 1 1 1.2l-1.3 7a2 2 0 0 1-2 1.6H8.4l.3 1.6h9.8a1 1 0 1 1 0 2H8.6a1.8 1.8 0 0 1-1.8-1.4L4.3 4.2H2.8a1 1 0 0 1-1-1z"/><circle cx="9.5" cy="20.3" r="1.7"/><circle cx="17.5" cy="20.3" r="1.7"/></svg>
+          <span class="tab-label">Compra</span>
+          <span class="badge" id="shop-badge" aria-hidden="true">3</span>
+        </button>
+      </div>
+
+      <button class="tab search-tab glass" role="tab" id="tab-buscar" aria-controls="panel-buscar" aria-selected="false" tabindex="-1" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+      </button>
+    </div>
+
+    <!-- Accesorio inferior: no es una pestaña, es un control persistente -->
+    <div class="accessory glass" role="group" aria-label="Temporizador de cocina">
+      <svg class="acc-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 1.5h6v2H9z"/><path fill-rule="evenodd" d="M12 4.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17zm1 3.5h-2v5.4l3.6 2.2 1-1.7L13 12.3z"/></svg>
+      <span class="acc-text">
+        <span class="acc-title">Lentejas estofadas</span>
+        <span class="acc-time" id="timer" role="timer" aria-live="off">12:30</span>
+      </span>
+      <button class="acc-btn" id="timer-btn" type="button" aria-label="Pausar temporizador">
+        <svg id="timer-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1.2"/><rect x="14" y="4" width="4" height="16" rx="1.2"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="hud glass" id="hud" aria-hidden="true"></div>
+  <div class="home-indicator" aria-hidden="true"></div>
+</div>
+
+<script>
+(() => {
+  const device = document.getElementById('device');
+  const tablist = document.getElementById('tablist');
+  const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+  const panelOf = t => document.getElementById(t.getAttribute('aria-controls'));
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const searchInput = document.getElementById('q');
+
+  /* ---------------- Datos de ejemplo ---------------- */
+  const recipes = [
+    { n: 'Tortilla de patatas',   t: 35, d: 'Fácil', g: ['#f6d365', '#e8833a'] },
+    { n: 'Gazpacho andaluz',      t: 15, d: 'Fácil', g: ['#ff9a8b', '#c9302c'] },
+    { n: 'Arroz con verduras',    t: 40, d: 'Media', g: ['#a8e063', '#3f8f2a'] },
+    { n: 'Lentejas estofadas',    t: 50, d: 'Fácil', g: ['#c79081', '#6e3f2c'] },
+    { n: 'Ensalada de garbanzos', t: 15, d: 'Fácil', g: ['#d4fc79', '#5fb38a'] },
+    { n: 'Bizcocho de yogur',     t: 45, d: 'Media', g: ['#fbc2eb', '#8e6fd1'] },
+    { n: 'Crema de calabaza',     t: 30, d: 'Fácil', g: ['#ffd194', '#e8682a'] },
+    { n: 'Pisto manchego',        t: 45, d: 'Media', g: ['#f9d423', '#d9480f'] }
+  ];
+  const bg = r => `background:linear-gradient(135deg,${r.g[0]},${r.g[1]})`;
+  const meta = r => `${r.t} min · ${r.d}`;
+
+  const dateFmt = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+  document.getElementById('today').textContent = dateFmt.format(new Date());
+
+  document.getElementById('discover-list').innerHTML = recipes.map(r => `
+    <li class="card">
+      <div class="card-img" style="${bg(r)}" aria-hidden="true">${r.t} min</div>
+      <div class="card-body"><h3>${r.n}</h3><p class="meta">${meta(r)}</p></div>
+    </li>`).join('');
+
+  document.getElementById('saved-list').innerHTML = recipes.slice(0, 6).map(r => `
+    <li class="card">
+      <div class="card-img" style="${bg(r)}" aria-hidden="true"></div>
+      <div class="card-body"><h3>${r.n}</h3><p class="meta">${r.t} min</p></div>
+    </li>`).join('');
+
+  const days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+  document.getElementById('plan-list').innerHTML = days.map((d, i) => {
+    const r = recipes[i % recipes.length];
+    return `<li class="row"><span class="day">${d}</span><span class="grow">${r.n}<p class="meta">${meta(r)}</p></span></li>`;
+  }).join('');
+
+  const shop = [
+    ['Patatas (1 kg)', false], ['Huevos (6)', false], ['Cebolla', true], ['Tomates maduros', false],
+    ['Pimiento verde', true], ['Lentejas pardinas', true], ['Aceite de oliva', true], ['Yogur natural', true]
+  ];
+  document.getElementById('shop-list').innerHTML = shop.map(([name, done], i) => `
+    <li class="row">
+      <input class="check" type="checkbox" id="s${i}" ${done ? 'checked' : ''}>
+      <label class="grow" for="s${i}">${name}</label>
+    </li>`).join('');
+
+  /* ---------------- Insignia de la lista de la compra ---------------- */
+  const badge = document.getElementById('shop-badge');
+  const tabCompra = document.getElementById('tab-compra');
+  function updateBadge() {
+    const n = document.querySelectorAll('#shop-list .check:not(:checked)').length;
+    badge.textContent = n > 99 ? '99+' : n;
+    badge.hidden = n === 0;
+    // El nombre accesible empieza por la etiqueta visible (WCAG 2.5.3)
+    tabCompra.setAttribute('aria-label', n ? `Compra, ${n} pendientes` : 'Compra');
+  }
+  document.getElementById('shop-list').addEventListener('change', updateBadge);
+  updateBadge();
+
+  /* ---------------- Búsqueda ---------------- */
+  const results = document.getElementById('search-list');
+  function renderSearch() {
+    const q = searchInput.value.trim().toLowerCase();
+    const found = recipes.filter(r => r.n.toLowerCase().includes(q));
+    results.innerHTML = found.length
+      ? found.map(r => `<li class="row"><span class="grow">${r.n}<p class="meta">${meta(r)}</p></span></li>`).join('')
+      : `<li class="empty">Sin resultados para «${searchInput.value.replace(/[<>&]/g, '')}»</li>`;
+  }
+  searchInput.addEventListener('input', renderSearch);
+  renderSearch();
+
+  /* ---------------- Selección de pestañas ---------------- */
+  let current = tabs.find(t => t.getAttribute('aria-selected') === 'true');
+  const savedScroll = new Map();
+  let lastY = 0;
+
+  function setMin(v) { device.classList.toggle('is-min', v && current.id !== 'tab-buscar'); }
+
+  function select(tab, { focus = false, fromPointer = false } = {}) {
+    if (tab === current) {
+      // Barra minimizada: el toque solo la expande.
+      if (device.classList.contains('is-min')) { setMin(false); return; }
+      // Volver a tocar la pestaña activa: subir al inicio (comportamiento de iOS).
+      panelOf(tab).scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      return;
+    }
+    const oldPanel = panelOf(current);
+    savedScroll.set(current.id, oldPanel.scrollTop);   // cada pestaña conserva su estado
+    current.setAttribute('aria-selected', 'false');
+    current.tabIndex = -1;
+    oldPanel.hidden = true;
+
+    tab.setAttribute('aria-selected', 'true');
+    tab.tabIndex = 0;
+    const p = panelOf(tab);
+    p.hidden = false;
+    p.scrollTop = savedScroll.get(tab.id) || 0;
+    lastY = p.scrollTop;
+    current = tab;
+    setMin(false);
+
+    if (focus) tab.focus();
+    if (tab.id === 'tab-buscar' && fromPointer) searchInput.focus({ preventScroll: true });
+  }
+
+  tabs.forEach(t => t.addEventListener('click', e => select(t, { fromPointer: e.detail > 0 })));
+
+  // Teclado: patrón de pestañas WAI-ARIA con activación automática.
+  tablist.addEventListener('keydown', e => {
+    const i = tabs.indexOf(document.activeElement);
+    if (i < 0) return;
+    let next = null;
+    if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+    else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+    else if (e.key === 'Home') next = tabs[0];
+    else if (e.key === 'End') next = tabs[tabs.length - 1];
+    if (next) { e.preventDefault(); select(next, { focus: true }); }
+  });
+  // Con el foco del teclado dentro, la barra nunca está minimizada.
+  tablist.addEventListener('focusin', () => setMin(false));
+
+  /* ---------------- Minimizar al desplazar hacia abajo ---------------- */
+  document.querySelectorAll('.panel').forEach(p => {
+    p.addEventListener('scroll', () => {
+      if (p.hidden) return;
+      const y = p.scrollTop;
+      const dy = y - lastY;
+      if (Math.abs(dy) < 8) return;
+      if (!tablist.contains(document.activeElement)) setMin(dy > 0 && y > 80);
+      lastY = y;
+    }, { passive: true });
+  });
+
+  /* ---------------- Visor de contenido ampliado ---------------- */
+  const hud = document.getElementById('hud');
+  let lpTimer = null;
+  function showHud(t) {
+    const label = t.querySelector('.tab-label')?.textContent || t.getAttribute('aria-label');
+    hud.innerHTML = t.querySelector('svg').outerHTML + `<span>${label}</span>`;
+    hud.style.color = t.getAttribute('aria-selected') === 'true' ? 'var(--accent)' : 'var(--label)';
+    hud.classList.add('show');
+  }
+  function hideHud() { clearTimeout(lpTimer); hud.classList.remove('show'); }
+  tabs.forEach(t => {
+    t.addEventListener('pointerdown', () => { clearTimeout(lpTimer); lpTimer = setTimeout(() => showHud(t), 500); });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => t.addEventListener(ev, hideHud));
+    t.addEventListener('contextmenu', e => e.preventDefault());
+  });
+
+  /* ---------------- Temporizador del accesorio ---------------- */
+  const timerEl = document.getElementById('timer');
+  const timerBtn = document.getElementById('timer-btn');
+  const timerIcon = document.getElementById('timer-icon');
+  let remaining = 12 * 60 + 30;
+  let running = true;
+  const fmt = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+  setInterval(() => {
+    if (!running || remaining === 0) return;
+    remaining -= 1;
+    timerEl.textContent = fmt(remaining);
+  }, 1000);
+  timerBtn.addEventListener('click', () => {
+    running = !running;
+    timerBtn.setAttribute('aria-label', running ? 'Pausar temporizador' : 'Reanudar temporizador');
+    timerIcon.innerHTML = running
+      ? '<rect x="6" y="4" width="4" height="16" rx="1.2"/><rect x="14" y="4" width="4" height="16" rx="1.2"/>'
+      : '<path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/>';
+  });
+})();
+</script>
+</body>
+</html>
